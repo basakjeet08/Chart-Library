@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
+import com.dev.anirban.chartlibrary.charts.donutchart.DonutChart
+import com.dev.anirban.chartlibrary.charts.donutchart.DonutChartData
 import com.dev.anirban.chartlibrary.charts.linechart.LineChart
 import com.dev.anirban.chartlibrary.charts.linechart.LineChartData
 import com.dev.anirban.chartlibrary.charts.linechart.LineChartDecoration
@@ -65,7 +67,31 @@ class MainActivity : ComponentActivity() {
                             LineChart(
                                 lineChartData,
                                 lineChartDecoration
-                            ).BuildGraph()
+                            ).BuildChart()
+                        }
+
+                        ElevatedCard(
+                            modifier = Modifier
+                                .height(200.dp)
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+                            DonutChart(
+                                donutChartData = DonutChartData(
+                                    itemsList = listOf(
+                                        Pair("Water", 1500.0f),
+                                        Pair("Juice", 300.0f),
+                                        Pair("Soft Drink", 500.0f)
+                                    )
+                                ),
+                                colorList = listOf(
+                                    Color.Blue,
+                                    Color.Green,
+                                    Color.Red
+                                ),
+                                unit = "mL"
+                            ).BuildChart()
                         }
                     }
                 }

@@ -184,7 +184,7 @@ class LineChart<T>(
      * This is the only function which is public and it starts building the graph when called
      */
     @Composable
-    fun BuildGraph(
+    fun BuildChart(
         modifier: Modifier = Modifier,
         height: Dp = 200.dp
     ) {
