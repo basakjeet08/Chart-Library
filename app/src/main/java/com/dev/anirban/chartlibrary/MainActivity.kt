@@ -16,11 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
-import com.dev.anirban.chartlibrary.charts.donutchart.DonutChart
-import com.dev.anirban.chartlibrary.charts.donutchart.DonutChartData
-import com.dev.anirban.chartlibrary.charts.linechart.LineChart
-import com.dev.anirban.chartlibrary.charts.linechart.LineChartData
-import com.dev.anirban.chartlibrary.charts.linechart.LineChartDecoration
+import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.DonutChart
+import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.DonutChartData
+import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChart
+import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartData
+import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartDecoration
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,6 +33,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+
+//                    Chart(
+//                        chartBuilder = LinearChartBuilderStrategy(),
+//                        chartDataModel = LinearChartDataModelStrategy()
+//                    ).build()
+//
+//                    Chart(
+//                        chartBuilder = CircularChartBuilderStrategy(),
+//                        chartDataModel = CircularChartDataModelStrategy()
+//                    ).build()
+
 
                     Column {
                         ElevatedCard(

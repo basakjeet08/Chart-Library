@@ -1,4 +1,4 @@
-package com.dev.anirban.chartlibrary.charts.linechart
+package com.dev.anirban.chartlibrary.chartsprototypes.linechart
 
 import android.graphics.Paint
 import android.graphics.Typeface

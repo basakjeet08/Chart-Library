@@ -1,4 +1,4 @@
-package com.dev.anirban.chartlibrary.charts.donutchart
+package com.dev.anirban.chartlibrary.chartsprototypes.donutchart
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
