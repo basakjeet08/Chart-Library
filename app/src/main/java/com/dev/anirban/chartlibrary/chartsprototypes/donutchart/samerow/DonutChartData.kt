@@ -1,4 +1,4 @@
-package com.dev.anirban.chartlibrary.chartsprototypes.donutchart
+package com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow
 
 class DonutChartData(
     val itemsList: List<Pair<String, Float>>
