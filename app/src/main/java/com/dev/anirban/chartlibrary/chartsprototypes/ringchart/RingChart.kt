@@ -40,6 +40,10 @@ private val colorList = listOf(
     Color.Blue,
     Color.Yellow,
     Color.Green,
+    Color.Blue,
+    Color.Blue,
+    Color.Yellow,
+    Color.Green,
     Color.Blue
 )
 
