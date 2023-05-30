@@ -22,10 +22,11 @@ import com.dev.anirban.chartlibrary.chartsprototypes.barchart.BarChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.diffrow.DifferentRowDonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
-import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChart
-import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartData
 import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartDecoration
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
+import com.dev.anirban.chartlibrary.designpattern.Chart
+import com.dev.anirban.chartlibrary.designpattern.chartbuilders.LinearBuilder
+import com.dev.anirban.chartlibrary.designpattern.chartdatas.LinearData
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -65,7 +66,33 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            val lineChartData = LineChartData(
+//                            val lineChartData = LineChartData(
+//                                yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
+//                                xAxisReadings = listOf(
+//                                    "Jan",
+//                                    "Mar",
+//                                    "May",
+//                                    "Jul",
+//                                    "Sep",
+//                                    "Nov",
+//                                    "Dec"
+//                                ),
+//                                numOfXMarkers = 7,
+//                                numOfYMarkers = 5
+//                            )
+//
+//                            val lineChartDecoration = LineChartDecoration(
+//                                textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
+//                                lineColor = listOf(Color.Blue),
+//                                dotColor = listOf(Color.Green)
+//                            )
+//
+//                            LineChart(
+//                                lineChartData,
+//                                lineChartDecoration
+//                            ).BuildChart()
+
+                            val linearData = LinearData<String>(
                                 yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
                                 xAxisReadings = listOf(
                                     "Jan",
@@ -86,10 +113,15 @@ class MainActivity : ComponentActivity() {
                                 dotColor = listOf(Color.Green)
                             )
 
-                            LineChart(
-                                lineChartData,
-                                lineChartDecoration
-                            ).BuildChart()
+                            Chart(
+                                chartBuilder = LinearBuilder<String>(
+                                    lineChartData = linearData,
+                                    lineChartDecoration = lineChartDecoration
+                                ),
+                                linearData
+                            ).Build()
+
+
                         }
 
                         // Same row Donut Chart
