@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
+import com.dev.anirban.chartlibrary.chartsprototypes.barchart.BarChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.diffrow.DifferentRowDonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
@@ -134,6 +135,42 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
                             RingChart()
+                        }
+
+
+                        // Raw Bar Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+
+                            BarChart(
+                                yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
+                                xAxisReadings = listOf(
+                                    "Jan",
+                                    "Mar",
+                                    "May",
+                                    "Jul",
+                                    "Sep",
+                                    "Nov",
+                                    "Dec"
+                                ),
+                                lineColor = listOf(
+                                    Color.Blue,
+                                    Color.Green,
+                                    Color.Yellow,
+                                    Color.Cyan,
+                                    Color.Magenta,
+                                    Color.DarkGray,
+                                    Color.Blue
+                                ),
+                                numOfXMarkers = 7,
+                                numOfYMarkers = 5,
+                                height = 200.dp,
+                                textColor = MaterialTheme.colorScheme.onSurface.toArgb()
+                            )
                         }
                     }
                 }
