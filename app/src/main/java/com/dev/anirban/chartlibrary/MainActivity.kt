@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +24,7 @@ import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutCha
 import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChart
 import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartData
 import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartDecoration
+import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,7 +50,10 @@ class MainActivity : ComponentActivity() {
 //                    ).build()
 
 
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                    ) {
 
                         // Line Chart
                         ElevatedCard(
@@ -120,6 +126,15 @@ class MainActivity : ComponentActivity() {
                             DifferentRowDonutChart()
                         }
 
+                        // Raw Ring Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+                            RingChart()
+                        }
                     }
                 }
             }
