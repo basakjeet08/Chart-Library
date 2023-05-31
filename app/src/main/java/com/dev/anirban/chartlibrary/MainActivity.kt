@@ -22,12 +22,12 @@ import com.dev.anirban.chartlibrary.chartsprototypes.barchart.BarChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.diffrow.DifferentRowDonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
-import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartDecoration
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
-import com.dev.anirban.chartlibrary.dummydesign.linear.LinearChart
-import com.dev.anirban.chartlibrary.dummydesign.linear.LinearData
-import com.dev.anirban.chartlibrary.dummydesign.linear.impl.LineMargin
-import com.dev.anirban.chartlibrary.dummydesign.linear.impl.LinePlotting
+import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
+import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
+import com.dev.anirban.chartlibrary.designpattern.linear.plots.LinePlot
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,18 +41,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-
-//                    Chart(
-//                        chartBuilder = LinearChartBuilderStrategy(),
-//                        chartDataModel = LinearChartDataModelStrategy()
-//                    ).build()
-//
-//                    Chart(
-//                        chartBuilder = CircularChartBuilderStrategy(),
-//                        chartDataModel = CircularChartDataModelStrategy()
-//                    ).build()
-
-
+                    // This is the Line Chart with a proper design pattern
                     Column(
                         modifier = Modifier
                             .verticalScroll(rememberScrollState())
@@ -67,87 +56,28 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-//                            val lineChartData = LineChartData(
-//                                yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
-//                                xAxisReadings = listOf(
-//                                    "Jan",
-//                                    "Mar",
-//                                    "May",
-//                                    "Jul",
-//                                    "Sep",
-//                                    "Nov",
-//                                    "Dec"
-//                                ),
-//                                numOfXMarkers = 7,
-//                                numOfYMarkers = 5
-//                            )
-//
-//                            val lineChartDecoration = LineChartDecoration(
-//                                textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
-//                                lineColor = listOf(Color.Blue),
-//                                dotColor = listOf(Color.Green)
-//                            )
-//
-//                            LineChart(
-//                                lineChartData,
-//                                lineChartDecoration
-//                            ).BuildChart()
-
-//                            val linearData = LinearChartData<String>(
-//                                yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
-//                                xAxisReadings = listOf(
-//                                    "Jan",
-//                                    "Mar",
-//                                    "May",
-//                                    "Jul",
-//                                    "Sep",
-//                                    "Nov",
-//                                    "Dec"
-//                                ),
-//                                numOfXMarkers = 7,
-//                                numOfYMarkers = 5
-//                            )
-//
-//                            val lineChartDecoration = LineChartDecoration(
-//                                textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
-//                                lineColor = listOf(Color.Blue),
-//                                dotColor = listOf(Color.Green)
-//                            )
-//
-//                            LineChart(
-//                                linearChartData = linearData,
-//                                lineChartDecoration = lineChartDecoration
-//                            ).Build()
-
-
-                            val linearData = LinearData(
-                                yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
-                                xAxisReadings = listOf(
-                                    "Jan",
-                                    "Mar",
-                                    "May",
-                                    "Jul",
-                                    "Sep",
-                                    "Nov",
-                                    "Dec"
-                                ),
-                                numOfXMarkers = 7,
-                                numOfYMarkers = 5
-                            )
-
-                            val lineChartDecoration = LineChartDecoration(
-                                textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
-                                lineColor = listOf(Color.Blue),
-                                dotColor = listOf(Color.Green)
-                            )
 
                             LinearChart(
-                                plotterInterface = LinePlotting(),
-                                linearData = linearData,
-                                lineChartDecoration = lineChartDecoration,
-                                marginInterface = LineMargin()
+                                margin = NumberMargin(),
+                                decoration = LineDecoration(
+                                    textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
+                                    plotColor = listOf(Color.Blue),
+                                    pointColor = listOf(Color.Green)
+                                ),
+                                linearData = LineData(
+                                    yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
+                                    xAxisReadings = listOf(
+                                        "Jan",
+                                        "Mar",
+                                        "May",
+                                        "Jul",
+                                        "Sep",
+                                        "Nov",
+                                        "Dec"
+                                    )
+                                ),
+                                plotting = LinePlot()
                             ).Build(modifier = Modifier, height = 200.dp)
-
 
                         }
 

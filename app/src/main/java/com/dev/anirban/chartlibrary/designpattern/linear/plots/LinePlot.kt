@@ -1,19 +1,34 @@
-package com.dev.anirban.chartlibrary.dummydesign.linear.impl
+package com.dev.anirban.chartlibrary.designpattern.linear.plots
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import com.dev.anirban.chartlibrary.chartsprototypes.linechart.LineChartDecoration
-import com.dev.anirban.chartlibrary.dummydesign.linear.LinearData
-import com.dev.anirban.chartlibrary.dummydesign.linear.PlotterInterface
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
+import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
+import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.PlottingInterface
 
-class LinePlotting<T> : PlotterInterface<T> {
+/**
+ * This is the Line Plot class which implements the [PlottingInterface] Interface and makes a Line
+ * Chart
+ */
+class LinePlot : PlottingInterface {
 
-    override fun DrawScope.drawPlotting(
-        linearData: LinearData<T>,
-        lineChartDecoration: LineChartDecoration
+    /**
+     * This is the function which contains the actual margin implementation
+     *
+     * @param linearData This is the data of the Line Chart
+     * @param decoration THis is the decoration of the function
+     */
+    override fun DrawScope.plotChart(
+        linearData: LinearDataInterface,
+        decoration: LinearDecorationInterface
     ) {
+
+        // Checking if the passed object is a LineData
+        if (linearData !is LineData)
+            return
 
         // This variable contains all the Offset of all the graph coordinates
         val graphCoordinatesList: MutableList<MutableList<Offset>> = mutableListOf()
@@ -83,7 +98,7 @@ class LinePlotting<T> : PlotterInterface<T> {
             // Drawing path after defining all the points of a single coordinate set in the path
             drawPath(
                 path = path,
-                color = lineChartDecoration.lineColor[i],
+                color = decoration.plotColor[i],
                 style = Stroke(
                     width = 4f
                 )
@@ -95,7 +110,7 @@ class LinePlotting<T> : PlotterInterface<T> {
             offsets.forEach {
                 // This function draws the Circle points
                 drawCircle(
-                    color = lineChartDecoration.dotColor[index],
+                    color = decoration.pointColor[index],
                     radius = 8f,
                     center = it
                 )

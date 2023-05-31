@@ -1,38 +1,61 @@
-package com.dev.anirban.chartlibrary.designpattern.chartdatas
+package com.dev.anirban.chartlibrary.designpattern.linear.data
 
 import androidx.compose.ui.geometry.Size
-
+import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 
 /**
- * This class contains all the data related to the Line Chart and does all the calculations
- * necessary for plotting the line chart
+ * This is one of the implementation for storing and calculating the data in the chart. It
+ * Implements the Interface -> [LinearDataInterface]
  *
  * @param xAxisReadings These are the readings of the X - Axis
  * @param yAxisReadings These are the readings of the Y - Axis
  * @param numOfXMarkers These are the markers needed in X Axis
  * @param numOfYMarkers These are teh num of markers in Y-axis
  */
+class LineData(
+    override val yAxisReadings: List<List<Float>>,
+    override val xAxisReadings: List<String>,
+    override val numOfXMarkers: Int = 7,
+    override val numOfYMarkers: Int = 5
+) : LinearDataInterface {
 
-class LinearData<T>(
-    val yAxisReadings: List<List<Float>>,
-    val xAxisReadings: List<T>,
-    val numOfXMarkers: Int,
-    val numOfYMarkers: Int
-) : ChartDataModel {
-
+    /**
+     * Upper Y - Axis Reading or the Maximum Reading of the Graph
+     */
     var yUpperReading: Int = Int.MIN_VALUE
+
+    /**
+     * Lower Y - Axis Reading or the Maximum Reading of the Graph
+     */
     private var yLowerReading: Int = Int.MAX_VALUE
 
+    /**
+     * X - Axis Scale
+     */
     var xScale: Float = 0f
+
+    /**
+     * Y - Axis Scale
+     */
     var yScale: Float = 0f
+
+    /**
+     * It is the difference of the Upper and Lower Markers divided by the Markers count
+     */
     var yDividend: Int
 
+    /**
+     * This is the top left part of the Canvas or we can say the component
+     */
     var xOrigin: Float = 0f
-    var xMax: Float = 0f
     private var yOrigin: Float = 0f
+
+
+    /**
+     * This is the bottom right part of the Canvas
+     */
+    var xMax: Float = 0f
     private var yMax: Float = 0f
-    private var xTotalSize: Float = 0f
-    private var yTotalSize: Float = 0f
 
 
     init {
@@ -68,6 +91,12 @@ class LinearData<T>(
         yDividend = (yUpperReading - yLowerReading) / (numOfYMarkers - 1)
     }
 
+    /**
+     * This is the function which is responsible for the calculations of all the graph related stuff
+     *
+     * @param size This is the size of the whole canvas which also haves the componentSize in it
+     * @param componentSize This is the size of the part of the canvas with an aspect ratio
+     */
     override fun doCalculations(size: Size, componentSize: Size) {
 
         // X Coordinates of the Graph
@@ -78,12 +107,8 @@ class LinearData<T>(
         yOrigin = (size.height - componentSize.height) / 2f
         yMax = size.height - yOrigin
 
-        // Total Size of each of the Coordinates of the Graph
-        xTotalSize = xMax - xOrigin
-        yTotalSize = yMax - yOrigin
-
         // Scale of both Axis of the Graph
-        yScale = yTotalSize / numOfYMarkers
-        xScale = xTotalSize / numOfXMarkers
+        yScale = (yMax - yOrigin) / numOfYMarkers
+        xScale = (xMax - xOrigin) / numOfXMarkers
     }
 }
