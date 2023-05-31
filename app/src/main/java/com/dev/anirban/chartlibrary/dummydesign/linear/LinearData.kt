@@ -1,24 +1,13 @@
-package com.dev.anirban.chartlibrary.designpattern.chartdatas
+package com.dev.anirban.chartlibrary.dummydesign.linear
 
 import androidx.compose.ui.geometry.Size
-
-
-/**
- * This class contains all the data related to the Line Chart and does all the calculations
- * necessary for plotting the line chart
- *
- * @param xAxisReadings These are the readings of the X - Axis
- * @param yAxisReadings These are the readings of the Y - Axis
- * @param numOfXMarkers These are the markers needed in X Axis
- * @param numOfYMarkers These are teh num of markers in Y-axis
- */
 
 class LinearData<T>(
     val yAxisReadings: List<List<Float>>,
     val xAxisReadings: List<T>,
     val numOfXMarkers: Int,
     val numOfYMarkers: Int
-) : ChartDataModel {
+) {
 
     var yUpperReading: Int = Int.MIN_VALUE
     private var yLowerReading: Int = Int.MAX_VALUE
@@ -68,7 +57,7 @@ class LinearData<T>(
         yDividend = (yUpperReading - yLowerReading) / (numOfYMarkers - 1)
     }
 
-    override fun doCalculations(size: Size, componentSize: Size) {
+    fun doCalculations(size: Size, componentSize: Size) {
 
         // X Coordinates of the Graph
         xOrigin = (size.width - componentSize.width) / 2f
@@ -86,4 +75,5 @@ class LinearData<T>(
         yScale = yTotalSize / numOfYMarkers
         xScale = xTotalSize / numOfXMarkers
     }
+
 }
