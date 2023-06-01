@@ -18,7 +18,7 @@ interface LinearDecorationInterface {
      * Note :- Keep in mind that the chart may need two colors One for the Dark theme another for
      * the light theme
      */
-    val textColor: Int
+    val textColor: Color
 
     /**
      * plotColor is the Color used for the Lines Plotted in the Graph or the plot lines connecting

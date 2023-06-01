@@ -2,9 +2,11 @@ package com.dev.anirban.chartlibrary.designpattern.linear
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
@@ -59,6 +61,7 @@ class LinearChart(
         Canvas(
             modifier = modifier
                 .fillMaxWidth()
+                .padding(top = 4.dp, start = 4.dp)
         ) {
 
             // Calling all the necessary functions

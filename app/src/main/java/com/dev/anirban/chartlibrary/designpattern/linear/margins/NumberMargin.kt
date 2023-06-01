@@ -3,9 +3,9 @@ package com.dev.anirban.chartlibrary.designpattern.linear.margins
 import android.graphics.Paint
 import android.graphics.Typeface
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
@@ -33,18 +33,15 @@ class NumberMargin : MarginInterface {
         if (linearData !is LineData)
             return
 
-        for (index in 0 until linearData.numOfYMarkers) {
-
-            // This is the value of the current Y Axis Marker
-            val currentYMarker = linearData.yUpperReading - (index) * linearData.yDividend
+        linearData.yMarkerList.forEach { point ->
 
             // This draws the String Marker
             drawContext.canvas.nativeCanvas.drawText(
-                currentYMarker.toString(),
-                -24f,
-                (linearData.yScale * index) + 12f,
+                point.value.toString(),
+                point.xCoordinate,
+                point.yCoordinate,
                 Paint().apply {
-                    color = decoration.textColor
+                    color = decoration.textColor.toArgb()
                     textSize = 12.sp.toPx()
                     textAlign = Paint.Align.LEFT
                     typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
@@ -55,27 +52,27 @@ class NumberMargin : MarginInterface {
             drawLine(
                 start = Offset(
                     x = 24f,
-                    y = linearData.yScale * index
+                    y = point.yCoordinate - 12f
                 ),
-                color = Color.Gray,
+                color = decoration.textColor,
                 end = Offset(
-                    x = linearData.xMax,
-                    y = linearData.yScale * index
+                    x = size.width,
+                    y = point.yCoordinate - 12f
                 ),
                 strokeWidth = 1f
             )
         }
 
         // This Draws the Y Markers below the Graph
-        linearData.xAxisReadings.forEachIndexed { index, currentMarker ->
+        linearData.xAxisReadings.forEach { currentMarker ->
 
             // This draws the String Marker
             drawContext.canvas.nativeCanvas.drawText(
-                currentMarker,
-                linearData.xScale * (index) + 24f,
-                size.height,
+                currentMarker.value,
+                currentMarker.xCoordinate,
+                currentMarker.yCoordinate,
                 Paint().apply {
-                    color = decoration.textColor
+                    color = decoration.textColor.toArgb()
                     textSize = 12.sp.toPx()
                     textAlign = Paint.Align.LEFT
                     typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)

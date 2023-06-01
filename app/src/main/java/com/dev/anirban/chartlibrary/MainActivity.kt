@@ -28,6 +28,7 @@ import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
 import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
 import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
 import com.dev.anirban.chartlibrary.designpattern.linear.plots.LinePlot
+import com.dev.anirban.chartlibrary.designpattern.util.Point
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,20 +61,30 @@ class MainActivity : ComponentActivity() {
                             LinearChart(
                                 margin = NumberMargin(),
                                 decoration = LineDecoration(
-                                    textColor = MaterialTheme.colorScheme.onSurface.toArgb(),
+                                    textColor = MaterialTheme.colorScheme.onSurface,
                                     plotColor = listOf(Color.Blue),
                                     pointColor = listOf(Color.Green)
                                 ),
                                 linearData = LineData(
-                                    yAxisReadings = listOf(listOf(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)),
+                                    yAxisReadings = listOf(
+                                        listOf(
+                                            Point(6f),
+                                            Point(5f),
+                                            Point(4f),
+                                            Point(6f),
+                                            Point(7.5f),
+                                            Point(7f),
+                                            Point(6f)
+                                        )
+                                    ),
                                     xAxisReadings = listOf(
-                                        "Jan",
-                                        "Mar",
-                                        "May",
-                                        "Jul",
-                                        "Sep",
-                                        "Nov",
-                                        "Dec"
+                                        Point("Jan"),
+                                        Point("Mar"),
+                                        Point("May"),
+                                        Point("Jul"),
+                                        Point("Sep"),
+                                        Point("Nov"),
+                                        Point("Dec")
                                     )
                                 ),
                                 plotting = LinePlot()

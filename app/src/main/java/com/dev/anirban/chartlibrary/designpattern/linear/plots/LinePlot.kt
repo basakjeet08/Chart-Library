@@ -39,17 +39,11 @@ class LinePlot : PlottingInterface {
             // Calculates the coordinate of One Set of the List
             val graphCoordinates: MutableList<Offset> = mutableListOf()
 
-            coordinateSet.forEachIndexed { index, fl ->
-
-                val currentYCoordinate =
-                    ((linearData.yUpperReading - fl) * linearData.yScale / linearData.yDividend)
+            coordinateSet.forEach { point ->
 
                 // Adding the Coordinates of points in the same Set
                 graphCoordinates.add(
-                    Offset(
-                        x = 48f + (index) * linearData.xScale,
-                        y = currentYCoordinate
-                    )
+                    point.getOffset()
                 )
             }
 

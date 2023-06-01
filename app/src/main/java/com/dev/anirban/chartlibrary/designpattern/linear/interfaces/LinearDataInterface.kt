@@ -1,6 +1,7 @@
 package com.dev.anirban.chartlibrary.designpattern.linear.interfaces
 
 import androidx.compose.ui.geometry.Size
+import com.dev.anirban.chartlibrary.designpattern.util.Point
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new
@@ -11,12 +12,12 @@ interface LinearDataInterface {
     /**
      * These are the readings of the Y - Axis
      */
-    val yAxisReadings: List<List<Float>>
+    val yAxisReadings: List<List<Point<*>>>
 
     /**
      * These are the readings of the X - Axis
      */
-    val xAxisReadings: List<String>
+    val xAxisReadings: List<Point<*>>
 
     /**
      * These are the markers needed in X Axis

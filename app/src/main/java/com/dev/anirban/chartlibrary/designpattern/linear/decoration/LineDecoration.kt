@@ -12,7 +12,7 @@ import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecora
  * @param pointColor These are points color which are the points plotted in the graph
  */
 class LineDecoration(
-    override val textColor: Int,
+    override val textColor: Color,
     override val plotColor: List<Color>,
     override val pointColor: List<Color>
 ) : LinearDecorationInterface
