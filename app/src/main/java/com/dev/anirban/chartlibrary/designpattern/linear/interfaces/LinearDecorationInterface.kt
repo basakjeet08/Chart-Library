@@ -26,12 +26,12 @@ interface LinearDecorationInterface {
      *
      * Note :- Since this is a list give more colors or equal colors to what XMarkers u provide
      */
-    val plotColor: List<Color>
+    val plotPrimaryColor: List<Color>
 
     /**
      * pointColor is the Color used for the dots in the Graph or the points in the graph
      *
      * Note :- Since this is a list give more colors or equal colors to what YMarkers u provide
      */
-    val pointColor: List<Color>
+    val plotSecondaryColor: List<Color>
 }

@@ -92,7 +92,7 @@ class LinePlot : PlottingInterface {
             // Drawing path after defining all the points of a single coordinate set in the path
             drawPath(
                 path = path,
-                color = decoration.plotColor[i],
+                color = decoration.plotPrimaryColor[i],
                 style = Stroke(
                     width = 4f
                 )
@@ -104,7 +104,7 @@ class LinePlot : PlottingInterface {
             offsets.forEach {
                 // This function draws the Circle points
                 drawCircle(
-                    color = decoration.pointColor[index],
+                    color = decoration.plotSecondaryColor[index],
                     radius = 8f,
                     center = it
                 )
