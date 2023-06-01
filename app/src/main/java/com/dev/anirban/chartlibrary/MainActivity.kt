@@ -63,24 +63,10 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 linearData = LineData(
                                     yAxisReadings = listOf(
-                                        listOf(
-                                            Point(6f),
-                                            Point(5f),
-                                            Point(4f),
-                                            Point(6f),
-                                            Point(7.5f),
-                                            Point(7f),
-                                            Point(6f)
-                                        )
+                                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                                     ),
-                                    xAxisReadings = listOf(
-                                        Point("Jan"),
-                                        Point("Mar"),
-                                        Point("May"),
-                                        Point("Jul"),
-                                        Point("Sep"),
-                                        Point("Nov"),
-                                        Point("Dec")
+                                    xAxisReadings = Point.pointDataBuilder(
+                                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                                     )
                                 ),
                                 plotting = LinePlot()
@@ -102,24 +88,10 @@ class MainActivity : ComponentActivity() {
 
                             val lineData = LineData(
                                 yAxisReadings = listOf(
-                                    listOf(
-                                        Point(6f),
-                                        Point(5f),
-                                        Point(4f),
-                                        Point(6f),
-                                        Point(7.5f),
-                                        Point(7f),
-                                        Point(6f)
-                                    )
+                                    Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                                 ),
-                                xAxisReadings = listOf(
-                                    Point("Jan"),
-                                    Point("Mar"),
-                                    Point("May"),
-                                    Point("Jul"),
-                                    Point("Sep"),
-                                    Point("Nov"),
-                                    Point("Dec")
+                                xAxisReadings = Point.pointDataBuilder(
+                                    "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                                 )
                             )
 
