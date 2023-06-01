@@ -5,7 +5,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.PlottingInterface
@@ -24,7 +24,7 @@ class BarPlot : PlottingInterface {
     ) {
 
         // Checking if the passed object is a LineData
-        if (linearData !is LineData)
+        if (linearData !is LinearData)
             return
 
         // Adding the Offsets to the Variable

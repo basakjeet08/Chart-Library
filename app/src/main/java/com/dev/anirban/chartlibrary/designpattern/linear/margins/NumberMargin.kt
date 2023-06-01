@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.sp
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.MarginInterface
@@ -30,7 +30,7 @@ class NumberMargin : MarginInterface {
     ) {
 
         // Checking if the passed object is a LineData
-        if (linearData !is LineData)
+        if (linearData !is LinearData)
             return
 
         linearData.yMarkerList.forEach { point ->

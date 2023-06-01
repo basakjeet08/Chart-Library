@@ -21,7 +21,7 @@ import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutCha
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
 import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
 import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
 import com.dev.anirban.chartlibrary.designpattern.linear.plots.BarPlot
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                                     plotPrimaryColor = listOf(Color.Blue),
                                     plotSecondaryColor = listOf(Color.Green)
                                 ),
-                                linearData = LineData(
+                                linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                                     ),
@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            val lineData = LineData(
+                            val linearData = LinearData(
                                 yAxisReadings = listOf(
                                     Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                                 ),
@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
                                     plotPrimaryColor = colorList,
                                     plotSecondaryColor = listOf(Color.Green)
                                 ),
-                                linearData = lineData,
+                                linearData = linearData,
                                 plotting = BarPlot()
                             ).Build(
                                 modifier = Modifier

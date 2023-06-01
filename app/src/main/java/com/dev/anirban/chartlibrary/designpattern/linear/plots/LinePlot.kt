@@ -4,7 +4,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LineData
+import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.PlottingInterface
@@ -27,7 +27,7 @@ class LinePlot : PlottingInterface {
     ) {
 
         // Checking if the passed object is a LineData
-        if (linearData !is LineData)
+        if (linearData !is LinearData)
             return
 
         // This variable contains all the Offset of all the graph coordinates

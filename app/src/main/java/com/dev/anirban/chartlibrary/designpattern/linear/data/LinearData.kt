@@ -13,7 +13,7 @@ import com.dev.anirban.chartlibrary.designpattern.util.Point
  * @param numOfXMarkers These are the markers needed in X Axis
  * @param numOfYMarkers These are teh num of markers in Y-axis
  */
-class LineData(
+class LinearData(
     override val yAxisReadings: List<List<Point<Float>>>,
     override val xAxisReadings: List<Point<String>>,
     override val numOfXMarkers: Int = 7,
@@ -24,6 +24,7 @@ class LineData(
      * List of all the markers in the Y - Axis
      */
     var yMarkerList: MutableList<Point<*>> = mutableListOf()
+        private set
 
     /**
      * Upper Y - Axis Reading or the Maximum Reading of the Graph
