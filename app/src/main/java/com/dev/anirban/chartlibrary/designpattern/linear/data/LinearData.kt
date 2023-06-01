@@ -45,13 +45,6 @@ class LineData(
     var yDividend: Int
 
     /**
-     * This is the top left part of the Canvas or we can say the component
-     */
-    var xOrigin: Float = 0f
-    private var yOrigin: Float = 0f
-
-
-    /**
      * This is the bottom right part of the Canvas
      */
     var xMax: Float = 0f
@@ -95,20 +88,17 @@ class LineData(
      * This is the function which is responsible for the calculations of all the graph related stuff
      *
      * @param size This is the size of the whole canvas which also haves the componentSize in it
-     * @param componentSize This is the size of the part of the canvas with an aspect ratio
      */
-    override fun doCalculations(size: Size, componentSize: Size) {
+    override fun doCalculations(size: Size) {
 
         // X Coordinates of the Graph
-        xOrigin = (size.width - componentSize.width) / 2f
-        xMax = size.width - xOrigin
+        xMax = size.width
 
         // Y Coordinates of the Graph
-        yOrigin = (size.height - componentSize.height) / 2f
-        yMax = size.height - yOrigin
+        yMax = size.height
 
         // Scale of both Axis of the Graph
-        yScale = (yMax - yOrigin) / numOfYMarkers
-        xScale = (xMax - xOrigin) / numOfXMarkers
+        yScale = yMax / numOfYMarkers
+        xScale = xMax / numOfXMarkers
     }
 }

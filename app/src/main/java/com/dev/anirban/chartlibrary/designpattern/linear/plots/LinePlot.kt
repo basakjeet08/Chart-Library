@@ -42,12 +42,12 @@ class LinePlot : PlottingInterface {
             coordinateSet.forEachIndexed { index, fl ->
 
                 val currentYCoordinate =
-                    (linearData.yScale + (linearData.yUpperReading - fl) * linearData.yScale / linearData.yDividend)
+                    ((linearData.yUpperReading - fl) * linearData.yScale / linearData.yDividend)
 
                 // Adding the Coordinates of points in the same Set
                 graphCoordinates.add(
                     Offset(
-                        x = 24f + (index + 1) * linearData.xScale,
+                        x = 48f + (index) * linearData.xScale,
                         y = currentYCoordinate
                     )
                 )

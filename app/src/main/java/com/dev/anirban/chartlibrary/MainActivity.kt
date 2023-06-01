@@ -77,8 +77,11 @@ class MainActivity : ComponentActivity() {
                                     )
                                 ),
                                 plotting = LinePlot()
-                            ).Build(modifier = Modifier, height = 200.dp)
-
+                            ).Build(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp)
+                            )
                         }
 
                         // Same row Donut Chart

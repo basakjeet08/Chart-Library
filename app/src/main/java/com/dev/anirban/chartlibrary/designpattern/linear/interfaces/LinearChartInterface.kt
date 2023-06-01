@@ -3,7 +3,6 @@ package com.dev.anirban.chartlibrary.designpattern.linear.interfaces
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.Dp
 
 /**
  * This interface in the interface which every Linear Chart Implementation has to implement for the
@@ -58,5 +57,5 @@ interface LinearChartInterface {
      * This is the Build Function which starts composing the Charts and composes the Charts
      */
     @Composable
-    fun Build(modifier: Modifier, height: Dp)
+    fun Build(modifier: Modifier)
 }

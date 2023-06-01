@@ -8,7 +8,6 @@ import androidx.compose.ui.geometry.Size
  */
 interface LinearDataInterface {
 
-
     /**
      * These are the readings of the Y - Axis
      */
@@ -32,6 +31,6 @@ interface LinearDataInterface {
     /**
      * THis is the function which contains most of the calculation logic of the graph
      */
-    fun doCalculations(size: Size, componentSize: Size)
+    fun doCalculations(size: Size)
 
 }

@@ -2,13 +2,9 @@ package com.dev.anirban.chartlibrary.designpattern.linear
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
@@ -58,20 +54,15 @@ class LinearChart(
      * This function basically starts making the composable function and making the canvas graph
      */
     @Composable
-    override fun Build(modifier: Modifier, height: Dp) {
+    override fun Build(modifier: Modifier) {
 
         Canvas(
             modifier = modifier
                 .fillMaxWidth()
-                .height(height)
-                .padding(top = 12.dp, bottom = 12.dp)
         ) {
 
-            // Decreasing the Size of Component than the Canvas Size to make the UI look better
-            val componentSize = size / 1.20f
-
             // Calling all the necessary functions
-            linearData.doCalculations(size, componentSize)
+            linearData.doCalculations(size)
             drawMargin()
             plotChart()
         }

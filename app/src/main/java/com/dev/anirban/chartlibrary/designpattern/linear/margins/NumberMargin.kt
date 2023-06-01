@@ -33,16 +33,16 @@ class NumberMargin : MarginInterface {
         if (linearData !is LineData)
             return
 
-        for (i in 1..linearData.numOfYMarkers) {
+        for (index in 0 until linearData.numOfYMarkers) {
 
             // This is the value of the current Y Axis Marker
-            val currentYMarker = linearData.yUpperReading - (i - 1) * linearData.yDividend
+            val currentYMarker = linearData.yUpperReading - (index) * linearData.yDividend
 
             // This draws the String Marker
             drawContext.canvas.nativeCanvas.drawText(
                 currentYMarker.toString(),
-                linearData.xOrigin - 24f,
-                (linearData.yScale * i) + 12f,
+                -24f,
+                (linearData.yScale * index) + 12f,
                 Paint().apply {
                     color = decoration.textColor
                     textSize = 12.sp.toPx()
@@ -54,13 +54,13 @@ class NumberMargin : MarginInterface {
             // This draws the Lines for the readings parallel to X Axis
             drawLine(
                 start = Offset(
-                    x = linearData.xOrigin + 24f,
-                    y = linearData.yScale * i
+                    x = 24f,
+                    y = linearData.yScale * index
                 ),
                 color = Color.Gray,
                 end = Offset(
                     x = linearData.xMax,
-                    y = linearData.yScale * i
+                    y = linearData.yScale * index
                 ),
                 strokeWidth = 1f
             )
@@ -72,8 +72,8 @@ class NumberMargin : MarginInterface {
             // This draws the String Marker
             drawContext.canvas.nativeCanvas.drawText(
                 currentMarker,
-                linearData.xScale * (index + 1),
-                linearData.yScale * (linearData.numOfYMarkers + 1),
+                linearData.xScale * (index) + 24f,
+                size.height,
                 Paint().apply {
                     color = decoration.textColor
                     textSize = 12.sp.toPx()
