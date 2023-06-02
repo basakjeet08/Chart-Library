@@ -54,7 +54,7 @@ class NumberMargin : MarginInterface {
                     x = 24f,
                     y = point.yCoordinate - 12f
                 ),
-                color = decoration.textColor,
+                color = decoration.textColor.copy(alpha = 0.8f),
                 end = Offset(
                     x = size.width,
                     y = point.yCoordinate - 12f

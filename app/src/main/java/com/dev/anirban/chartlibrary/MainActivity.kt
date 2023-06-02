@@ -20,6 +20,12 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChart
 import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
+import com.dev.anirban.chartlibrary.designpattern.circular.center.CircularDefaultCenter
+import com.dev.anirban.chartlibrary.designpattern.circular.charts.RowDonutChart
+import com.dev.anirban.chartlibrary.designpattern.circular.colorconvention.ListColorConvention
+import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
+import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
+import com.dev.anirban.chartlibrary.designpattern.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
 import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
@@ -58,8 +64,8 @@ class MainActivity : ComponentActivity() {
                                 margin = NumberMargin(),
                                 decoration = LineDecoration(
                                     textColor = MaterialTheme.colorScheme.onSurface,
-                                    plotPrimaryColor = listOf(Color.Blue),
-                                    plotSecondaryColor = listOf(Color.Green)
+                                    plotPrimaryColor = listOf(Color.Cyan),
+                                    plotSecondaryColor = listOf(Color.Red)
                                 ),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
@@ -121,6 +127,39 @@ class MainActivity : ComponentActivity() {
                                     .height(200.dp)
                             )
                         }
+
+
+                        // Same row Donut Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+
+                            RowDonutChart(
+                                circularCenter = CircularDefaultCenter(),
+                                circularData = CircularData(
+                                    itemsList = listOf(
+                                        Pair("Water", 1500.0f),
+                                        Pair("Juice", 300.0f),
+                                        Pair("Soft Drink", 500.0f)
+                                    )
+                                ),
+                                circularDecoration = CircularDecoration(
+                                    colorList = listOf(
+                                        Color.Blue,
+                                        Color.Green,
+                                        Color.Red
+                                    )
+                                ),
+                                circularForeground = DonutChartForeground(),
+                                circularColorConvention = ListColorConvention()
+                            ).Build(
+                                modifier = Modifier
+                            )
+                        }
+
 
                         // Same row Donut Chart
                         ElevatedCard(

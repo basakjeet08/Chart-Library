@@ -1,15 +1,24 @@
-package com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow
+package com.dev.anirban.chartlibrary.designpattern.circular.data
 
-class DonutChartData(
-    val itemsList: List<Pair<String, Float>>
-) {
-    val sweepAngles: MutableList<Float> = mutableListOf()
+import com.dev.anirban.chartlibrary.designpattern.circular.interfaces.CircularDataInterface
 
-    init {
-        calculate()
-    }
+/**
+ * This class is the implementation of [CircularDataInterface] class which is responsible for
+ * providing the implementation of business login and calculation logic behind the chart
+ *
+ * @param itemsList This is the List of items to be shown in the chart
+ * @property sweepAngles This is the list of sweep angles which could be calculated
+ */
+class CircularData(
+    override val itemsList: List<Pair<String, Float>>
+) : CircularDataInterface {
 
-    private fun calculate() {
+    override var sweepAngles: MutableList<Float> = mutableListOf()
+
+    /**
+     * This function calculates the sweep Angles
+     */
+    override fun doCalculations() {
 
         // List of all the Floating Numbers which will be used to display Chart
         val valueList: MutableList<Float> = mutableListOf()
