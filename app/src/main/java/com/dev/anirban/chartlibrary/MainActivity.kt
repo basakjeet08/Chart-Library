@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
+import com.dev.anirban.chartlibrary.designpattern.circular.charts.ColumnDonutChart
 import com.dev.anirban.chartlibrary.designpattern.circular.charts.RowDonutChart
 import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
 import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
@@ -227,14 +228,34 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // Different Row Donut Chart
+                        // Design Pattern Different row Donut Chart
                         ElevatedCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
-//                            DifferentRowDonutChart()
+
+                            ColumnDonutChart(
+                                circularData = CircularData(
+                                    itemsList = listOf(
+                                        Pair("Normal", 450f),
+                                        Pair("Deep", 180f),
+                                        Pair("Delay", 30f),
+                                        Pair("Distributed", 60f)
+                                    )
+                                ),
+                                circularDecoration = CircularDecoration(
+                                    colorList = listOf(
+                                        Color.Blue,
+                                        Color.Green,
+                                        Color.Yellow,
+                                        Color.Red
+                                    )
+                                )
+                            ).Build(
+                                modifier = Modifier
+                            )
                         }
 
                         // Raw Ring Chart
