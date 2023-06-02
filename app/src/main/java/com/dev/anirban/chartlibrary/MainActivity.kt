@@ -175,9 +175,9 @@ class MainActivity : ComponentActivity() {
                             )
 
                             val colorList = listOf(
-                                Color.Blue,
-                                Color.Red,
                                 Color.Green,
+                                Color.Red,
+                                Color.Blue,
                                 Color.Magenta,
                                 Color.LightGray,
                                 Color.Yellow,
@@ -220,7 +220,7 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 circularDecoration = CircularDecoration(
                                     colorList = listOf(
-                                        Color.Blue,
+                                        Color.Cyan.copy(alpha = .7f),
                                         Color.Green,
                                         Color.Red
                                     )
@@ -247,7 +247,7 @@ class MainActivity : ComponentActivity() {
                                 ),
                                 circularDecoration = CircularDecoration(
                                     colorList = listOf(
-                                        Color.Blue,
+                                        Color.Cyan.copy(alpha = .7f),
                                         Color.Green,
                                         Color.Yellow,
                                         Color.Red
@@ -270,7 +270,7 @@ class MainActivity : ComponentActivity() {
                                     achieved = 2000f
                                 ),
                                 circularDecoration = CircularDecoration(
-                                    colorList = listOf(Color.Blue)
+                                    colorList = listOf(Color.Cyan.copy(alpha = .7f))
                                 )
                             ).Build(modifier = Modifier)
                         }
