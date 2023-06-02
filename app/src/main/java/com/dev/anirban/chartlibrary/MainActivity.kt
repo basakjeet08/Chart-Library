@@ -17,15 +17,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChart
-import com.dev.anirban.chartlibrary.chartsprototypes.donutchart.samerow.DonutChartData
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
-import com.dev.anirban.chartlibrary.designpattern.circular.center.CircularDefaultCenter
 import com.dev.anirban.chartlibrary.designpattern.circular.charts.RowDonutChart
-import com.dev.anirban.chartlibrary.designpattern.circular.colorconvention.ListColorConvention
 import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
 import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.designpattern.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
 import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
@@ -51,7 +46,7 @@ class MainActivity : ComponentActivity() {
                             .verticalScroll(rememberScrollState())
                     ) {
 
-                        // Line Chart
+                        // Design Pattern Single Line Chart
                         ElevatedCard(
                             modifier = Modifier
                                 .height(200.dp)
@@ -83,7 +78,82 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // Bar Chart
+                        // Design Pattern Double Line Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .height(200.dp)
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+
+                            LinearChart(
+                                margin = NumberMargin(),
+                                decoration = LineDecoration(
+                                    textColor = MaterialTheme.colorScheme.onSurface,
+                                    plotPrimaryColor = listOf(Color.Cyan, Color.Green),
+                                    plotSecondaryColor = listOf(Color.Red, Color.Magenta)
+                                ),
+                                linearData = LinearData(
+                                    yAxisReadings = listOf(
+                                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                                        Point.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
+                                    ),
+                                    xAxisReadings = Point.pointDataBuilder(
+                                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                                    )
+                                ),
+                                plotting = LinePlot()
+                            ).Build(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp)
+                            )
+                        }
+
+                        // Design Pattern Triple Line Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .height(200.dp)
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+
+                            LinearChart(
+                                margin = NumberMargin(),
+                                decoration = LineDecoration(
+                                    textColor = MaterialTheme.colorScheme.onSurface,
+                                    plotPrimaryColor = listOf(
+                                        Color.Cyan,
+                                        Color.Green,
+                                        Color.Yellow
+                                    ),
+                                    plotSecondaryColor = listOf(
+                                        Color.LightGray,
+                                        Color.Magenta,
+                                        Color.Red
+                                    )
+                                ),
+                                linearData = LinearData(
+                                    yAxisReadings = listOf(
+                                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                                        Point.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
+                                        Point.pointDataBuilder(1f, 8f, 4f, 3f, 5.9f, 2.9f, 4.7f)
+                                    ),
+                                    xAxisReadings = Point.pointDataBuilder(
+                                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                                    )
+                                ),
+                                plotting = LinePlot()
+                            ).Build(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp)
+                            )
+                        }
+
+                        // Design Pattern Bar Chart
                         ElevatedCard(
                             modifier = Modifier
                                 .height(200.dp)
@@ -129,7 +199,7 @@ class MainActivity : ComponentActivity() {
                         }
 
 
-                        // Same row Donut Chart
+                        // Design Pattern Same row Donut Chart
                         ElevatedCard(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -138,7 +208,6 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             RowDonutChart(
-                                circularCenter = CircularDefaultCenter(),
                                 circularData = CircularData(
                                     itemsList = listOf(
                                         Pair("Water", 1500.0f),
@@ -152,38 +221,10 @@ class MainActivity : ComponentActivity() {
                                         Color.Green,
                                         Color.Red
                                     )
-                                ),
-                                circularForeground = DonutChartForeground(),
-                                circularColorConvention = ListColorConvention()
+                                )
                             ).Build(
                                 modifier = Modifier
                             )
-                        }
-
-
-                        // Same row Donut Chart
-                        ElevatedCard(
-                            modifier = Modifier
-                                .height(200.dp)
-                                .fillMaxWidth()
-                                .padding(8.dp),
-                            elevation = CardDefaults.cardElevation(8.dp),
-                        ) {
-                            DonutChart(
-                                donutChartData = DonutChartData(
-                                    itemsList = listOf(
-                                        Pair("Water", 1500.0f),
-                                        Pair("Juice", 300.0f),
-                                        Pair("Soft Drink", 500.0f)
-                                    )
-                                ),
-                                colorList = listOf(
-                                    Color.Blue,
-                                    Color.Green,
-                                    Color.Red
-                                ),
-                                unit = "mL"
-                            ).BuildChart()
                         }
 
                         // Different Row Donut Chart

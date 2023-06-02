@@ -7,7 +7,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.sp
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.MarginInterface
@@ -28,10 +27,6 @@ class NumberMargin : MarginInterface {
         linearData: LinearDataInterface,
         decoration: LinearDecorationInterface
     ) {
-
-        // Checking if the passed object is a LineData
-        if (linearData !is LinearData)
-            return
 
         linearData.yMarkerList.forEach { point ->
 
@@ -68,7 +63,7 @@ class NumberMargin : MarginInterface {
 
             // This draws the String Marker
             drawContext.canvas.nativeCanvas.drawText(
-                currentMarker.value,
+                currentMarker.value.toString(),
                 currentMarker.xCoordinate,
                 currentMarker.yCoordinate,
                 Paint().apply {

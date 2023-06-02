@@ -23,8 +23,7 @@ class LinearData(
     /**
      * List of all the markers in the Y - Axis
      */
-    var yMarkerList: MutableList<Point<*>> = mutableListOf()
-        private set
+    override var yMarkerList: MutableList<Point<*>> = mutableListOf()
 
     /**
      * Upper Y - Axis Reading or the Maximum Reading of the Graph
@@ -43,32 +42,29 @@ class LinearData(
 
     init {
 
-        // Y Axis Marker bounds are held by these variables
-        var yUpper = yAxisReadings[0][0].value
-        var yLower = yAxisReadings[0][0].value
-
-        // Finding the upper bound and Lower Bound of Y
-        yAxisReadings.forEach { readings ->
-            readings.forEach {
-                if (it.value > yUpper)
-                    yUpper = it.value
-
-                if (it.value < yLower)
-                    yLower = it.value
+        // Maximum and minimum value provided is calculated
+        val yMax = yAxisReadings.maxOf {
+            it.maxOf { point ->
+                point.value
+            }
+        }
+        val yMin = yAxisReadings.minOf {
+            it.minOf { point ->
+                point.value
             }
         }
 
         // Storing the upper Bound and Lower bound of Y Markers
-        yUpperReading =
-            yUpper.toInt() + ((numOfYMarkers - 1) - (yUpper.toInt() % (numOfYMarkers - 1)))
-
-        yLowerReading = if (yLower < 0)
-            if (yLower.toInt() % (numOfYMarkers - 1) == 0)
-                yLower.toInt()
-            else
-                (((yLower.toInt() / (numOfYMarkers - 1)) - 1) * (numOfYMarkers - 1))
+        yUpperReading = if (yMax % (numOfYMarkers - 1) != 0.0f)
+            yMax.toInt() + ((numOfYMarkers - 1) - (yMax.toInt() % (numOfYMarkers - 1)))
         else
-            (yLower.toInt() - (yLower.toInt() % (numOfYMarkers - 1)))
+            yMax.toInt()
+
+        yLowerReading = if (yMin.toInt() % (numOfYMarkers - 1) == 0) {
+            yMin.toInt()
+        } else {
+            yMin.toInt() - (yMin.toInt() % (numOfYMarkers - 1))
+        }
 
         // Difference between each Y Markers
         yDividend = (yUpperReading - yLowerReading) / (numOfYMarkers - 1)

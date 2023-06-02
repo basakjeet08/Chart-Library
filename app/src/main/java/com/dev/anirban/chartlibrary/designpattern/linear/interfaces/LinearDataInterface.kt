@@ -30,6 +30,11 @@ interface LinearDataInterface {
     val numOfYMarkers: Int
 
     /**
+     * List of all the markers in the Y - Axis
+     */
+    var yMarkerList: MutableList<Point<*>>
+
+    /**
      * THis is the function which contains most of the calculation logic of the graph
      */
     fun doCalculations(size: Size)
