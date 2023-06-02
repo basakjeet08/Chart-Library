@@ -1,6 +1,5 @@
 package com.dev.anirban.chartlibrary.designpattern.circular.charts
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.designpattern.circular.CircularChart
 import com.dev.anirban.chartlibrary.designpattern.circular.center.CircularDefaultCenter
@@ -34,7 +34,7 @@ import com.dev.anirban.chartlibrary.designpattern.circular.interfaces.CircularFo
  * @param circularForeground This is the implementation which draws the foreground of the chart
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
-class RowDonutChart(
+open class RowDonutChart(
     override val circularCenter: CircularCenterInterface = CircularDefaultCenter(),
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
@@ -66,15 +66,21 @@ class RowDonutChart(
         ) {
 
             // Donut Chart
-            Canvas(
+            Box(
                 modifier = modifier
                     .weight(1f)
                     .size(180.dp)
+                    .drawBehind {
+
+                        // Calling all the necessary functions
+                        doCalculations()
+                        drawForeground()
+                    },
+                contentAlignment = Alignment.Center
             ) {
 
-                // Calling all the necessary functions
-                doCalculations()
-                drawForeground()
+                // Draws the center of the chart
+                DrawCenter()
             }
 
             // Color Conventions

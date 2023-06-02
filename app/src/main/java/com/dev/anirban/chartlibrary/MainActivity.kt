@@ -20,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
 import com.dev.anirban.chartlibrary.designpattern.circular.charts.ColumnDonutChart
 import com.dev.anirban.chartlibrary.designpattern.circular.charts.RowDonutChart
+import com.dev.anirban.chartlibrary.designpattern.circular.charts.TargetDonutChart
 import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
+import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularTargetData
 import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
 import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
@@ -28,7 +30,7 @@ import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecorati
 import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
 import com.dev.anirban.chartlibrary.designpattern.linear.plots.BarPlot
 import com.dev.anirban.chartlibrary.designpattern.linear.plots.LinePlot
-import com.dev.anirban.chartlibrary.designpattern.util.Point
+import com.dev.anirban.chartlibrary.designpattern.linear.util.Point
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -223,9 +225,7 @@ class MainActivity : ComponentActivity() {
                                         Color.Red
                                     )
                                 )
-                            ).Build(
-                                modifier = Modifier
-                            )
+                            ).Build(modifier = Modifier)
                         }
 
                         // Design Pattern Different row Donut Chart
@@ -253,9 +253,26 @@ class MainActivity : ComponentActivity() {
                                         Color.Red
                                     )
                                 )
-                            ).Build(
-                                modifier = Modifier
-                            )
+                            ).Build(modifier = Modifier)
+                        }
+
+                        // Design Pattern Target Achieved Donut Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+
+                            TargetDonutChart(
+                                circularData = CircularTargetData(
+                                    target = 4000f,
+                                    achieved = 2000f
+                                ),
+                                circularDecoration = CircularDecoration(
+                                    colorList = listOf(Color.Blue)
+                                )
+                            ).Build(modifier = Modifier)
                         }
 
                         // Raw Ring Chart

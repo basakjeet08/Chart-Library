@@ -2,7 +2,7 @@ package com.dev.anirban.chartlibrary.designpattern.linear.data
 
 import androidx.compose.ui.geometry.Size
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.designpattern.util.Point
+import com.dev.anirban.chartlibrary.designpattern.linear.util.Point
 
 /**
  * This is one of the implementation for storing and calculating the data in the chart. It

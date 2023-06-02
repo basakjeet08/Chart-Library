@@ -1,7 +1,7 @@
 package com.dev.anirban.chartlibrary.designpattern.circular.charts
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.designpattern.circular.CircularChart
 import com.dev.anirban.chartlibrary.designpattern.circular.center.CircularDefaultCenter
@@ -66,14 +67,20 @@ class ColumnDonutChart(
         ) {
 
             // Donut Chart
-            Canvas(
+            Box(
                 modifier = modifier
                     .size(180.dp)
+                    .drawBehind {
+
+                        // Calling all the necessary functions
+                        doCalculations()
+                        drawForeground()
+                    },
+                contentAlignment = Alignment.Center
             ) {
 
-                // Calling all the necessary functions
-                doCalculations()
-                drawForeground()
+                // Draws the Center of the chart
+                DrawCenter()
             }
 
             // Color Conventions

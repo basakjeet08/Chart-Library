@@ -8,12 +8,16 @@ import com.dev.anirban.chartlibrary.designpattern.circular.interfaces.CircularDa
  *
  * @param itemsList This is the List of items to be shown in the chart
  * @property sweepAngles This is the list of sweep angles which could be calculated
+ * @property target This is the target variable
+ * @property achieved This variable denotes the amount achieved
  */
 class CircularData(
     override val itemsList: List<Pair<String, Float>>
 ) : CircularDataInterface {
 
     override var sweepAngles: MutableList<Float> = mutableListOf()
+    override var target: Float = Float.NaN
+    override var achieved: Float = Float.NaN
 
     /**
      * This function calculates the sweep Angles

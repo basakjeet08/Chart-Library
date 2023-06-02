@@ -1,7 +1,7 @@
 package com.dev.anirban.chartlibrary.designpattern.linear.interfaces
 
 import androidx.compose.ui.geometry.Size
-import com.dev.anirban.chartlibrary.designpattern.util.Point
+import com.dev.anirban.chartlibrary.designpattern.linear.util.Point
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new

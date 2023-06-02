@@ -1,4 +1,4 @@
-package com.dev.anirban.chartlibrary.designpattern.util
+package com.dev.anirban.chartlibrary.designpattern.linear.util
 
 import androidx.compose.ui.geometry.Offset
 

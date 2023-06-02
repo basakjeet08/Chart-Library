@@ -11,5 +11,7 @@ interface CircularCenterInterface {
      * This function draws composable function in the center of the chart
      */
     @Composable
-    fun DrawCenter()
+    fun DrawCenter(
+        circularData: CircularDataInterface
+    )
 }

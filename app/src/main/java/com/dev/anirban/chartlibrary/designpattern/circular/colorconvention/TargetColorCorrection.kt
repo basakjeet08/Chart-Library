@@ -1,0 +1,63 @@
+package com.dev.anirban.chartlibrary.designpattern.circular.colorconvention
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
+import com.dev.anirban.chartlibrary.designpattern.circular.interfaces.CircularColorConventionInterface
+import com.dev.anirban.chartlibrary.designpattern.circular.interfaces.CircularDataInterface
+
+/**
+ * This class is the implementation of [CircularColorConventionInterface] which provides the
+ * implementations for drawing the color conventions in the canvas
+ */
+class TargetColorCorrection : CircularColorConventionInterface {
+
+    /**
+     * This function draws the color conventions in the canvas
+     *
+     * @param circularData This object contains the data of the graph
+     * @param decoration THis object contains the decorations of the graph
+     */
+    @Composable
+    override fun DrawColorConventions(
+        circularData: CircularDataInterface,
+        decoration: CircularDecoration
+    ) {
+
+        // This contains the Color Conventions
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            listOf(
+                Pair("Target", circularData.target),
+                Pair("Achieved", circularData.achieved)
+            ).forEach {
+
+                // Item and Value
+                Text(
+                    text = "${it.first} - ${it.second} mL",
+
+                    modifier = Modifier
+                        .padding(vertical = 4.dp),
+
+                    // Text Features
+                    textAlign = TextAlign.Center,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.W500
+                )
+            }
+        }
+    }
+}
