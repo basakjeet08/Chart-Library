@@ -7,11 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
+import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.MarginInterface
 import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.PlottingInterface
+import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
+import com.dev.anirban.chartlibrary.designpattern.linear.plots.BarPlot
+import com.dev.anirban.chartlibrary.designpattern.linear.plots.LinePlot
 
 /**
  * This is the base class which directly implements the [LinearDataInterface] interfaces.
@@ -21,7 +25,7 @@ import com.dev.anirban.chartlibrary.designpattern.linear.interfaces.PlottingInte
  * @param linearData This is the implementation for keeping the Linear Chart data and calculations
  * @param plotting This is the implementation for how shall the plotting be drawn on the graph
  */
-class LinearChart(
+open class LinearChart(
     override val margin: MarginInterface,
     override val decoration: LinearDecorationInterface,
     override val linearData: LinearDataInterface,
@@ -69,5 +73,66 @@ class LinearChart(
             drawMargin()
             plotChart()
         }
+    }
+
+    /**
+     * Builder Composable Functions which makes the objects of [LinearChart] and these are
+     * actually called by the users to make charts
+     */
+    companion object {
+
+        /**
+         * This function creates an object of the LinearChart which draws a basic Line chart
+         * It can draw Single Line Charts as well as multiple Line Charts
+         *
+         * @param modifier This is to be passed from the Parent Class for the modifications
+         * @param margin This is the implementation for drawing the Margins
+         * @param decoration This is the implementation for drawing the Decorations
+         * @param linearData This is the implementation for keeping the Linear Chart data and calculations
+         * @param plotting This is the implementation for how shall the plotting be drawn on the graph
+         */
+        @Composable
+        fun LineChart(
+            modifier: Modifier,
+            margin: MarginInterface = NumberMargin(),
+            decoration: LinearDecorationInterface = LinearDecoration.lineDecorationColors(),
+            linearData: LinearDataInterface,
+            plotting: PlottingInterface = LinePlot()
+        ) {
+
+            LinearChart(
+                margin = margin,
+                decoration = decoration,
+                linearData = linearData,
+                plotting = plotting
+            ).Build(
+                modifier = modifier
+            )
+        }
+
+        /**
+         * This function creates an object of the LinearChart which draws a basic Bar chart
+         *
+         * @param modifier This is to be passed from the Parent Class for the modifications
+         * @param margin This is the implementation for drawing the Margins
+         * @param decoration This is the implementation for drawing the Decorations
+         * @param linearData This is the implementation for keeping the Linear Chart data and calculations
+         * @param plotting This is the implementation for how shall the plotting be drawn on the graph
+         */
+        @Composable
+        fun BarChart(
+            modifier: Modifier,
+            margin: MarginInterface = NumberMargin(),
+            decoration: LinearDecorationInterface = LinearDecoration.barDecorationColors(),
+            linearData: LinearDataInterface,
+            plotting: PlottingInterface = BarPlot()
+        ) = LinearChart(
+            margin = margin,
+            decoration = decoration,
+            linearData = linearData,
+            plotting = plotting
+        ).Build(
+            modifier = modifier
+        )
     }
 }

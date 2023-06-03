@@ -24,12 +24,9 @@ import com.dev.anirban.chartlibrary.designpattern.circular.charts.TargetDonutCha
 import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
 import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularTargetData
 import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart
+import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart.Companion.BarChart
+import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
-import com.dev.anirban.chartlibrary.designpattern.linear.decoration.LineDecoration
-import com.dev.anirban.chartlibrary.designpattern.linear.margins.NumberMargin
-import com.dev.anirban.chartlibrary.designpattern.linear.plots.BarPlot
-import com.dev.anirban.chartlibrary.designpattern.linear.plots.LinePlot
 import com.dev.anirban.chartlibrary.designpattern.linear.util.Point
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
@@ -58,13 +55,10 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            LinearChart(
-                                margin = NumberMargin(),
-                                decoration = LineDecoration(
-                                    textColor = MaterialTheme.colorScheme.onSurface,
-                                    plotPrimaryColor = listOf(Color.Cyan),
-                                    plotSecondaryColor = listOf(Color.Red)
-                                ),
+                            LineChart(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -72,12 +66,7 @@ class MainActivity : ComponentActivity() {
                                     xAxisReadings = Point.pointDataBuilder(
                                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                                     )
-                                ),
-                                plotting = LinePlot()
-                            ).Build(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp)
+                                )
                             )
                         }
 
@@ -90,13 +79,10 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            LinearChart(
-                                margin = NumberMargin(),
-                                decoration = LineDecoration(
-                                    textColor = MaterialTheme.colorScheme.onSurface,
-                                    plotPrimaryColor = listOf(Color.Cyan, Color.Green),
-                                    plotSecondaryColor = listOf(Color.Red, Color.Magenta)
-                                ),
+                            LineChart(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -105,12 +91,7 @@ class MainActivity : ComponentActivity() {
                                     xAxisReadings = Point.pointDataBuilder(
                                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                                     )
-                                ),
-                                plotting = LinePlot()
-                            ).Build(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp)
+                                )
                             )
                         }
 
@@ -123,21 +104,10 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            LinearChart(
-                                margin = NumberMargin(),
-                                decoration = LineDecoration(
-                                    textColor = MaterialTheme.colorScheme.onSurface,
-                                    plotPrimaryColor = listOf(
-                                        Color.Cyan,
-                                        Color.Green,
-                                        Color.Yellow
-                                    ),
-                                    plotSecondaryColor = listOf(
-                                        Color.LightGray,
-                                        Color.Magenta,
-                                        Color.Red
-                                    )
-                                ),
+                            LineChart(
+                                modifier = Modifier
+                                    .padding(24.dp)
+                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -147,12 +117,7 @@ class MainActivity : ComponentActivity() {
                                     xAxisReadings = Point.pointDataBuilder(
                                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                                     )
-                                ),
-                                plotting = LinePlot()
-                            ).Build(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp)
+                                )
                             )
                         }
 
@@ -165,42 +130,20 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
-                            val linearData = LinearData(
-                                yAxisReadings = listOf(
-                                    Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
-                                ),
-                                xAxisReadings = Point.pointDataBuilder(
-                                    "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
-                                )
-                            )
-
-                            val colorList = listOf(
-                                Color.Green,
-                                Color.Red,
-                                Color.Blue,
-                                Color.Magenta,
-                                Color.LightGray,
-                                Color.Yellow,
-                                Color.Cyan
-                            )
-
-
-                            LinearChart(
-                                margin = NumberMargin(),
-                                decoration = LineDecoration(
-                                    textColor = MaterialTheme.colorScheme.onSurface,
-                                    plotPrimaryColor = colorList,
-                                    plotSecondaryColor = listOf(Color.Green)
-                                ),
-                                linearData = linearData,
-                                plotting = BarPlot()
-                            ).Build(
+                            BarChart(
                                 modifier = Modifier
                                     .padding(24.dp)
-                                    .height(200.dp)
+                                    .height(200.dp),
+                                linearData = LinearData(
+                                    yAxisReadings = listOf(
+                                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
+                                    ),
+                                    xAxisReadings = Point.pointDataBuilder(
+                                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                                    )
+                                )
                             )
                         }
-
 
                         // Design Pattern Same row Donut Chart
                         ElevatedCard(

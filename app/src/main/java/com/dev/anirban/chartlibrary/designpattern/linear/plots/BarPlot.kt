@@ -25,14 +25,14 @@ class BarPlot : PlottingInterface {
         // Adding the Offsets to the Variable
         linearData.yAxisReadings.forEach { coordinateSet ->
 
-            coordinateSet.forEachIndexed { index, point ->
+            coordinateSet.forEach { point ->
 
                 // This function draws the Bars
                 drawRoundRect(
                     brush = Brush.verticalGradient(
                         listOf(
-                            decoration.plotPrimaryColor[index],
-                            decoration.plotPrimaryColor[index].copy(alpha = .15f)
+                            decoration.plotPrimaryColor.first(),
+                            decoration.plotPrimaryColor.first().copy(alpha = .15f)
                         )
                     ),
                     topLeft = Offset(
