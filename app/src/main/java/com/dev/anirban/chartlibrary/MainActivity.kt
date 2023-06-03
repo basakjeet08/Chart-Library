@@ -18,16 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
-import com.dev.anirban.chartlibrary.designpattern.circular.charts.ColumnDonutChart
-import com.dev.anirban.chartlibrary.designpattern.circular.charts.RowDonutChart
-import com.dev.anirban.chartlibrary.designpattern.circular.charts.TargetDonutChart
-import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularData
-import com.dev.anirban.chartlibrary.designpattern.circular.data.CircularTargetData
-import com.dev.anirban.chartlibrary.designpattern.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart.Companion.BarChart
-import com.dev.anirban.chartlibrary.designpattern.linear.LinearChart.Companion.LineChart
-import com.dev.anirban.chartlibrary.designpattern.linear.data.LinearData
-import com.dev.anirban.chartlibrary.designpattern.linear.util.Point
+import com.dev.anirban.chartlibrary.library.circular.charts.ColumnDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.RowDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.TargetDonutChart
+import com.dev.anirban.chartlibrary.library.circular.data.CircularData
+import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
+import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
+import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.BarChart
+import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.LineChart
+import com.dev.anirban.chartlibrary.library.linear.data.LinearData
+import com.dev.anirban.chartlibrary.library.linear.util.Point
 import com.dev.anirban.chartlibrary.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
