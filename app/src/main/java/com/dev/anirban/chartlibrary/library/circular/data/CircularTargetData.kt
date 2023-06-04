@@ -32,6 +32,8 @@ class CircularTargetData(
             percentage = 1f
 
         val angle = percentage * 360f
-        sweepAngles.add(angle)
+
+        // Adding the angle to the sweepAngle list
+        sweepAngles = mutableListOf(angle)
     }
 }
