@@ -25,7 +25,7 @@ class LinearDecoration(
     companion object {
 
         /**
-         * Provides Decoration Object for the Line Charts
+         * Provides [LinearDecoration] Object for the Line Charts
          *
          * Needs a Composable function to get the color from the material Theme since its
          * a composable function

@@ -35,7 +35,7 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularForegrou
  * @param circularForeground This is the implementation which draws the foreground of the chart
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
-class ColumnDonutChart(
+class DonutChartWithDataAtBottom(
     override val circularCenter: CircularCenterInterface = CircularDefaultCenter(),
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
@@ -94,6 +94,44 @@ class ColumnDonutChart(
                 // Calling all the necessary functions
                 super.DrawColorConventions()
             }
+        }
+    }
+
+
+    /**
+     * Builder Composable Functions which makes the objects of [DonutChartWithDataAtBottom] and these are
+     * actually called by the users to make charts
+     */
+    companion object {
+
+        /**
+         * This function creates an object of the [DonutChartWithDataAtBottom] which draws a basic
+         * donut chart with its color conventions drawn at bottom
+         *
+         * @param circularCenter This is the implementation which draws the center of the circle
+         * @param circularData This is the data class implementation which handles the data
+         * @param circularDecoration This is the decorations for the Circular Chart
+         * @param circularForeground This is the implementation which draws the foreground of the chart
+         * @param circularColorConvention This is the color Convention implementation of the chart
+         */
+        @Composable
+        fun ColumnDonutChart(
+            modifier: Modifier,
+            circularCenter: CircularCenterInterface = CircularDefaultCenter(),
+            circularData: CircularDataInterface,
+            circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
+            circularForeground: CircularForegroundInterface = DonutChartForeground(),
+            circularColorConvention: CircularColorConventionInterface = GridColorConvention()
+        ) {
+            DonutChartWithDataAtBottom(
+                circularCenter = circularCenter,
+                circularData = circularData,
+                circularForeground = circularForeground,
+                circularDecoration = circularDecoration,
+                circularColorConvention = circularColorConvention
+            ).Build(
+                modifier = modifier
+            )
         }
     }
 }

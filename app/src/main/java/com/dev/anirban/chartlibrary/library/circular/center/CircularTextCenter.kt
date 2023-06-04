@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInterface
 
@@ -25,8 +26,10 @@ class CircularTextCenter : CircularCenterInterface {
      * This function does nothing which is fine since we want the default Circle Center to be nothing
      */
     @Composable
-    override fun DrawCenter(circularData: CircularDataInterface) {
-
+    override fun DrawCenter(
+        circularData: CircularDataInterface,
+        decoration: CircularDecoration
+    ) {
 
         val percentage = (circularData.achieved / circularData.target) * 100
 
@@ -40,7 +43,8 @@ class CircularTextCenter : CircularCenterInterface {
             // Text Features
             textAlign = TextAlign.Center,
             fontSize = 12.sp,
-            fontWeight = FontWeight.W500
+            fontWeight = FontWeight.W500,
+            color = decoration.textColor
         )
     }
 }

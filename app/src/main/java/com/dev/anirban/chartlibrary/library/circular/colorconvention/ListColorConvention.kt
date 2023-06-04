@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.center
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -50,7 +51,8 @@ class ListColorConvention : CircularColorConventionInterface {
                 DrawConvention(
                     index = index,
                     pair = pair,
-                    decoration = decoration
+                    decoration = decoration,
+                    textColor = decoration.textColor
                 )
             }
         }
@@ -63,7 +65,8 @@ class ListColorConvention : CircularColorConventionInterface {
     private fun DrawConvention(
         index: Int,
         pair: Pair<String, Float>,
-        decoration: CircularDecoration
+        decoration: CircularDecoration,
+        textColor: Color
     ) {
 
         Row(
@@ -100,7 +103,8 @@ class ListColorConvention : CircularColorConventionInterface {
                 // Text Features
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
-                fontWeight = FontWeight.W500
+                fontWeight = FontWeight.W500,
+                color = textColor
             )
         }
     }

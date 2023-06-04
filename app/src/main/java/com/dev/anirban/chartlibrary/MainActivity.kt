@@ -15,15 +15,13 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
-import com.dev.anirban.chartlibrary.library.circular.charts.ColumnDonutChart
-import com.dev.anirban.chartlibrary.library.circular.charts.RowDonutChart
-import com.dev.anirban.chartlibrary.library.circular.charts.TargetDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtBottom.Companion.ColumnDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.RowDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.TargetDonutChart
 import com.dev.anirban.chartlibrary.library.circular.data.CircularData
 import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
-import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.BarChart
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.library.linear.data.LinearData
@@ -154,21 +152,15 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             RowDonutChart(
+                                modifier = Modifier,
                                 circularData = CircularData(
                                     itemsList = listOf(
                                         Pair("Water", 1500.0f),
                                         Pair("Juice", 300.0f),
                                         Pair("Soft Drink", 500.0f)
                                     )
-                                ),
-                                circularDecoration = CircularDecoration(
-                                    colorList = listOf(
-                                        Color.Cyan.copy(alpha = .7f),
-                                        Color.Green,
-                                        Color.Red
-                                    )
                                 )
-                            ).Build(modifier = Modifier)
+                            )
                         }
 
                         // Design Pattern Different row Donut Chart
@@ -180,6 +172,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             ColumnDonutChart(
+                                modifier = Modifier,
                                 circularData = CircularData(
                                     itemsList = listOf(
                                         Pair("Normal", 450f),
@@ -187,16 +180,8 @@ class MainActivity : ComponentActivity() {
                                         Pair("Delay", 30f),
                                         Pair("Distributed", 60f)
                                     )
-                                ),
-                                circularDecoration = CircularDecoration(
-                                    colorList = listOf(
-                                        Color.Cyan.copy(alpha = .7f),
-                                        Color.Green,
-                                        Color.Yellow,
-                                        Color.Red
-                                    )
                                 )
-                            ).Build(modifier = Modifier)
+                            )
                         }
 
                         // Design Pattern Target Achieved Donut Chart
@@ -208,14 +193,12 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             TargetDonutChart(
+                                modifier = Modifier,
                                 circularData = CircularTargetData(
                                     target = 4000f,
                                     achieved = 2000f
-                                ),
-                                circularDecoration = CircularDecoration(
-                                    colorList = listOf(Color.Cyan.copy(alpha = .7f))
                                 )
-                            ).Build(modifier = Modifier)
+                            )
                         }
 
                         // Raw Ring Chart

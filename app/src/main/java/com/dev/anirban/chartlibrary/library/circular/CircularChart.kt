@@ -40,7 +40,8 @@ open class CircularChart(
     @Composable
     override fun DrawCenter() {
         circularCenter.DrawCenter(
-            circularData = circularData
+            circularData = circularData,
+            decoration = circularDecoration
         )
     }
 

@@ -55,7 +55,8 @@ class TargetColorCorrection : CircularColorConventionInterface {
                     // Text Features
                     textAlign = TextAlign.Center,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.W500
+                    fontWeight = FontWeight.W500,
+                    color = decoration.textColor
                 )
             }
         }

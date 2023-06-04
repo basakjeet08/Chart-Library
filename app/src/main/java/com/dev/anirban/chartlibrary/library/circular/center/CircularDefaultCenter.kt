@@ -1,6 +1,7 @@
 package com.dev.anirban.chartlibrary.library.circular.center
 
 import androidx.compose.runtime.Composable
+import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInterface
 
@@ -17,7 +18,10 @@ class CircularDefaultCenter : CircularCenterInterface {
      * This function does nothing which is fine since we want the default Circle Center to be nothing
      */
     @Composable
-    override fun DrawCenter(circularData: CircularDataInterface) {
+    override fun DrawCenter(
+        circularData: CircularDataInterface,
+        decoration: CircularDecoration
+    ) {
         // Does Nothing
     }
 }

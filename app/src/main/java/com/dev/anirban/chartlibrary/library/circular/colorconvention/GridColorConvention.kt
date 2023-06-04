@@ -35,12 +35,14 @@ class GridColorConvention : CircularColorConventionInterface {
      * @param text This is the text that would be shown before the value
      * @param value This is the value
      * @param color to be shown for this color convention
+     * @param textColor This is the color of the text
      */
     @Composable
     fun ChartDetail(
         text: String = "Normal - 7.5 hrs",
         value: Float,
-        color: Color = Color.Blue
+        color: Color = Color.Blue,
+        textColor: Color,
     ) {
 
         Row(
@@ -78,7 +80,8 @@ class GridColorConvention : CircularColorConventionInterface {
                 // Text Features
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
-                fontWeight = FontWeight.W500
+                fontWeight = FontWeight.W500,
+                color = textColor
             )
         }
     }
@@ -111,7 +114,8 @@ class GridColorConvention : CircularColorConventionInterface {
                 ChartDetail(
                     text = circularData.itemsList[index].first,
                     value = circularData.itemsList[index].second,
-                    color = decoration.colorList[index]
+                    color = decoration.colorList[index],
+                    textColor = decoration.textColor
                 )
             }
         }
@@ -131,7 +135,8 @@ class GridColorConvention : CircularColorConventionInterface {
                 ChartDetail(
                     text = circularData.itemsList[index].first,
                     value = circularData.itemsList[index].second,
-                    color = decoration.colorList[index]
+                    color = decoration.colorList[index],
+                    textColor = decoration.textColor
                 )
             }
         }
