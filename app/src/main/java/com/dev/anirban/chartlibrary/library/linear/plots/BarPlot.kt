@@ -5,8 +5,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.PlottingInterface
 
 class BarPlot : PlottingInterface {
@@ -19,7 +19,7 @@ class BarPlot : PlottingInterface {
      */
     override fun DrawScope.plotChart(
         linearData: LinearDataInterface,
-        decoration: LinearDecorationInterface
+        decoration: LinearDecoration
     ) {
 
         // Adding the Offsets to the Variable

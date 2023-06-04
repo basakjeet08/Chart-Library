@@ -3,6 +3,7 @@ package com.dev.anirban.chartlibrary.library.linear.interfaces
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 
 /**
  * This interface in the interface which every Linear Chart Implementation has to implement for the
@@ -20,12 +21,12 @@ interface LinearChartInterface {
     val margin: MarginInterface
 
     /**
-     * This is the implementation of the [LinearDecorationInterface]. The decoration will be drawn
+     * This is the implementation of the [LinearDecoration]. The decoration will be drawn
      * in the graph according to the implementation
      *
-     * @see LinearDecorationInterface
+     * @see LinearDecoration
      */
-    val decoration: LinearDecorationInterface
+    val decoration: LinearDecoration
 
     /**
      * This is the implementation of the [LinearDataInterface]. The data will be calculated according

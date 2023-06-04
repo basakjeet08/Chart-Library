@@ -1,6 +1,7 @@
 package com.dev.anirban.chartlibrary.library.linear.interfaces
 
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 
 /**
  * This is the interface which defines that all the Implementation for the Drawing of the margins
@@ -17,6 +18,6 @@ interface MarginInterface {
      */
     fun DrawScope.drawMargin(
         linearData: LinearDataInterface,
-        decoration: LinearDecorationInterface
+        decoration: LinearDecoration
     )
 }

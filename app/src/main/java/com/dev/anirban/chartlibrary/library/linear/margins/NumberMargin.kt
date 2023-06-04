@@ -7,8 +7,8 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.MarginInterface
 
 /**
@@ -25,7 +25,7 @@ class NumberMargin : MarginInterface {
      */
     override fun DrawScope.drawMargin(
         linearData: LinearDataInterface,
-        decoration: LinearDecorationInterface
+        decoration: LinearDecoration
     ) {
 
         linearData.yMarkerList.forEach { point ->

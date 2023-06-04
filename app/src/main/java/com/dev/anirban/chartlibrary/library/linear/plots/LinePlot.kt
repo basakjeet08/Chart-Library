@@ -4,8 +4,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.PlottingInterface
 
 /**
@@ -22,7 +22,7 @@ class LinePlot : PlottingInterface {
      */
     override fun DrawScope.plotChart(
         linearData: LinearDataInterface,
-        decoration: LinearDecorationInterface
+        decoration: LinearDecoration
     ) {
 
         // This variable contains all the Offset of all the graph coordinates

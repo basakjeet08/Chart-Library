@@ -1,6 +1,7 @@
 package com.dev.anirban.chartlibrary.library.linear.interfaces
 
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 
 /**
  * This is the interface which needs to be every graph plot logic to work in the Library
@@ -12,6 +13,6 @@ interface PlottingInterface {
      */
     fun DrawScope.plotChart(
         linearData: LinearDataInterface,
-        decoration: LinearDecorationInterface
+        decoration: LinearDecoration
     )
 }

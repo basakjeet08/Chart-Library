@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.MarginInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.PlottingInterface
 import com.dev.anirban.chartlibrary.library.linear.margins.NumberMargin
@@ -27,7 +26,7 @@ import com.dev.anirban.chartlibrary.library.linear.plots.LinePlot
  */
 open class LinearChart(
     override val margin: MarginInterface,
-    override val decoration: LinearDecorationInterface,
+    override val decoration: LinearDecoration,
     override val linearData: LinearDataInterface,
     override val plotting: PlottingInterface
 ) : LinearChartInterface {
@@ -95,7 +94,7 @@ open class LinearChart(
         fun LineChart(
             modifier: Modifier,
             margin: MarginInterface = NumberMargin(),
-            decoration: LinearDecorationInterface = LinearDecoration.lineDecorationColors(),
+            decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
             linearData: LinearDataInterface,
             plotting: PlottingInterface = LinePlot()
         ) {
@@ -123,7 +122,7 @@ open class LinearChart(
         fun BarChart(
             modifier: Modifier,
             margin: MarginInterface = NumberMargin(),
-            decoration: LinearDecorationInterface = LinearDecoration.barDecorationColors(),
+            decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
             plotting: PlottingInterface = BarPlot()
         ) = LinearChart(

@@ -3,10 +3,9 @@ package com.dev.anirban.chartlibrary.library.linear.decoration
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationInterface
 
 /**
- * This is one of the implementations of the [LinearDecorationInterface] which mostly contains the
+ * This is one of the implementations of the [LinearDecoration] which mostly contains the
  * decorations stuff like colors and all
  *
  * @param textColor this is the text color for all the margins and other things
@@ -14,10 +13,10 @@ import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDecorationIn
  * @param plotSecondaryColor These are points color which are the points plotted in the graph
  */
 class LinearDecoration(
-    override val textColor: Color,
-    override val plotPrimaryColor: List<Color>,
-    override val plotSecondaryColor: List<Color>
-) : LinearDecorationInterface {
+    val textColor: Color,
+    val plotPrimaryColor: List<Color>,
+    val plotSecondaryColor: List<Color>
+) {
 
     /**
      * These function are used to make an object of [LinearDecoration]
