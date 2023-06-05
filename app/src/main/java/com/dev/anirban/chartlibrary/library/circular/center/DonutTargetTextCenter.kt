@@ -12,15 +12,13 @@ import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecorati
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInterface
 
-
 /**
  * This class is the implementation of [CircularCenterInterface] which focuses on providing an
  * implementation to draw something on the center of the Circular Chart
  *
  * This Class in particular is the implementation to draw texts
  */
-class CircularTextCenter : CircularCenterInterface {
-
+class DonutTargetTextCenter : CircularCenterInterface {
 
     /**
      * This function does nothing which is fine since we want the default Circle Center to be nothing

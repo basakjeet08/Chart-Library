@@ -15,11 +15,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.dev.anirban.chartlibrary.chartsprototypes.ringchart.RingChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtBottom.Companion.ColumnDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.RowDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.TargetDonutChart
+import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.DoubleRingChart
+import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.SingleRingChart
 import com.dev.anirban.chartlibrary.library.circular.data.CircularData
+import com.dev.anirban.chartlibrary.library.circular.data.CircularRingData
 import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.BarChart
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.LineChart
@@ -177,14 +179,34 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // Raw Ring Chart
+                        // Design Pattern Single Ring Chart
                         ElevatedCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
-                            RingChart()
+                            SingleRingChart(
+                                circularData = CircularRingData(
+                                    target = 500f,
+                                    achieved = 193f
+                                )
+                            )
+                        }
+
+                        // Design Pattern Double Ring Chart
+                        ElevatedCard(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+                        ) {
+                            DoubleRingChart(
+                                circularData = CircularRingData(
+                                    target = 500f,
+                                    achieved = 193f
+                                )
+                            )
                         }
                     }
                 }
