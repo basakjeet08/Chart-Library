@@ -32,7 +32,7 @@ class BarPlot : PlottingInterface {
                     brush = Brush.verticalGradient(
                         listOf(
                             decoration.plotPrimaryColor.first(),
-                            decoration.plotPrimaryColor.first().copy(alpha = .15f)
+                            decoration.plotPrimaryColor.last()
                         )
                     ),
                     topLeft = Offset(

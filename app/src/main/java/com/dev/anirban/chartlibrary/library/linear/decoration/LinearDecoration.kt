@@ -27,6 +27,7 @@ class LinearDecoration(
         private val colorBlue = Color(0xFF0088FF)
         private val colorRed = Color(0xFFEC407A)
         private val colorGreen = Color(0xFF2AD200)
+        private val colorCyan = Color(0xFF00BCD4)
 
         /**
          * Provides [LinearDecoration] Object for the Line Charts
@@ -54,7 +55,7 @@ class LinearDecoration(
         @Composable
         fun barDecorationColors(
             textColor: Color = MaterialTheme.colorScheme.onSurface,
-            plotPrimaryColor: List<Color> = listOf(Color.Cyan),
+            plotPrimaryColor: List<Color> = listOf(colorBlue, colorCyan),
             plotSecondaryColor: List<Color> = emptyList()
         ) = LinearDecoration(
             textColor = textColor,
