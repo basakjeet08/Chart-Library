@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -47,16 +46,11 @@ class MainActivity : ComponentActivity() {
                         // Design Pattern Single Line Chart
                         ElevatedCard(
                             modifier = Modifier
-                                .height(200.dp)
-                                .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
                             LineChart(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -71,16 +65,11 @@ class MainActivity : ComponentActivity() {
                         // Design Pattern Double Line Chart
                         ElevatedCard(
                             modifier = Modifier
-                                .height(200.dp)
-                                .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
                             LineChart(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -96,16 +85,11 @@ class MainActivity : ComponentActivity() {
                         // Design Pattern Triple Line Chart
                         ElevatedCard(
                             modifier = Modifier
-                                .height(200.dp)
-                                .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
                             LineChart(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -122,16 +106,11 @@ class MainActivity : ComponentActivity() {
                         // Design Pattern Bar Chart
                         ElevatedCard(
                             modifier = Modifier
-                                .height(200.dp)
-                                .fillMaxWidth()
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
 
                             BarChart(
-                                modifier = Modifier
-                                    .padding(24.dp)
-                                    .height(200.dp),
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -152,7 +131,6 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             RowDonutChart(
-                                modifier = Modifier,
                                 circularData = CircularData(
                                     itemsList = listOf(
                                         Pair("Water", 1500.0f),
@@ -172,7 +150,6 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             ColumnDonutChart(
-                                modifier = Modifier,
                                 circularData = CircularData(
                                     itemsList = listOf(
                                         Pair("Normal", 450f),
@@ -193,7 +170,6 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             TargetDonutChart(
-                                modifier = Modifier,
                                 circularData = CircularTargetData(
                                     target = 4000f,
                                     achieved = 2000f

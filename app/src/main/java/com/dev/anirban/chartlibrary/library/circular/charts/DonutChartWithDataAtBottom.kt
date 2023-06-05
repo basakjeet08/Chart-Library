@@ -116,7 +116,7 @@ class DonutChartWithDataAtBottom(
          */
         @Composable
         fun ColumnDonutChart(
-            modifier: Modifier,
+            modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),

@@ -117,7 +117,7 @@ open class DonutChartWithDataAtSide(
          */
         @Composable
         fun RowDonutChart(
-            modifier: Modifier,
+            modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
@@ -145,7 +145,7 @@ open class DonutChartWithDataAtSide(
          */
         @Composable
         fun TargetDonutChart(
-            modifier: Modifier,
+            modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularTextCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),

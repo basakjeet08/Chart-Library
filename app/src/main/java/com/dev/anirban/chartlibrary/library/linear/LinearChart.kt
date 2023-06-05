@@ -1,10 +1,13 @@
 package com.dev.anirban.chartlibrary.library.linear
 
-import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
@@ -61,16 +64,25 @@ open class LinearChart(
     @Composable
     override fun Build(modifier: Modifier) {
 
-        Canvas(
-            modifier = modifier
+        Box(
+            modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 4.dp, start = 4.dp)
+                .padding(top = 24.dp , start = 24.dp , bottom = 18.dp , end = 24.dp),
+            contentAlignment = Alignment.Center
         ) {
+            Box(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(140.dp)
+                    .drawBehind {
 
-            // Calling all the necessary functions
-            linearData.doCalculations(size)
-            drawMargin()
-            plotChart()
+                        // Calling all the necessary functions
+                        linearData.doCalculations(size)
+                        drawMargin()
+                        plotChart()
+
+                    }
+            )
         }
     }
 
@@ -92,7 +104,7 @@ open class LinearChart(
          */
         @Composable
         fun LineChart(
-            modifier: Modifier,
+            modifier: Modifier = Modifier,
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
             linearData: LinearDataInterface,
@@ -120,7 +132,7 @@ open class LinearChart(
          */
         @Composable
         fun BarChart(
-            modifier: Modifier,
+            modifier: Modifier = Modifier,
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
