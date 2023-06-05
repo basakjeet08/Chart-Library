@@ -18,6 +18,7 @@ import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorCo
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.TargetColorCorrection
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutChartForeground
+import com.dev.anirban.chartlibrary.library.circular.foreground.DonutTargetChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInterface
@@ -149,7 +150,7 @@ open class DonutChartWithDataAtSide(
             circularCenter: CircularCenterInterface = CircularTextCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
-            circularForeground: CircularForegroundInterface = DonutChartForeground(),
+            circularForeground: CircularForegroundInterface = DonutTargetChartForeground(),
             circularColorConvention: CircularColorConventionInterface = TargetColorCorrection()
         ) = DonutChartWithDataAtSide(
             circularCenter = circularCenter,
