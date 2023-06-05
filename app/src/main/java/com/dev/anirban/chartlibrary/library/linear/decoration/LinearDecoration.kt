@@ -23,6 +23,11 @@ class LinearDecoration(
      */
     companion object {
 
+        private val colorYellow = Color(0xFFE2B93B)
+        private val colorBlue = Color(0xFF0088FF)
+        private val colorRed = Color(0xFFEC407A)
+        private val colorGreen = Color(0xFF2AD200)
+
         /**
          * Provides [LinearDecoration] Object for the Line Charts
          *
@@ -32,8 +37,8 @@ class LinearDecoration(
         @Composable
         fun lineDecorationColors(
             textColor: Color = MaterialTheme.colorScheme.onSurface,
-            plotPrimaryColor: List<Color> = listOf(Color.Cyan, Color.Green, Color.Yellow),
-            plotSecondaryColor: List<Color> = listOf(Color.LightGray, Color.Magenta, Color.Red)
+            plotPrimaryColor: List<Color> = listOf(colorBlue, colorGreen, Color.Yellow),
+            plotSecondaryColor: List<Color> = listOf(colorYellow, colorRed, Color.Red)
         ) = LinearDecoration(
             textColor = textColor,
             plotPrimaryColor = plotPrimaryColor,

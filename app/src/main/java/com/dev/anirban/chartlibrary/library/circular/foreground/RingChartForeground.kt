@@ -58,7 +58,11 @@ class RingChartForeground : CircularForegroundInterface {
 
         //This function draws the Foreground Arc
         drawArc(
-            brush = Brush.sweepGradient(colors = decoration.colorList),
+            brush = Brush.linearGradient(
+                colors = decoration.colorList,
+                start = arcRect.bottomLeft,
+                end = arcRect.topRight
+            ),
             startAngle = startingAngle,
             sweepAngle = circularData.sweepAngles.first(),
             useCenter = false,

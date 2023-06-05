@@ -20,6 +20,21 @@ class CircularDecoration(
      */
     companion object {
 
+        private val colorBlue = Color(0xFF0088FF)
+        private val colorGreen = Color(0xFF2AD200)
+        private val colorYellow = Color(0xFFEEE73B)
+        private val colorRed = Color(0xFFFF2E2E)
+
+        private val ringChartColors = listOf(
+            Color(0xFFD74719).copy(alpha = .66f),
+            Color(0xFFE8661D).copy(alpha = .66f),
+            Color(0xFFD8DB31).copy(alpha = .66f),
+            Color(0xFF3CC641).copy(alpha = .66f),
+            Color(0xFF83D5E0).copy(alpha = .66f),
+            Color(0xFFAB51CA).copy(alpha = .66f),
+            Color(0xFFEA0EC6).copy(alpha = .66f)
+        )
+
         /**
          * Provides [CircularDecoration] Objects for the circular Donut Charts
          *
@@ -33,10 +48,10 @@ class CircularDecoration(
         fun donutChartDecorations(
             textColor: Color = MaterialTheme.colorScheme.onSurface,
             colorList: List<Color> = listOf(
-                Color.Cyan.copy(alpha = .7f),
-                Color.Green,
-                Color.Yellow,
-                Color.Red
+                colorBlue,
+                colorGreen,
+                colorYellow,
+                colorRed
             )
         ) = CircularDecoration(
             textColor = textColor,
@@ -55,13 +70,7 @@ class CircularDecoration(
         @Composable
         fun ringChartDecoration(
             textColor: Color = MaterialTheme.colorScheme.onSurface,
-            colorList: List<Color> = listOf(
-                Color.Cyan.copy(alpha = .7f),
-                Color.Green,
-                Color.Yellow,
-                Color.Red,
-                Color.Red
-            )
+            colorList: List<Color> = ringChartColors
         ) = CircularDecoration(
             textColor = textColor,
             colorList = colorList

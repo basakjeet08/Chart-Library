@@ -189,7 +189,7 @@ class MainActivity : ComponentActivity() {
                             SingleRingChart(
                                 circularData = CircularRingData(
                                     target = 500f,
-                                    achieved = 193f
+                                    achieved = 500f
                                 )
                             )
                         }
