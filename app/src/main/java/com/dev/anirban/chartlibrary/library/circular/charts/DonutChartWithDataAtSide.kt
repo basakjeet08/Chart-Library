@@ -38,11 +38,11 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularForegrou
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
 open class DonutChartWithDataAtSide(
-    override val circularCenter: CircularCenterInterface = CircularDefaultCenter(),
+    override val circularCenter: CircularCenterInterface,
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
-    override val circularForeground: CircularForegroundInterface = DonutChartForeground(),
-    override val circularColorConvention: CircularColorConventionInterface = ListColorConvention()
+    override val circularForeground: CircularForegroundInterface,
+    override val circularColorConvention: CircularColorConventionInterface
 ) : CircularChart(
     circularCenter,
     circularData,

@@ -17,7 +17,6 @@ import com.dev.anirban.chartlibrary.library.circular.colorconvention.CircularDef
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorConvention
 import com.dev.anirban.chartlibrary.library.circular.data.CircularRingData
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.library.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.library.circular.foreground.RingChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularColorConventionInterface
@@ -37,11 +36,11 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularForegrou
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
 class RingChart(
-    override val circularCenter: CircularCenterInterface = RingChartTextCenter(),
+    override val circularCenter: CircularCenterInterface,
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
-    override val circularForeground: CircularForegroundInterface = DonutChartForeground(),
-    override val circularColorConvention: CircularColorConventionInterface = ListColorConvention()
+    override val circularForeground: CircularForegroundInterface,
+    override val circularColorConvention: CircularColorConventionInterface
 ) : CircularChart(
     circularCenter,
     circularData,

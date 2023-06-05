@@ -1,9 +1,16 @@
 package com.dev.anirban.chartlibrary.library.circular
 
-import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularChartInterface
@@ -82,13 +89,32 @@ open class CircularChart(
     @Composable
     override fun Build(modifier: Modifier) {
 
-        Canvas(
-            modifier = modifier
+        // Donut Chart
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Box(
+                modifier = modifier
+                    .size(300.dp)
+                    .drawBehind {
 
-            // Calling all the necessary functions
-            doCalculations()
-            drawForeground()
+                        // Calling all the necessary functions
+                        doCalculations()
+                        drawForeground()
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+
+                // Draws the Center of the chart
+                DrawCenter()
+            }
+
+            // This function draws the color convention
+            DrawColorConventions()
         }
+
     }
 }
