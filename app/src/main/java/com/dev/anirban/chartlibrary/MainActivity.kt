@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtBottom.Companion.ColumnDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.RowDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.TargetDonutChart
-import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.DoubleRingChart
+import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.MultipleRingChartRowWise
 import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.SingleRingChart
 import com.dev.anirban.chartlibrary.library.circular.data.CircularData
 import com.dev.anirban.chartlibrary.library.circular.data.CircularRingData
@@ -174,7 +174,7 @@ class MainActivity : ComponentActivity() {
                             TargetDonutChart(
                                 circularData = CircularTargetData(
                                     target = 4000f,
-                                    achieved = 2000f
+                                    achieved = 2023f
                                 )
                             )
                         }
@@ -201,10 +201,16 @@ class MainActivity : ComponentActivity() {
                                 .padding(8.dp),
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
-                            DoubleRingChart(
-                                circularData = CircularRingData(
-                                    target = 500f,
-                                    achieved = 193f
+                            MultipleRingChartRowWise(
+                                circularData = listOf(
+                                    CircularRingData(
+                                        target = 500f,
+                                        achieved = 193f
+                                    ),
+                                    CircularRingData(
+                                        target = 500f,
+                                        achieved = 394f
+                                    )
                                 )
                             )
                         }

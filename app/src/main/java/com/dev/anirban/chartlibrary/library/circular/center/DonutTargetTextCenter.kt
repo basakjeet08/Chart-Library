@@ -29,7 +29,9 @@ class DonutTargetTextCenter : CircularCenterInterface {
         decoration: CircularDecoration
     ) {
 
-        val percentage = (circularData.achieved / circularData.target) * 100
+        var percentage = (circularData.achieved / circularData.target) * 100
+        if (percentage.isNaN())
+            percentage = 0f
 
         // Item and Value
         Text(

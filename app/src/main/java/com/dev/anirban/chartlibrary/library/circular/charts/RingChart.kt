@@ -122,7 +122,7 @@ class RingChart(
 
 
         /**
-         * This function creates an object of the [RingChart] which draws a basic double ring chart
+         * This function creates an object of the [RingChart] which draws a basic multiple ring chart
          *
          * @param modifier modifier to be passed down from the parent function
          * @param circularCenter This is the implementation which draws the center of the circle
@@ -132,40 +132,46 @@ class RingChart(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun DoubleRingChart(
-            modifier: Modifier = Modifier,
-            circularCenter: CircularCenterInterface = RingChartTextCenter(),
-            circularData: CircularRingData,
-            circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
-            circularForeground: CircularForegroundInterface = RingChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = CircularDefaultColorConvention()
+        fun MultipleRingChartRowWise(
+            modifier: List<Modifier> = listOf(Modifier, Modifier),
+            circularCenter: List<CircularCenterInterface> = listOf(
+                RingChartTextCenter(),
+                RingChartTextCenter()
+            ),
+            circularData: List<CircularRingData>,
+            circularDecoration: List<CircularDecoration> = listOf(
+                CircularDecoration.ringChartDecoration(),
+                CircularDecoration.ringChartDecoration()
+            ),
+            circularForeground: List<CircularForegroundInterface> = listOf(
+                RingChartForeground(),
+                RingChartForeground()
+            ),
+            circularColorConvention: List<CircularColorConventionInterface> = listOf(
+                CircularDefaultColorConvention(),
+                CircularDefaultColorConvention()
+            )
         ) {
             Row {
-                Box(
-                    modifier = Modifier
-                        .weight(1f),
-                    contentAlignment = Alignment.Center
-                ) {
-                    RingChart(
-                        circularCenter,
-                        circularData,
-                        circularDecoration,
-                        circularForeground,
-                        circularColorConvention
-                    ).Build(modifier = modifier)
-                }
-                Box(
-                    modifier = Modifier
-                        .weight(1f),
-                    contentAlignment = Alignment.Center
-                ) {
-                    RingChart(
-                        circularCenter,
-                        circularData,
-                        circularDecoration,
-                        circularForeground,
-                        circularColorConvention
-                    ).Build(modifier = modifier)
+
+                circularData.forEachIndexed { index, circularRingData ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f),
+                        contentAlignment = Alignment.Center
+                    ) {
+
+                        RingChart(
+                            circularCenter[index],
+                            circularRingData,
+                            circularDecoration[index],
+                            circularForeground[index],
+                            circularColorConvention[index]
+                        ).Build(
+                            modifier = modifier[index]
+                                .size(250.dp)
+                        )
+                    }
                 }
             }
         }
