@@ -20,9 +20,9 @@ import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAt
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.TargetDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.MultipleRingChartRowWise
 import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.SingleRingChart
-import com.dev.anirban.chartlibrary.library.circular.data.CircularData
-import com.dev.anirban.chartlibrary.library.circular.data.CircularRingData
-import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
+import com.dev.anirban.chartlibrary.library.circular.data.DonutListData
+import com.dev.anirban.chartlibrary.library.circular.data.DonutTargetData
+import com.dev.anirban.chartlibrary.library.circular.data.RingTargetData
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.BarChart
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.library.linear.data.LinearData
@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             RowDonutChart(
-                                circularData = CircularData(
+                                circularData = DonutListData(
                                     itemsList = listOf(
                                         Pair("Water", 1500.0f),
                                         Pair("Juice", 300.0f),
@@ -152,7 +152,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             ColumnDonutChart(
-                                circularData = CircularData(
+                                circularData = DonutListData(
                                     itemsList = listOf(
                                         Pair("Normal", 450f),
                                         Pair("Deep", 180f),
@@ -172,7 +172,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             TargetDonutChart(
-                                circularData = CircularTargetData(
+                                circularData = DonutTargetData(
                                     target = 4000f,
                                     achieved = 2023f
                                 )
@@ -187,7 +187,7 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
                             SingleRingChart(
-                                circularData = CircularRingData(
+                                circularData = RingTargetData(
                                     target = 500f,
                                     achieved = 500f
                                 )
@@ -203,11 +203,11 @@ class MainActivity : ComponentActivity() {
                         ) {
                             MultipleRingChartRowWise(
                                 circularData = listOf(
-                                    CircularRingData(
+                                    RingTargetData(
                                         target = 500f,
                                         achieved = 193f
                                     ),
-                                    CircularRingData(
+                                    RingTargetData(
                                         target = 500f,
                                         achieved = 394f
                                     )

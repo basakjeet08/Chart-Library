@@ -15,7 +15,7 @@ import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.CircularDefaultColorConvention
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorConvention
-import com.dev.anirban.chartlibrary.library.circular.data.CircularRingData
+import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.RingChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
@@ -108,7 +108,7 @@ class RingChart(
         fun SingleRingChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = RingChartTextCenter(),
-            circularData: CircularRingData,
+            circularData: CircularTargetData,
             circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
             circularForeground: CircularForegroundInterface = RingChartForeground(),
             circularColorConvention: CircularColorConventionInterface = ListColorConvention()
@@ -138,7 +138,7 @@ class RingChart(
                 RingChartTextCenter(),
                 RingChartTextCenter()
             ),
-            circularData: List<CircularRingData>,
+            circularData: List<CircularTargetData>,
             circularDecoration: List<CircularDecoration> = listOf(
                 CircularDecoration.ringChartDecoration(),
                 CircularDecoration.ringChartDecoration()
