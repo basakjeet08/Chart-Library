@@ -2,15 +2,22 @@ package com.dev.anirban.chartlibrary.library.circular.charts
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.CircularDefaultCenter
 import com.dev.anirban.chartlibrary.library.circular.center.DonutTargetTextCenter
@@ -53,50 +60,78 @@ open class DonutChartWithDataAtSide(
 ) {
 
     /**
-     * This is the build function which starts building the Chart in the canvas and all the other
-     * components of the chart
+     * This is the Build Function which starts composing the Charts and composes the Charts
      *
-     * @param modifier This is kept so that the programmer can provide his default custom modifier
+     * @param modifier This is for default modifications to be passed from the parent Class
+     * @param chartTitle This is the title of the chart
      */
     @Composable
-    override fun Build(modifier: Modifier) {
+    override fun Build(
+        modifier: Modifier,
+        chartTitle: String
+    ) {
 
         // Making a row to fit the canvas and the color conventions
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
 
-            // Donut Chart
-            Box(
-                modifier = modifier
-                    .weight(1f)
-                    .size(180.dp)
-                    .drawBehind {
+            // Chart Title
+            if (chartTitle.isNotBlank()) {
+                Text(
+                    text = chartTitle,
 
-                        // Calling all the necessary functions
-                        doCalculations()
-                        drawForeground()
-                    },
-                contentAlignment = Alignment.Center
-            ) {
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp, start = 24.dp, end = 24.dp),
 
-                // Draws the center of the chart
-                DrawCenter()
+                    // Text Features
+                    textAlign = TextAlign.Start,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.W600,
+                    color = circularDecoration.textColor,
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
 
-            // Color Conventions
-            Box(
-                modifier = Modifier
-                    .padding(end = 8.dp)
-                    .weight(1f),
-                contentAlignment = Alignment.TopCenter
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
 
-                // Calling all the necessary functions
-                super.DrawColorConventions()
+                // Donut Chart
+                Box(
+                    modifier = modifier
+                        .weight(1f)
+                        .size(180.dp)
+                        .drawBehind {
+
+                            // Calling all the necessary functions
+                            doCalculations()
+                            drawForeground()
+                        },
+                    contentAlignment = Alignment.Center
+                ) {
+
+                    // Draws the center of the chart
+                    DrawCenter()
+                }
+
+                // Color Conventions
+                Box(
+                    modifier = Modifier
+                        .padding(end = 8.dp)
+                        .weight(1f),
+                    contentAlignment = Alignment.TopCenter
+                ) {
+
+                    // Calling all the necessary functions
+                    super.DrawColorConventions()
+                }
             }
         }
     }
@@ -111,6 +146,8 @@ open class DonutChartWithDataAtSide(
          * This function creates an object of the [DonutChartWithDataAtSide] which draws a basic
          * donut chart with its color conventions drawn at side
          *
+         * @param modifier THis is made so that modifications can be passed from the parent function
+         * @param chartTitle This is the title for the chart
          * @param circularCenter This is the implementation which draws the center of the circle
          * @param circularData This is the data class implementation which handles the data
          * @param circularDecoration This is the decorations for the Circular Chart
@@ -120,6 +157,7 @@ open class DonutChartWithDataAtSide(
         @Composable
         fun RowDonutChart(
             modifier: Modifier = Modifier,
+            chartTitle: String,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
@@ -131,7 +169,10 @@ open class DonutChartWithDataAtSide(
             circularDecoration = circularDecoration,
             circularForeground = circularForeground,
             circularColorConvention = circularColorConvention
-        ).Build(modifier = modifier)
+        ).Build(
+            modifier = modifier,
+            chartTitle = chartTitle
+        )
 
 
         /**
@@ -139,6 +180,8 @@ open class DonutChartWithDataAtSide(
          * donut chart with its color conventions drawn at side but the data is in the form of
          * Target and Achieved
          *
+         * @param modifier THis is made so that modifications can be passed from the parent function
+         * @param chartTitle This is the title for the chart
          * @param circularCenter This is the implementation which draws the center of the circle
          * @param circularData This is the data class implementation which handles the data
          * @param circularDecoration This is the decorations for the Circular Chart
@@ -148,6 +191,7 @@ open class DonutChartWithDataAtSide(
         @Composable
         fun TargetDonutChart(
             modifier: Modifier = Modifier,
+            chartTitle: String,
             circularCenter: CircularCenterInterface = DonutTargetTextCenter(),
             circularData: TargetData,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
@@ -159,6 +203,9 @@ open class DonutChartWithDataAtSide(
             circularDecoration = circularDecoration,
             circularForeground = circularForeground,
             circularColorConvention = circularColorConvention
-        ).Build(modifier = modifier)
+        ).Build(
+            modifier = modifier,
+            chartTitle = chartTitle
+        )
     }
 }

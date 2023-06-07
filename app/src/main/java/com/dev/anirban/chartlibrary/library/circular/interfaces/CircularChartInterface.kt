@@ -3,43 +3,71 @@ package com.dev.anirban.chartlibrary.library.circular.interfaces
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 
 /**
- * This is the interface which is implemented by the Circular Chart Class which is the root class
+ * This is the interface which is implemented by the [CircularChart] Class which is the root class
  * of all the circular Chart Classes
  *
- * @property circularCenter Implementation for the center of the chart
- * @property circularData Implementation for the data of the chart
- * @property circularDecoration Implementation for the decoration of the chart
- * @property circularForeground Implementation for the foreground of the chart
- * @property circularColorConvention Implementation for the color convention of the chart
- *
- * @property DrawCenter This function draws the center of the chart
- * @property doCalculations This function does the calculation of the chart
- * @property drawForeground This function draws the foreground of the chart
- * @property DrawColorConventions This function draws the Color Convention of the chart
- * @property Build This function starts building the circular Chart
  */
 interface CircularChartInterface {
 
-
+    /**
+     * This is the implementation to draw the Center of the Circular Charts
+     */
     val circularCenter: CircularCenterInterface
+
+    /**
+     * This is the implementation of the circular Data to be kept for the chart and the operations
+     * to be done on them
+     */
     val circularData: CircularDataInterface
+
+    /**
+     * This contains the details of the decorations for the color and all those color related Stuff
+     */
     val circularDecoration: CircularDecoration
+
+    /**
+     * This is the implementation to draw the Foreground of the Chart and draws the main plotting for
+     * the chart
+     */
     val circularForeground: CircularForegroundInterface
+
+    /**
+     * This implementation draws the Color Conventions for the Chart
+     */
     val circularColorConvention: CircularColorConventionInterface
 
+    /**
+     * This function draws the center of the Chart
+     */
     @Composable
     fun DrawCenter()
 
+    /**
+     * This function calculates the data for the Chart
+     */
     fun doCalculations()
 
+    /**
+     * This function draws the main plots and the foreground of the Chart
+     */
     fun DrawScope.drawForeground()
 
+    /**
+     * This function draws the Color Convention of the Chart
+     */
     @Composable
     fun DrawColorConventions()
 
+    /**
+     * This is the Build Function which starts composing the Charts and composes the Charts
+     *
+     * @param modifier This is for default modifications to be passed from the parent Class
+     * @param chartTitle This is the title of the chart
+     */
     @Composable
-    fun Build(modifier: Modifier)
+    fun Build(modifier: Modifier, chartTitle: String)
 }

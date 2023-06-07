@@ -53,6 +53,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             LineChart(
+                                chartTitle = "Single Line Chart",
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -72,6 +73,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             LineChart(
+                                chartTitle = "Double Line Chart",
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -92,6 +94,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             LineChart(
+                                chartTitle = "Triple Line Chart",
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -113,6 +116,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             BarChart(
+                                chartTitle = "Bar Chart",
                                 linearData = LinearData(
                                     yAxisReadings = listOf(
                                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -133,6 +137,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             RowDonutChart(
+                                chartTitle = "Row Donut Chart",
                                 circularData = DonutListData(
                                     itemsList = listOf(
                                         Pair("Water", 1500.0f),
@@ -155,6 +160,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             ColumnDonutChart(
+                                chartTitle = "Column Donut Chart",
                                 circularData = DonutListData(
                                     itemsList = listOf(
                                         Pair("Normal", 450f),
@@ -178,6 +184,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             TargetDonutChart(
+                                chartTitle = "Target Donut Chart",
                                 circularData = TargetData(
                                     target = 4340f,
                                     achieved = 2823f,
@@ -196,6 +203,7 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
                             SingleRingChart(
+                                chartTitle = "Single Ring Chart",
                                 circularData = TargetData(
                                     target = 500f,
                                     achieved = 489f,
@@ -219,6 +227,7 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
                             MultipleRingChartRowWise(
+                                chartTitle = "Multiple Ring Chart",
                                 circularData = listOf(
                                     TargetData(
                                         target = 100f,
