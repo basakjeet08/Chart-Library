@@ -15,9 +15,9 @@ import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.CircularDefaultCenter
 import com.dev.anirban.chartlibrary.library.circular.center.DonutTargetTextCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorConvention
-import com.dev.anirban.chartlibrary.library.circular.colorconvention.TargetColorCorrection
+import com.dev.anirban.chartlibrary.library.circular.colorconvention.TargetColorConvention
 import com.dev.anirban.chartlibrary.library.circular.data.CircularListData
-import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
+import com.dev.anirban.chartlibrary.library.circular.data.TargetDataBuilder
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutTargetChartForeground
@@ -150,13 +150,13 @@ open class DonutChartWithDataAtSide(
         fun TargetDonutChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = DonutTargetTextCenter(),
-            circularData: CircularTargetData,
+            circularData: TargetDataBuilder,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
             circularForeground: CircularForegroundInterface = DonutTargetChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = TargetColorCorrection()
+            circularColorConvention: CircularColorConventionInterface = TargetColorConvention()
         ) = DonutChartWithDataAtSide(
             circularCenter = circularCenter,
-            circularData = circularData,
+            circularData = circularData.toDonutTargetData(),
             circularDecoration = circularDecoration,
             circularForeground = circularForeground,
             circularColorConvention = circularColorConvention

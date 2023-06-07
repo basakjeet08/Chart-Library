@@ -14,8 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.CircularDefaultColorConvention
-import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorConvention
-import com.dev.anirban.chartlibrary.library.circular.data.CircularTargetData
+import com.dev.anirban.chartlibrary.library.circular.data.TargetDataBuilder
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.RingChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
@@ -107,14 +106,14 @@ class RingChart(
         @Composable
         fun SingleRingChart(
             modifier: Modifier = Modifier,
-            circularCenter: CircularCenterInterface = RingChartTextCenter(),
-            circularData: CircularTargetData,
+            circularCenter: CircularCenterInterface = RingChartTextCenter("", "", ""),
+            circularData: TargetDataBuilder,
             circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
             circularForeground: CircularForegroundInterface = RingChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = ListColorConvention()
+            circularColorConvention: CircularColorConventionInterface = CircularDefaultColorConvention()
         ) = RingChart(
             circularCenter,
-            circularData,
+            circularData.toRingTargetData(),
             circularDecoration,
             circularForeground,
             circularColorConvention
@@ -135,10 +134,10 @@ class RingChart(
         fun MultipleRingChartRowWise(
             modifier: List<Modifier> = listOf(Modifier, Modifier),
             circularCenter: List<CircularCenterInterface> = listOf(
-                RingChartTextCenter(),
-                RingChartTextCenter()
+                RingChartTextCenter("", "", ""),
+                RingChartTextCenter("", "", "")
             ),
-            circularData: List<CircularTargetData>,
+            circularData: List<TargetDataBuilder>,
             circularDecoration: List<CircularDecoration> = listOf(
                 CircularDecoration.ringChartDecoration(),
                 CircularDecoration.ringChartDecoration()
@@ -163,7 +162,7 @@ class RingChart(
 
                         RingChart(
                             circularCenter[index],
-                            circularRingData,
+                            circularRingData.toRingTargetData(),
                             circularDecoration[index],
                             circularForeground[index],
                             circularColorConvention[index]

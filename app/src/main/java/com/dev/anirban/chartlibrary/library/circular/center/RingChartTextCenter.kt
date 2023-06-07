@@ -20,8 +20,16 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInte
  * implementation to draw 3 texts in the center of the Ring Chart
  *
  * This Class in particular is the implementation to draw texts
+ *
+ * @param title This is the first Text and the title of the Text shown in the Center
+ * @param centerValue This is the text which contains the value and shown in the middle
+ * @param status This contains the status message fpr the user
  */
-class RingChartTextCenter : CircularCenterInterface {
+class RingChartTextCenter(
+    private val title: String,
+    private val centerValue: String,
+    private val status: String
+) : CircularCenterInterface {
 
     /**
      * This function does nothing which is fine since we want the default Circle Center to be nothing
@@ -40,7 +48,7 @@ class RingChartTextCenter : CircularCenterInterface {
 
             // Title
             Text(
-                text = "Heart Rate",
+                text = title,
 
                 modifier = Modifier
                     .padding(vertical = 2.dp),
@@ -54,7 +62,7 @@ class RingChartTextCenter : CircularCenterInterface {
 
             // Item and Value
             Text(
-                text = "120/80 mmhg",
+                text = centerValue,
 
                 modifier = Modifier
                     .padding(vertical = 2.dp),
@@ -68,7 +76,7 @@ class RingChartTextCenter : CircularCenterInterface {
 
             // Item and Value
             Text(
-                text = "Normal",
+                text = status,
 
                 modifier = Modifier
                     .padding(vertical = 2.dp),

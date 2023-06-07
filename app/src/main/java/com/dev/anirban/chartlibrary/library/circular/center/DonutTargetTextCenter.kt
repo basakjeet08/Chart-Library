@@ -22,6 +22,9 @@ class DonutTargetTextCenter : CircularCenterInterface {
 
     /**
      * This function does nothing which is fine since we want the default Circle Center to be nothing
+     *
+     * @param circularData This is the data object which contains all the data about the Chart
+     * @param decoration This is the decoration which contains all the decorations of the Chart
      */
     @Composable
     override fun DrawCenter(
@@ -29,9 +32,14 @@ class DonutTargetTextCenter : CircularCenterInterface {
         decoration: CircularDecoration
     ) {
 
-        var percentage = (circularData.achieved / circularData.target) * 100
+        // Percentage to be shown
+        var percentage = circularData.itemsList[1].second / circularData.itemsList[0].second * 100
+
         if (percentage.isNaN())
             percentage = 0f
+
+        if (percentage > 100f)
+            percentage = 100f
 
         // Item and Value
         Text(

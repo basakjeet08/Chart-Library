@@ -19,7 +19,7 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInte
  * This class is the implementation of [CircularColorConventionInterface] which provides the
  * implementations for drawing the color conventions in the canvas
  */
-class TargetColorCorrection : CircularColorConventionInterface {
+class TargetColorConvention : CircularColorConventionInterface {
 
     /**
      * This function draws the color conventions in the canvas
@@ -40,10 +40,7 @@ class TargetColorCorrection : CircularColorConventionInterface {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            listOf(
-                Pair("Target", circularData.target),
-                Pair("Achieved", circularData.achieved)
-            ).forEach {
+            circularData.itemsList.forEach {
 
                 // This is the converted Value which is to be shown for SI Unit
                 val convertedValue = circularData.conversionRate(it.second)

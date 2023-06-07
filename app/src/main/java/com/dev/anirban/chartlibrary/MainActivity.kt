@@ -15,14 +15,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.dev.anirban.chartlibrary.library.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtBottom.Companion.ColumnDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.RowDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.DonutChartWithDataAtSide.Companion.TargetDonutChart
 import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.MultipleRingChartRowWise
 import com.dev.anirban.chartlibrary.library.circular.charts.RingChart.Companion.SingleRingChart
 import com.dev.anirban.chartlibrary.library.circular.data.DonutListData
-import com.dev.anirban.chartlibrary.library.circular.data.DonutTargetData
-import com.dev.anirban.chartlibrary.library.circular.data.RingTargetData
+import com.dev.anirban.chartlibrary.library.circular.data.TargetDataBuilder
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.BarChart
 import com.dev.anirban.chartlibrary.library.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.library.linear.data.LinearData
@@ -141,9 +141,7 @@ class MainActivity : ComponentActivity() {
                                     ),
                                     siUnit = "L",
                                     cgsUnit = "mL",
-                                    conversionRate = {
-                                        it / 1000f
-                                    }
+                                    conversionRate = { it / 1000f }
                                 )
                             )
                         }
@@ -166,9 +164,7 @@ class MainActivity : ComponentActivity() {
                                     ),
                                     siUnit = "Hrs",
                                     cgsUnit = "Min",
-                                    conversionRate = {
-                                        it / 60f
-                                    }
+                                    conversionRate = { it / 60f }
                                 )
                             )
                         }
@@ -182,9 +178,9 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             TargetDonutChart(
-                                circularData = DonutTargetData(
+                                circularData = TargetDataBuilder(
                                     target = 4000f,
-                                    achieved = 2023f,
+                                    achieved = 3323f,
                                     siUnit = "Km",
                                     cgsUnit = "m",
                                     conversionRate = { it / 1000f }
@@ -200,12 +196,17 @@ class MainActivity : ComponentActivity() {
                             elevation = CardDefaults.cardElevation(8.dp),
                         ) {
                             SingleRingChart(
-                                circularData = RingTargetData(
+                                circularData = TargetDataBuilder(
                                     target = 500f,
                                     achieved = 500f,
-                                    siUnit = "Km",
-                                    cgsUnit = "m",
-                                    conversionRate = { it / 100f }
+                                    siUnit = "",
+                                    cgsUnit = "",
+                                    conversionRate = { it }
+                                ),
+                                circularCenter = RingChartTextCenter(
+                                    title = "AQI",
+                                    centerValue = "500",
+                                    status = "Moderate"
                                 )
                             )
                         }
@@ -219,19 +220,31 @@ class MainActivity : ComponentActivity() {
                         ) {
                             MultipleRingChartRowWise(
                                 circularData = listOf(
-                                    RingTargetData(
-                                        target = 500f,
-                                        achieved = 193f,
-                                        siUnit = "Km",
-                                        cgsUnit = "m",
-                                        conversionRate = { it / 100f }
+                                    TargetDataBuilder(
+                                        target = 100f,
+                                        achieved = 75f,
+                                        siUnit = "bpm",
+                                        cgsUnit = "bpm",
+                                        conversionRate = { it }
                                     ),
-                                    RingTargetData(
-                                        target = 500f,
-                                        achieved = 394f,
-                                        siUnit = "Km",
-                                        cgsUnit = "m",
-                                        conversionRate = { it / 100f }
+                                    TargetDataBuilder(
+                                        target = 160f,
+                                        achieved = 120f,
+                                        siUnit = "mmhg",
+                                        cgsUnit = "mmhg",
+                                        conversionRate = { it }
+                                    )
+                                ),
+                                circularCenter = listOf(
+                                    RingChartTextCenter(
+                                        title = "Heart Rate",
+                                        centerValue = "75 bpm",
+                                        status = "Normal"
+                                    ),
+                                    RingChartTextCenter(
+                                        title = "Blood Pressure",
+                                        centerValue = "120/80 mmhg",
+                                        status = "Normal"
                                     )
                                 )
                             )
