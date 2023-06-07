@@ -10,6 +10,11 @@ package com.dev.anirban.chartlibrary.library.circular.interfaces
  * @property target This is the target to be achieved by the user
  * @property achieved This the value of what is achieved by the user
  *
+ * @property siUnit This is the SI Unit text
+ * @property cgsUnit This is the CGS Unit text
+ * @property conversionRate This is the conversion rate according to which the CGS values can be
+ * transformed into SI Unit
+ *
  * @property doCalculations This function performs the calculation login in the class
  */
 interface CircularDataInterface {
@@ -19,6 +24,11 @@ interface CircularDataInterface {
 
     var target: Float
     var achieved: Float
+
+    val siUnit: String
+    val cgsUnit: String
+
+    val conversionRate: (Float) -> Float
 
     fun doCalculations()
 }

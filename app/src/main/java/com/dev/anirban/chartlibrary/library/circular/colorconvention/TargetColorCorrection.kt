@@ -45,9 +45,18 @@ class TargetColorCorrection : CircularColorConventionInterface {
                 Pair("Achieved", circularData.achieved)
             ).forEach {
 
+                // This is the converted Value which is to be shown for SI Unit
+                val convertedValue = circularData.conversionRate(it.second)
+
+                // This is the output to be shown to the user
+                val textToShow = "${it.first} - " + if (convertedValue < 1f)
+                    "${it.second} ${circularData.cgsUnit}"
+                else
+                    "$convertedValue ${circularData.siUnit}"
+
                 // Item and Value
                 Text(
-                    text = "${it.first} - ${it.second} mL",
+                    text = textToShow,
 
                     modifier = Modifier
                         .padding(vertical = 4.dp),

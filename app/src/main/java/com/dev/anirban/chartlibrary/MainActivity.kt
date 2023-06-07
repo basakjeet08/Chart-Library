@@ -138,7 +138,12 @@ class MainActivity : ComponentActivity() {
                                         Pair("Water", 1500.0f),
                                         Pair("Juice", 300.0f),
                                         Pair("Soft Drink", 500.0f)
-                                    )
+                                    ),
+                                    siUnit = "L",
+                                    cgsUnit = "mL",
+                                    conversionRate = {
+                                        it / 1000f
+                                    }
                                 )
                             )
                         }
@@ -158,7 +163,12 @@ class MainActivity : ComponentActivity() {
                                         Pair("Deep", 180f),
                                         Pair("Delay", 30f),
                                         Pair("Distributed", 60f)
-                                    )
+                                    ),
+                                    siUnit = "Hrs",
+                                    cgsUnit = "Min",
+                                    conversionRate = {
+                                        it / 60f
+                                    }
                                 )
                             )
                         }
@@ -174,7 +184,10 @@ class MainActivity : ComponentActivity() {
                             TargetDonutChart(
                                 circularData = DonutTargetData(
                                     target = 4000f,
-                                    achieved = 2023f
+                                    achieved = 2023f,
+                                    siUnit = "Km",
+                                    cgsUnit = "m",
+                                    conversionRate = { it / 1000f }
                                 )
                             )
                         }
@@ -189,7 +202,10 @@ class MainActivity : ComponentActivity() {
                             SingleRingChart(
                                 circularData = RingTargetData(
                                     target = 500f,
-                                    achieved = 500f
+                                    achieved = 500f,
+                                    siUnit = "Km",
+                                    cgsUnit = "m",
+                                    conversionRate = { it / 100f }
                                 )
                             )
                         }
@@ -205,11 +221,17 @@ class MainActivity : ComponentActivity() {
                                 circularData = listOf(
                                     RingTargetData(
                                         target = 500f,
-                                        achieved = 193f
+                                        achieved = 193f,
+                                        siUnit = "Km",
+                                        cgsUnit = "m",
+                                        conversionRate = { it / 100f }
                                     ),
                                     RingTargetData(
                                         target = 500f,
-                                        achieved = 394f
+                                        achieved = 394f,
+                                        siUnit = "Km",
+                                        cgsUnit = "m",
+                                        conversionRate = { it / 100f }
                                     )
                                 )
                             )

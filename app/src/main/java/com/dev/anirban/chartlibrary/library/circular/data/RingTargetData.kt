@@ -7,15 +7,26 @@ package com.dev.anirban.chartlibrary.library.circular.data
  *
  * @param target This is the target variable
  * @param achieved This variable denotes the amount achieved
+ * @param siUnit This is the SI Unit text
+ * @param cgsUnit This is the CGS Unit text
+ * @param conversionRate This is the conversion rate according to which the CGS values can be
+ * transformed into SI Unit
+ *
  * @property sweepAngles This is the list of sweep angles which could be calculated
  */
 
 class RingTargetData(
     override var target: Float,
-    override var achieved: Float
+    override var achieved: Float,
+    override val siUnit: String,
+    override val cgsUnit: String,
+    override val conversionRate: (Float) -> Float
 ) : CircularTargetData(
     target = target,
-    achieved = achieved
+    achieved = achieved,
+    siUnit = siUnit,
+    cgsUnit = cgsUnit,
+    conversionRate = conversionRate
 ) {
 
     override var sweepAngles: MutableList<Float> = mutableListOf()

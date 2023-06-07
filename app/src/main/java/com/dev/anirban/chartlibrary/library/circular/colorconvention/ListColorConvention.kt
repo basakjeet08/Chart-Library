@@ -49,10 +49,12 @@ class ListColorConvention : CircularColorConventionInterface {
             // Drawing the Color Code and writing the Text of the UI
             circularData.itemsList.forEachIndexed { index, pair ->
                 DrawConvention(
-                    index = index,
                     pair = pair,
-                    decoration = decoration,
-                    textColor = decoration.textColor
+                    colorConvention = decoration.colorList[index],
+                    textColor = decoration.textColor,
+                    siUnit = circularData.siUnit,
+                    cgsUnit = circularData.cgsUnit,
+                    conversionRate = circularData.conversionRate
                 )
             }
         }
@@ -60,13 +62,23 @@ class ListColorConvention : CircularColorConventionInterface {
 
     /**
      * This function draws individual Color Convention
+     *
+     * @param pair This contains the data of the String and the value to be shown to the user
+     * @param colorConvention This is the color which denotes this value in the graph
+     * @param textColor This is the Color of the text
+     * @param siUnit This is the SI Unit to be shown for SI Value
+     * @param cgsUnit This is the CGS unit to be shown for CGS Value
+     * @param conversionRate THis is the conversion rate according to which the values can
+     * be changed from CGS to SI unit
      */
     @Composable
     private fun DrawConvention(
-        index: Int,
         pair: Pair<String, Float>,
-        decoration: CircularDecoration,
-        textColor: Color
+        colorConvention: Color,
+        textColor: Color,
+        siUnit: String,
+        cgsUnit: String,
+        conversionRate: (Float) -> Float
     ) {
 
         Row(
@@ -85,20 +97,24 @@ class ListColorConvention : CircularColorConventionInterface {
 
                 // This function draws the Color codes circles
                 drawCircle(
-                    decoration.colorList[index],
+                    colorConvention,
                     radius = 20f,
                     center = size.center
                 )
             }
 
-            // Checking if the data should be displayed in SI unit or Cgs
-            val value =
-                if (pair.second >= 1000) pair.second / 1000.0f else pair.second.toInt()
-            val reconsideredUnit = if (pair.second >= 1000) "L" else "unit"
+            // This is the value in SI Unit
+            val convertedValue = conversionRate(pair.second)
+
+            // Determining the text to be shown. Would it be in SI or CGS
+            val textToBeShown = "${pair.first} - " + if (convertedValue < 1f)
+                "${pair.second} $cgsUnit"
+            else
+                "$convertedValue $siUnit"
 
             // Item Value
             Text(
-                text = "${pair.first} - $value $reconsideredUnit",
+                text = textToBeShown,
 
                 // Text Features
                 textAlign = TextAlign.Center,

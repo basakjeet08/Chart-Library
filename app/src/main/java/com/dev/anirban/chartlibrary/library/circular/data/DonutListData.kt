@@ -5,12 +5,23 @@ package com.dev.anirban.chartlibrary.library.circular.data
  * providing the implementation of business login and calculation logic behind the chart
  *
  * @param itemsList This is the List of items to be shown in the chart
+ * @param siUnit This is the SI Unit text
+ * @param cgsUnit This is the CGS Unit text
+ * @param conversionRate This is the conversion rate according to which the CGS values can be
+ * transformed into SI Unit
+ *
  * @property sweepAngles This is the list of sweep angles which could be calculated
  */
 class DonutListData(
-    override val itemsList: List<Pair<String, Float>>
+    override val itemsList: List<Pair<String, Float>>,
+    override val siUnit: String,
+    override val cgsUnit: String,
+    override val conversionRate: (Float) -> Float
 ) : CircularListData(
-    itemsList = itemsList
+    itemsList = itemsList,
+    siUnit = siUnit,
+    cgsUnit = cgsUnit,
+    conversionRate = conversionRate
 ) {
 
     override var sweepAngles: MutableList<Float> = mutableListOf()

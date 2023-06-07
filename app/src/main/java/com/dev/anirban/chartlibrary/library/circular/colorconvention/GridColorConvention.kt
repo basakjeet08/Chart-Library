@@ -36,13 +36,20 @@ class GridColorConvention : CircularColorConventionInterface {
      * @param value This is the value
      * @param color to be shown for this color convention
      * @param textColor This is the color of the text
+     * @param siUnit This is the SI Unit of the value
+     * @param cgsUnit This is the CGS Unit of the value
+     * @param conversionRate This is the conversion Rate according to which the data will
+     * be converted from CGS to SI
      */
     @Composable
     fun ChartDetail(
-        text: String = "Normal - 7.5 hrs",
+        text: String,
         value: Float,
-        color: Color = Color.Blue,
+        color: Color,
         textColor: Color,
+        siUnit: String,
+        cgsUnit: String,
+        conversionRate: (Float) -> Float
     ) {
 
         Row(
@@ -66,12 +73,14 @@ class GridColorConvention : CircularColorConventionInterface {
 
             Spacer(modifier = Modifier.width(4.dp))
 
+            // This is the SI Value according to the conversion rate
+            val convertedValue = conversionRate(value)
+
             // This is the output to be shown to the users
-            val textToShow = "$text - " + if (value >= 60) {
-                "${value / 60.0f} hrs"
-            } else {
-                "$value min"
-            }
+            val textToShow = "$text - " + if (convertedValue < 1f)
+                "$value $cgsUnit"
+            else
+                "$convertedValue $siUnit"
 
             // Item Value
             Text(
@@ -115,7 +124,10 @@ class GridColorConvention : CircularColorConventionInterface {
                     text = circularData.itemsList[index].first,
                     value = circularData.itemsList[index].second,
                     color = decoration.colorList[index],
-                    textColor = decoration.textColor
+                    textColor = decoration.textColor,
+                    siUnit = circularData.siUnit,
+                    cgsUnit = circularData.cgsUnit,
+                    conversionRate = circularData.conversionRate
                 )
             }
         }
@@ -136,7 +148,10 @@ class GridColorConvention : CircularColorConventionInterface {
                     text = circularData.itemsList[index].first,
                     value = circularData.itemsList[index].second,
                     color = decoration.colorList[index],
-                    textColor = decoration.textColor
+                    textColor = decoration.textColor,
+                    siUnit = circularData.siUnit,
+                    cgsUnit = circularData.cgsUnit,
+                    conversionRate = circularData.conversionRate
                 )
             }
         }
