@@ -16,8 +16,7 @@ import com.dev.anirban.chartlibrary.library.circular.center.CircularDefaultCente
 import com.dev.anirban.chartlibrary.library.circular.center.DonutTargetTextCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.ListColorConvention
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.TargetColorConvention
-import com.dev.anirban.chartlibrary.library.circular.data.CircularListData
-import com.dev.anirban.chartlibrary.library.circular.data.TargetDataBuilder
+import com.dev.anirban.chartlibrary.library.circular.data.TargetData
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutTargetChartForeground
@@ -122,7 +121,7 @@ open class DonutChartWithDataAtSide(
         fun RowDonutChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
-            circularData: CircularListData,
+            circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
             circularForeground: CircularForegroundInterface = DonutChartForeground(),
             circularColorConvention: CircularColorConventionInterface = ListColorConvention()
@@ -150,7 +149,7 @@ open class DonutChartWithDataAtSide(
         fun TargetDonutChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = DonutTargetTextCenter(),
-            circularData: TargetDataBuilder,
+            circularData: TargetData,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
             circularForeground: CircularForegroundInterface = DonutTargetChartForeground(),
             circularColorConvention: CircularColorConventionInterface = TargetColorConvention()

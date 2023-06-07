@@ -1,7 +1,9 @@
 package com.dev.anirban.chartlibrary.library.circular.data
 
+import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInterface
+
 /**
- * This class is the implementation of [CircularListData] class which is responsible for
+ * This class is the implementation of [CircularDataInterface] class which is responsible for
  * providing the implementation of business login and calculation logic behind the chart
  *
  * @param itemsList This is the List of items to be shown in the chart
@@ -17,12 +19,7 @@ class DonutListData(
     override val siUnit: String,
     override val cgsUnit: String,
     override val conversionRate: (Float) -> Float
-) : CircularListData(
-    itemsList = itemsList,
-    siUnit = siUnit,
-    cgsUnit = cgsUnit,
-    conversionRate = conversionRate
-) {
+) : CircularDataInterface {
 
     override var sweepAngles: MutableList<Float> = mutableListOf()
 

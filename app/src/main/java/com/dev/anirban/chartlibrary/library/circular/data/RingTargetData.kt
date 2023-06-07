@@ -4,7 +4,7 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInte
 
 
 /**
- * This class is the implementation of [CircularTargetData] class which is responsible for
+ * This class is the implementation of [CircularDataInterface] class which is responsible for
  * providing the implementation of business login and calculation logic behind the chart
  *
  * @param siUnit This is the SI Unit text
@@ -13,8 +13,6 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInte
  * transformed into SI Unit
  *
  * @property sweepAngles This is the list of sweep angles which could be calculated
- * @property target This is the target variable
- * @property achieved This variable denotes the amount achieved
  *
  */
 
@@ -25,8 +23,6 @@ class RingTargetData(
     override val conversionRate: (Float) -> Float,
 ) : CircularDataInterface {
 
-    override var target: Float = 0f
-    override var achieved: Float = 0f
     override var sweepAngles: MutableList<Float> = mutableListOf()
 
     /**

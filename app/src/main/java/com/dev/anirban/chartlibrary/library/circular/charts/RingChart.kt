@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.CircularDefaultColorConvention
-import com.dev.anirban.chartlibrary.library.circular.data.TargetDataBuilder
+import com.dev.anirban.chartlibrary.library.circular.data.TargetData
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.RingChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
@@ -107,7 +107,7 @@ class RingChart(
         fun SingleRingChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = RingChartTextCenter("", "", ""),
-            circularData: TargetDataBuilder,
+            circularData: TargetData,
             circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
             circularForeground: CircularForegroundInterface = RingChartForeground(),
             circularColorConvention: CircularColorConventionInterface = CircularDefaultColorConvention()
@@ -137,7 +137,7 @@ class RingChart(
                 RingChartTextCenter("", "", ""),
                 RingChartTextCenter("", "", "")
             ),
-            circularData: List<TargetDataBuilder>,
+            circularData: List<TargetData>,
             circularDecoration: List<CircularDecoration> = listOf(
                 CircularDecoration.ringChartDecoration(),
                 CircularDecoration.ringChartDecoration()

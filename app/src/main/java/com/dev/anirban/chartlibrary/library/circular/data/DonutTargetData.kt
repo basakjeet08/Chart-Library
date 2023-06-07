@@ -12,8 +12,6 @@ import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularDataInte
  * transformed into SI Unit
  *
  * @property sweepAngles This is the list of sweep angles which could be calculated
- * @property target This is the target variable
- * @property achieved This variable denotes the amount achieved
  */
 class DonutTargetData(
     override val itemsList: List<Pair<String, Float>>,
@@ -23,8 +21,6 @@ class DonutTargetData(
 ) : CircularDataInterface {
 
     override var sweepAngles: MutableList<Float> = mutableListOf()
-    override var target: Float = 0f
-    override var achieved: Float = 0f
 
     /**
      * This function calculates the sweep Angles

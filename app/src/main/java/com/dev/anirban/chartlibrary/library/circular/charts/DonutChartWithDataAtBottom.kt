@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.library.circular.CircularChart
 import com.dev.anirban.chartlibrary.library.circular.center.CircularDefaultCenter
 import com.dev.anirban.chartlibrary.library.circular.colorconvention.GridColorConvention
-import com.dev.anirban.chartlibrary.library.circular.data.CircularListData
 import com.dev.anirban.chartlibrary.library.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.library.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.library.circular.interfaces.CircularCenterInterface
@@ -119,7 +118,7 @@ class DonutChartWithDataAtBottom(
         fun ColumnDonutChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
-            circularData: CircularListData,
+            circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
             circularForeground: CircularForegroundInterface = DonutChartForeground(),
             circularColorConvention: CircularColorConventionInterface = GridColorConvention()
