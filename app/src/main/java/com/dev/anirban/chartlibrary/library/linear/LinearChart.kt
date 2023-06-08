@@ -17,8 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.library.linear.colorconvention.DefaultColorConvention
 import com.dev.anirban.chartlibrary.library.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearChartInterface
+import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearColorConventionInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.MarginInterface
 import com.dev.anirban.chartlibrary.library.linear.interfaces.PlottingInterface
@@ -33,12 +35,15 @@ import com.dev.anirban.chartlibrary.library.linear.plots.LinePlot
  * @param decoration This is the implementation for drawing the Decorations
  * @param linearData This is the implementation for keeping the Linear Chart data and calculations
  * @param plotting This is the implementation for how shall the plotting be drawn on the graph
+ * @param colorConvention This is the implementation for how we are  going to draw all the color
+ * conventions in the graph
  */
 open class LinearChart(
     override val margin: MarginInterface,
     override val decoration: LinearDecoration,
     override val linearData: LinearDataInterface,
-    override val plotting: PlottingInterface
+    override val plotting: PlottingInterface,
+    override val colorConvention: LinearColorConventionInterface
 ) : LinearChartInterface {
 
     /**
@@ -63,6 +68,16 @@ open class LinearChart(
                 decoration = decoration
             )
         }
+    }
+
+    /**
+     * This function draws the Color Conventions of the Chart
+     */
+    @Composable
+    override fun DrawColorConvention() {
+        colorConvention.DrawColorConventions(
+            decoration = decoration
+        )
     }
 
     /**
@@ -118,6 +133,14 @@ open class LinearChart(
 
                     }
             )
+
+            // Checking if the implementation is the default one
+            if (colorConvention !is DefaultColorConvention) {
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Draws the color conventions for the chart
+                DrawColorConvention()
+            }
         }
     }
 
@@ -137,6 +160,8 @@ open class LinearChart(
          * @param decoration This is the implementation for drawing the Decorations
          * @param linearData This is the implementation for keeping the Linear Chart data and calculations
          * @param plotting This is the implementation for how shall the plotting be drawn on the graph
+         * @param colorConvention This is the implementation for how we are going to draw all the
+         * color conventions in the graph
          */
         @Composable
         fun LineChart(
@@ -145,12 +170,14 @@ open class LinearChart(
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
             linearData: LinearDataInterface,
-            plotting: PlottingInterface = LinePlot()
+            plotting: PlottingInterface = LinePlot(),
+            colorConvention: LinearColorConventionInterface = DefaultColorConvention()
         ) = LinearChart(
             margin = margin,
             decoration = decoration,
             linearData = linearData,
-            plotting = plotting
+            plotting = plotting,
+            colorConvention = colorConvention
         ).Build(
             modifier = modifier,
             chartTitle = chartTitle
@@ -165,6 +192,8 @@ open class LinearChart(
          * @param decoration This is the implementation for drawing the Decorations
          * @param linearData This is the implementation for keeping the Linear Chart data and calculations
          * @param plotting This is the implementation for how shall the plotting be drawn on the graph
+         * @param colorConvention This is the implementation for how we are going to draw all
+         * the color conventions in the graph
          */
         @Composable
         fun BarChart(
@@ -173,12 +202,14 @@ open class LinearChart(
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
-            plotting: PlottingInterface = BarPlot()
+            plotting: PlottingInterface = BarPlot(),
+            colorConvention: LinearColorConventionInterface = DefaultColorConvention()
         ) = LinearChart(
             margin = margin,
             decoration = decoration,
             linearData = linearData,
-            plotting = plotting
+            plotting = plotting,
+            colorConvention = colorConvention
         ).Build(
             modifier = modifier,
             chartTitle = chartTitle

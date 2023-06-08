@@ -45,6 +45,12 @@ interface LinearChartInterface {
     val plotting: PlottingInterface
 
     /**
+     * This is the implementation of [LinearColorConventionInterface]. This provides an implementation for
+     * drawing the color conventions in the chart
+     */
+    val colorConvention: LinearColorConventionInterface
+
+    /**
      * This function draws the margin according to the implementation provided to it
      */
     fun DrawScope.drawMargin()
@@ -53,6 +59,12 @@ interface LinearChartInterface {
      * This function draws the plot according to the plot implementation provided to us
      */
     fun DrawScope.plotChart()
+
+    /**
+     * This function calls the color convention implementation and draws the color conventions
+     */
+    @Composable
+    fun DrawColorConvention()
 
     /**
      * This is the Build Function which starts composing the Charts and composes the Charts
