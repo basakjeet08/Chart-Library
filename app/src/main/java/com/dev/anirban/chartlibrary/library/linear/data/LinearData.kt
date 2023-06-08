@@ -16,7 +16,7 @@ import com.dev.anirban.chartlibrary.library.linear.util.Point
 class LinearData(
     override val yAxisReadings: List<List<Point<Float>>>,
     override val xAxisReadings: List<Point<String>>,
-    override val numOfXMarkers: Int = 7,
+    override val numOfXMarkers: Int = xAxisReadings.size,
     override val numOfYMarkers: Int = 5
 ) : LinearDataInterface {
 
@@ -61,7 +61,7 @@ class LinearData(
             yMax.toInt()
 
         yLowerReading = if (yMin.toInt() % (numOfYMarkers - 1) == 0) {
-            yMin.toInt()
+            yMin.toInt() - (numOfYMarkers - 1)
         } else {
             yMin.toInt() - (yMin.toInt() % (numOfYMarkers - 1))
         }
@@ -81,20 +81,6 @@ class LinearData(
         val yScale = size.height / numOfYMarkers
         val xScale = size.width / numOfXMarkers
 
-        // Taking all the points given and calculating where they will stay in the graph
-        yAxisReadings.forEach { pointSet ->
-
-            pointSet.forEachIndexed { index, point ->
-
-                val currentYCoordinate = (yUpperReading - point.value) * yScale / yDividend
-                val currentXCoordinate = 48f + (index) * xScale
-
-                // Setting the calculated graph coordinates to the object
-                point.setXCoordinate(currentXCoordinate)
-                point.setYCoordinate(currentYCoordinate)
-            }
-        }
-
         // Calculating all the chart Y - Axis markers in the chart along with their coordinates
         for (index in 0 until numOfYMarkers) {
 
@@ -109,10 +95,24 @@ class LinearData(
             yMarkerList[index].setYCoordinate(currentYCoordinate)
         }
 
+        // Taking all the points given and calculating where they will stay in the graph
+        yAxisReadings.forEach { pointSet ->
+
+            pointSet.forEachIndexed { index, point ->
+
+                val currentYCoordinate = (yUpperReading - point.value) * yScale / yDividend
+                val currentXCoordinate = 48f + (index) * xScale
+
+                // Setting the calculated graph coordinates to the object
+                point.setXCoordinate(currentXCoordinate)
+                point.setYCoordinate(currentYCoordinate)
+            }
+        }
+
         // Calculating all the chart X - Axis markers coordinates
         xAxisReadings.forEachIndexed { index, currentMarker ->
 
-            val xCoordinate = xScale * index + 24f
+            val xCoordinate = xScale * index + 48f
             val yCoordinate = size.height
 
             // Setting the calculated graph coordinates to the object

@@ -69,7 +69,7 @@ class NumberMargin : MarginInterface {
                 Paint().apply {
                     color = decoration.textColor.toArgb()
                     textSize = 12.sp.toPx()
-                    textAlign = Paint.Align.LEFT
+                    textAlign = Paint.Align.CENTER
                     typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
                 }
             )

@@ -36,7 +36,7 @@ class BarPlot : PlottingInterface {
                         )
                     ),
                     topLeft = Offset(
-                        x = point.xCoordinate - 8f,
+                        x = point.xCoordinate - 15f,
                         y = point.yCoordinate
                     ),
                     size = Size(
