@@ -1,23 +1,26 @@
 package com.dev.anirban.chartlibrary.linear.interfaces
 
 import androidx.compose.ui.geometry.Size
-import com.dev.anirban.chartlibrary.linear.util.Point
+import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.linear.data.*
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new
  * Implementation for the handling of data and calculations in the graph
+ *
+ * Implementations for this interface are :- [LinearData]
  */
 interface LinearDataInterface {
 
     /**
      * These are the readings of the Y - Axis
      */
-    val yAxisReadings: List<List<Point<*>>>
+    val yAxisReadings: List<List<LinearPoint<*>>>
 
     /**
      * These are the readings of the X - Axis
      */
-    val xAxisReadings: List<Point<*>>
+    val xAxisReadings: List<LinearPoint<*>>
 
     /**
      * These are the markers needed in X Axis
@@ -32,7 +35,7 @@ interface LinearDataInterface {
     /**
      * List of all the markers in the Y - Axis
      */
-    var yMarkerList: MutableList<Point<*>>
+    var yMarkerList: MutableList<LinearPoint<*>>
 
     /**
      * THis is the function which contains most of the calculation logic of the graph

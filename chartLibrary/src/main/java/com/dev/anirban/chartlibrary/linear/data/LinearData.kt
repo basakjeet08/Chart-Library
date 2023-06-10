@@ -2,7 +2,7 @@ package com.dev.anirban.chartlibrary.linear.data
 
 import androidx.compose.ui.geometry.Size
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.util.Point
+import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 
 /**
  * This is one of the implementation for storing and calculating the data in the chart. It
@@ -14,8 +14,8 @@ import com.dev.anirban.chartlibrary.linear.util.Point
  * @param numOfYMarkers These are teh num of markers in Y-axis
  */
 class LinearData(
-    override val yAxisReadings: List<List<Point<Float>>>,
-    override val xAxisReadings: List<Point<String>>,
+    override val yAxisReadings: List<List<LinearPoint<Float>>>,
+    override val xAxisReadings: List<LinearPoint<String>>,
     override val numOfXMarkers: Int = xAxisReadings.size,
     override val numOfYMarkers: Int = 5
 ) : LinearDataInterface {
@@ -23,7 +23,7 @@ class LinearData(
     /**
      * List of all the markers in the Y - Axis
      */
-    override var yMarkerList: MutableList<Point<*>> = mutableListOf()
+    override var yMarkerList: MutableList<LinearPoint<*>> = mutableListOf()
 
     /**
      * Upper Y - Axis Reading or the Maximum Reading of the Graph
@@ -86,7 +86,7 @@ class LinearData(
 
             // This is the value of the current Y Axis Marker
             val currentYMarker = yUpperReading - (index) * yDividend
-            yMarkerList.add(index, Point(currentYMarker))
+            yMarkerList.add(index, LinearPoint(currentYMarker))
 
             val currentYCoordinate = (yScale * index) + 12f
 

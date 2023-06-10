@@ -1,9 +1,7 @@
 package com.dev.anirban.chartlibrary.circular.foreground
 
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
@@ -19,10 +17,10 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * @param strokeWidth This is the width of the stroke of the Arc
  * @param startAngle This defines the starting angle of the Chart Arc
  */
-class RingChartForeground(
-    private val radiusMultiplier: Float = 1.5f,
-    private val strokeWidth: Float = 30f,
-    private val startAngle: Float = 120f
+class CircularDonutTargetForeground(
+    private val radiusMultiplier: Float = 1.4f,
+    private val strokeWidth: Float = 45f,
+    private val startAngle: Float = 270f
 ) : CircularForegroundInterface {
 
     /**
@@ -51,32 +49,36 @@ class RingChartForeground(
         drawArc(
             color = Color.LightGray.copy(alpha = .2f),
             startAngle = startAngle,
-            sweepAngle = 300f,
+            sweepAngle = 360f,
             useCenter = false,
             size = arcRect.size,
             style = Stroke(
-                width = strokeWidth,
-                cap = StrokeCap.Round
+                width = strokeWidth
             ),
             topLeft = arcRect.topLeft
         )
 
-        //This function draws the Foreground Arc
-        drawArc(
-            brush = Brush.linearGradient(
-                colors = decoration.colorList,
-                start = arcRect.bottomLeft,
-                end = arcRect.topRight
-            ),
-            startAngle = startAngle,
-            sweepAngle = circularData.sweepAngles.first(),
-            useCenter = false,
-            size = arcRect.size,
-            style = Stroke(
-                width = strokeWidth,
-                cap = StrokeCap.Round
-            ),
-            topLeft = arcRect.topLeft
-        )
+        // This is used to define the sweep angle of each and every Floating Data
+        var currentSweepAngle = startAngle
+
+        // Drawing all the arcs
+        circularData.sweepAngles.forEachIndexed { index, fl ->
+
+            //This function draws the Foreground Arc
+            drawArc(
+                color = decoration.colorList[index],
+                startAngle = currentSweepAngle,
+                sweepAngle = fl,
+                useCenter = false,
+                size = arcRect.size,
+                style = Stroke(
+                    width = strokeWidth
+                ),
+                topLeft = arcRect.topLeft
+            )
+
+            // Marking the sweep angle for the next Floating Item
+            currentSweepAngle += fl + 4f
+        }
     }
 }

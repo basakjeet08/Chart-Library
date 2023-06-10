@@ -27,14 +27,14 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dev.anirban.chartlibrary.circular.charts.DonutChartWithDataAtSide
-import com.dev.anirban.chartlibrary.circular.data.DonutListData
-import com.dev.anirban.chartlibrary.circular.data.TargetData
+import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow
+import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
+import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
-import com.dev.anirban.chartlibrary.linear.colorconvention.GridColorConvention
+import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearData
-import com.dev.anirban.chartlibrary.linear.util.Point
+import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.utils.CustomCard
 import com.dev.anirban.screens.utils.WaterSunnyCardBody
 import com.dev.anirban.screens.utils.WaterWeatherCardBody
@@ -77,8 +77,8 @@ fun WaterDayStats() {
         ) {
 
             Column {
-                DonutChartWithDataAtSide.TargetDonutChart(
-                    circularData = TargetData(
+                CircularDonutChartRow.DonutChartTarget(
+                    circularData = CircularTargetDataBuilder(
                         target = 4000f,
                         achieved = 5000f,
                         siUnit = "L",
@@ -165,9 +165,9 @@ fun WaterDayStats() {
             LinearChart.BarChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        Point.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
+                        LinearPoint.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
                     ),
-                    xAxisReadings = Point.pointDataBuilder(
+                    xAxisReadings = LinearPoint.pointDataBuilder(
                         "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     )
                 )
@@ -177,8 +177,8 @@ fun WaterDayStats() {
         CustomCard(
             title = "Ratio"
         ) {
-            DonutChartWithDataAtSide.RowDonutChart(
-                circularData = DonutListData(
+            CircularDonutChartRow.DonutChartRow(
+                circularData = CircularDonutListData(
                     itemsList = listOf(
                         Pair("Water", 1500f),
                         Pair("Juice", 300f),
@@ -206,14 +206,14 @@ fun WaterDayStats() {
                 LinearChart.LineChart(
                     linearData = LinearData(
                         yAxisReadings = listOf(
-                            Point.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
-                            Point.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
+                            LinearPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
+                            LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
                         ),
-                        xAxisReadings = Point.pointDataBuilder(
+                        xAxisReadings = LinearPoint.pointDataBuilder(
                             "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                         )
                     ),
-                    colorConvention = GridColorConvention(
+                    colorConvention = LinearGridColorConvention(
                         textList = listOf("Water", "Juice")
                     )
                 )

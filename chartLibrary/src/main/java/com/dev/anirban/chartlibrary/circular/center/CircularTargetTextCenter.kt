@@ -22,7 +22,7 @@ import java.text.DecimalFormat
  * @param fontSize This defines the size of the font
  * @param fontWeight This Defines the weight of the font
  */
-class DonutTargetTextCenter(
+class CircularTargetTextCenter(
     private val fontSize: TextUnit = 12.sp,
     private val fontWeight: FontWeight = FontWeight.W500
 ) : CircularCenterInterface {

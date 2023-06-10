@@ -2,10 +2,14 @@ package com.dev.anirban.chartlibrary.linear.interfaces
 
 import androidx.compose.runtime.Composable
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
+import com.dev.anirban.chartlibrary.linear.colorconvention.*
 
 /**
  * This implementation shall be implemented by all the classes which are making color convention
  * implementation
+ *
+ * Implementations for this interface are :- [LinearDefaultColorConvention],
+ * [LinearGridColorConvention]
  *
  * @property DrawColorConventions THis function draws the desired color Convention
  */

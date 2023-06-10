@@ -31,7 +31,7 @@ import java.text.DecimalFormat
  * @param fontSize This defines the size of the font
  * @param fontWeight This Defines the weight of the font
  */
-class GridColorConvention(
+class CircularGridColorConvention(
     private val fontSize: TextUnit = 14.sp,
     private val fontWeight: FontWeight = FontWeight.W500
 ) : CircularColorConventionInterface {

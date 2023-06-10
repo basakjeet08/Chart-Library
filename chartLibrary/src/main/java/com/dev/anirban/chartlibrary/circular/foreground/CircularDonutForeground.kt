@@ -16,7 +16,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * @param strokeWidth This is the width of the stroke of the Arc
  * @param startAngle This defines the starting angle of the Chart Arc
  */
-class DonutChartForeground(
+class CircularDonutForeground(
     private val radiusMultiplier: Float = 1.4f,
     private val strokeWidth: Float = 45f,
     private val startAngle: Float = 270f

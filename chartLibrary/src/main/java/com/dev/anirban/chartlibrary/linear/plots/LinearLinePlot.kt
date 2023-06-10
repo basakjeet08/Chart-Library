@@ -6,19 +6,19 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.interfaces.PlottingInterface
+import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
 
 /**
- * This is the Line Plot class which implements the [PlottingInterface] Interface and makes a Line
+ * This is the Line Plot class which implements the [LinearPlotInterface] Interface and makes a Line
  * Chart
  *
  * @param lineStroke This defines the stroke of the line
  * @param circleRadius This defines the radius of curve of the Circle
  */
-class LinePlot(
+class LinearLinePlot(
     private val lineStroke: Float = 3f,
     private val circleRadius: Float = 6f
-) : PlottingInterface {
+) : LinearPlotInterface {
 
     /**
      * This is the function which contains the actual margin implementation

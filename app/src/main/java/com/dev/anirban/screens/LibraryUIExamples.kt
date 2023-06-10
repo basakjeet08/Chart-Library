@@ -8,19 +8,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.dev.anirban.chartlibrary.circular.center.DonutTargetTextCenter
-import com.dev.anirban.chartlibrary.circular.center.RingChartTextCenter
-import com.dev.anirban.chartlibrary.circular.charts.DonutChartWithDataAtBottom
-import com.dev.anirban.chartlibrary.circular.charts.DonutChartWithDataAtSide
-import com.dev.anirban.chartlibrary.circular.charts.RingChart
-import com.dev.anirban.chartlibrary.circular.data.DonutListData
-import com.dev.anirban.chartlibrary.circular.data.TargetData
-import com.dev.anirban.chartlibrary.circular.foreground.DonutChartForeground
+import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
+import com.dev.anirban.chartlibrary.circular.center.CircularTargetTextCenter
+import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartColumn
+import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow
+import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart
+import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
+import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
+import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
-import com.dev.anirban.chartlibrary.linear.plots.BarPlot
-import com.dev.anirban.chartlibrary.linear.plots.LinePlot
-import com.dev.anirban.chartlibrary.linear.util.Point
+import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
+import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
+import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.utils.CustomCard
 
 @Composable
@@ -40,13 +40,13 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
-                    xAxisReadings = Point.pointDataBuilder(
+                    xAxisReadings = LinearPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
-                plotting = LinePlot(
+                plot = LinearLinePlot(
                     lineStroke = 5f,
                     circleRadius = 8f
                 )
@@ -61,14 +61,14 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
-                        Point.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                        LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
                     ),
-                    xAxisReadings = Point.pointDataBuilder(
+                    xAxisReadings = LinearPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
-                plotting = LinePlot(
+                plot = LinearLinePlot(
                     lineStroke = 8f,
                     circleRadius = 8f
                 )
@@ -83,11 +83,11 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
-                        Point.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
-                        Point.pointDataBuilder(1f, 8f, 4f, 3f, 5.9f, 2.9f, 4.7f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                        LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
+                        LinearPoint.pointDataBuilder(1f, 8f, 4f, 3f, 5.9f, 2.9f, 4.7f)
                     ),
-                    xAxisReadings = Point.pointDataBuilder(
+                    xAxisReadings = LinearPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 )
@@ -102,13 +102,13 @@ fun LibraryUIExample() {
             LinearChart.BarChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
-                    xAxisReadings = Point.pointDataBuilder(
+                    xAxisReadings = LinearPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
-                plotting = BarPlot(
+                plot = LinearBarPlot(
                     barWidth = 40f,
                     cornerRadius = 16f
                 )
@@ -120,8 +120,8 @@ fun LibraryUIExample() {
             title = " Row Donut Chart"
         ) {
 
-            DonutChartWithDataAtSide.RowDonutChart(
-                circularData = DonutListData(
+            CircularDonutChartRow.DonutChartRow(
+                circularData = CircularDonutListData(
                     itemsList = listOf(
                         Pair("Water", 1500.0f),
                         Pair("Juice", 300.0f),
@@ -131,12 +131,12 @@ fun LibraryUIExample() {
                     cgsUnit = "mL",
                     conversionRate = { it / 1000f }
                 ),
-                circularForeground = DonutChartForeground(
+                circularForeground = CircularDonutForeground(
                     radiusMultiplier = 1.7f,
                     strokeWidth = 10f,
                     startAngle = 30f
                 ),
-                circularCenter = DonutTargetTextCenter(
+                circularCenter = CircularTargetTextCenter(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.W800
                 )
@@ -148,8 +148,8 @@ fun LibraryUIExample() {
             title = "Column Donut Chart"
         ) {
 
-            DonutChartWithDataAtBottom.ColumnDonutChart(
-                circularData = DonutListData(
+            CircularDonutChartColumn.DonutChartColumn(
+                circularData = CircularDonutListData(
                     itemsList = listOf(
                         Pair("Normal", 450f),
                         Pair("Deep", 180f),
@@ -168,15 +168,15 @@ fun LibraryUIExample() {
             title = "Target Donut Chart"
         ) {
 
-            DonutChartWithDataAtSide.TargetDonutChart(
-                circularData = TargetData(
+            CircularDonutChartRow.DonutChartTarget(
+                circularData = CircularTargetDataBuilder(
                     target = 4340f,
                     achieved = 2823f,
                     siUnit = "Km",
                     cgsUnit = "m",
                     conversionRate = { it / 1000f }
                 ),
-                circularCenter = DonutTargetTextCenter(
+                circularCenter = CircularTargetTextCenter(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.W700
                 )
@@ -187,15 +187,15 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Single Ring Chart"
         ) {
-            RingChart.SingleRingChart(
-                circularData = TargetData(
+            CircularRingChart.RingChartSingle(
+                circularData = CircularTargetDataBuilder(
                     target = 500f,
                     achieved = 489f,
                     siUnit = "",
                     cgsUnit = "",
                     conversionRate = { it }
                 ),
-                circularCenter = RingChartTextCenter(
+                circularCenter = CircularRingTextCenter(
                     title = "AQI",
                     centerValue = "489",
                     status = "Moderate"
@@ -207,16 +207,16 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Double Ring Chart"
         ) {
-            RingChart.MultipleRingChartRowWise(
+            CircularRingChart.RingChartMultiple(
                 circularData = listOf(
-                    TargetData(
+                    CircularTargetDataBuilder(
                         target = 100f,
                         achieved = 81f,
                         siUnit = "bpm",
                         cgsUnit = "bpm",
                         conversionRate = { it }
                     ),
-                    TargetData(
+                    CircularTargetDataBuilder(
                         target = 160f,
                         achieved = 112f,
                         siUnit = "mmhg",
@@ -225,12 +225,12 @@ fun LibraryUIExample() {
                     )
                 ),
                 circularCenter = listOf(
-                    RingChartTextCenter(
+                    CircularRingTextCenter(
                         title = "Heart Rate",
                         centerValue = "81 bpm",
                         status = "Normal"
                     ),
-                    RingChartTextCenter(
+                    CircularRingTextCenter(
                         title = "Blood Pressure",
                         centerValue = "112/80 mmhg",
                         status = "Normal"

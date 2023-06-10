@@ -4,21 +4,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
+import com.dev.anirban.chartlibrary.linear.LinearChart
 
 /**
  * This interface in the interface which every Linear Chart Implementation has to implement for the
  * Library to work
  *
+ * Implementations for this interface are :- [LinearChart]
+ *
  */
 interface LinearChartInterface {
 
     /**
-     * This is the implementation of the [MarginInterface]. The margins will be drawn in the graph
+     * This is the implementation of the [LinearMarginInterface]. The margins will be drawn in the graph
      * according to the implementation
      *
-     * @see MarginInterface
+     * @see LinearMarginInterface
      */
-    val margin: MarginInterface
+    val margin: LinearMarginInterface
 
     /**
      * This is the implementation of the [LinearDecoration]. The decoration will be drawn
@@ -37,12 +40,12 @@ interface LinearChartInterface {
     val linearData: LinearDataInterface
 
     /**
-     * This is the implementation of the [PlottingInterface]. The plot will be drawn in the graph
+     * This is the implementation of the [LinearPlotInterface]. The plot will be drawn in the graph
      * according to the implementation
      *
-     * @see PlottingInterface
+     * @see LinearPlotInterface
      */
-    val plotting: PlottingInterface
+    val plot: LinearPlotInterface
 
     /**
      * This is the implementation of [LinearColorConventionInterface]. This provides an implementation for

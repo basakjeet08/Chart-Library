@@ -16,7 +16,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
  *
  */
 
-class RingTargetData(
+class CircularRingTargetData(
     override val itemsList: List<Pair<String, Float>>,
     override val siUnit: String,
     override val cgsUnit: String,

@@ -14,13 +14,13 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.circular.CircularChart
 import com.dev.anirban.chartlibrary.circular.center.CircularDefaultCenter
-import com.dev.anirban.chartlibrary.circular.center.DonutTargetTextCenter
-import com.dev.anirban.chartlibrary.circular.colorconvention.ListColorConvention
-import com.dev.anirban.chartlibrary.circular.colorconvention.TargetColorConvention
-import com.dev.anirban.chartlibrary.circular.data.TargetData
+import com.dev.anirban.chartlibrary.circular.center.CircularTargetTextCenter
+import com.dev.anirban.chartlibrary.circular.colorconvention.CircularListColorConvention
+import com.dev.anirban.chartlibrary.circular.colorconvention.CircularTargetColorConvention
+import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.circular.foreground.DonutChartForeground
-import com.dev.anirban.chartlibrary.circular.foreground.DonutTargetChartForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
@@ -39,7 +39,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * @param circularForeground This is the implementation which draws the foreground of the chart
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
-open class DonutChartWithDataAtSide(
+open class CircularDonutChartRow(
     override val circularCenter: CircularCenterInterface,
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
@@ -108,13 +108,13 @@ open class DonutChartWithDataAtSide(
     }
 
     /**
-     * Builder Composable Functions which makes the objects of [DonutChartWithDataAtSide] and these are
+     * Builder Composable Functions which makes the objects of [CircularDonutChartRow] and these are
      * actually called by the users to make charts
      */
     companion object {
 
         /**
-         * This function creates an object of the [DonutChartWithDataAtSide] which draws a basic
+         * This function creates an object of the [CircularDonutChartRow] which draws a basic
          * donut chart with its color conventions drawn at side
          *
          * @param modifier THis is made so that modifications can be passed from the parent function
@@ -125,14 +125,14 @@ open class DonutChartWithDataAtSide(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun RowDonutChart(
+        fun DonutChartRow(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
-            circularForeground: CircularForegroundInterface = DonutChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = ListColorConvention()
-        ) = DonutChartWithDataAtSide(
+            circularForeground: CircularForegroundInterface = CircularDonutForeground(),
+            circularColorConvention: CircularColorConventionInterface = CircularListColorConvention()
+        ) = CircularDonutChartRow(
             circularCenter = circularCenter,
             circularData = circularData,
             circularDecoration = circularDecoration,
@@ -142,7 +142,7 @@ open class DonutChartWithDataAtSide(
 
 
         /**
-         * This function creates an object of the [DonutChartWithDataAtBottom] which draws a basic
+         * This function creates an object of the [CircularDonutChartColumn] which draws a basic
          * donut chart with its color conventions drawn at side but the data is in the form of
          * Target and Achieved
          *
@@ -154,14 +154,14 @@ open class DonutChartWithDataAtSide(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun TargetDonutChart(
+        fun DonutChartTarget(
             modifier: Modifier = Modifier,
-            circularCenter: CircularCenterInterface = DonutTargetTextCenter(),
-            circularData: TargetData,
+            circularCenter: CircularCenterInterface = CircularTargetTextCenter(),
+            circularData: CircularTargetDataBuilder,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
-            circularForeground: CircularForegroundInterface = DonutTargetChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = TargetColorConvention()
-        ) = DonutChartWithDataAtSide(
+            circularForeground: CircularForegroundInterface = CircularDonutTargetForeground(),
+            circularColorConvention: CircularColorConventionInterface = CircularTargetColorConvention()
+        ) = CircularDonutChartRow(
             circularCenter = circularCenter,
             circularData = circularData.toDonutTargetData(),
             circularDecoration = circularDecoration,

@@ -7,19 +7,19 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.interfaces.PlottingInterface
+import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
 
 /**
- * This is the Line Plot class which implements the [PlottingInterface] Interface and makes a bar
+ * This is the Line Plot class which implements the [LinearPlotInterface] Interface and makes a bar
  * Chart
  *
  * @param barWidth This defines the width of the bars of the bar Chart
  * @param cornerRadius This defines the radius of curve of the corners of the bars
  */
-class BarPlot(
+class LinearBarPlot(
     private val barWidth: Float = 30f,
     private val cornerRadius: Float = 12f
-) : PlottingInterface {
+) : LinearPlotInterface {
 
     /**
      * This function plots the Bar Chart in the canvas

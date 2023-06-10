@@ -12,11 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.circular.CircularChart
-import com.dev.anirban.chartlibrary.circular.center.RingChartTextCenter
+import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
 import com.dev.anirban.chartlibrary.circular.colorconvention.CircularDefaultColorConvention
-import com.dev.anirban.chartlibrary.circular.data.TargetData
+import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.circular.foreground.RingChartForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularRingForeground
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
@@ -34,7 +34,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * @param circularForeground This is the implementation which draws the foreground of the chart
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
-class RingChart(
+class CircularRingChart(
     override val circularCenter: CircularCenterInterface,
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
@@ -87,14 +87,14 @@ class RingChart(
     }
 
     /**
-     * Builder Composable Functions which makes the objects of [DonutChartWithDataAtSide] and these are
+     * Builder Composable Functions which makes the objects of [CircularDonutChartRow] and these are
      * actually called by the users to make charts
      */
     companion object {
 
 
         /**
-         * This function creates an object of the [RingChart] which draws a basic single ring chart
+         * This function creates an object of the [CircularRingChart] which draws a basic single ring chart
          *
          * @param modifier modifier to be passed down from the parent function
          * @param circularCenter This is the implementation which draws the center of the circle
@@ -104,14 +104,14 @@ class RingChart(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun SingleRingChart(
+        fun RingChartSingle(
             modifier: Modifier = Modifier,
-            circularCenter: CircularCenterInterface = RingChartTextCenter("", "", ""),
-            circularData: TargetData,
+            circularCenter: CircularCenterInterface = CircularRingTextCenter("", "", ""),
+            circularData: CircularTargetDataBuilder,
             circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
-            circularForeground: CircularForegroundInterface = RingChartForeground(),
+            circularForeground: CircularForegroundInterface = CircularRingForeground(),
             circularColorConvention: CircularColorConventionInterface = CircularDefaultColorConvention()
-        ) = RingChart(
+        ) = CircularRingChart(
             circularCenter,
             circularData.toRingTargetData(),
             circularDecoration,
@@ -121,7 +121,7 @@ class RingChart(
 
 
         /**
-         * This function creates an object of the [RingChart] which draws a basic multiple ring chart
+         * This function creates an object of the [CircularRingChart] which draws a basic multiple ring chart
          *
          * @param modifier modifier to be passed down from the parent function
          * @param circularCenter This is the implementation which draws the center of the circle
@@ -131,20 +131,20 @@ class RingChart(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun MultipleRingChartRowWise(
+        fun RingChartMultiple(
             modifier: List<Modifier> = listOf(Modifier, Modifier),
             circularCenter: List<CircularCenterInterface> = listOf(
-                RingChartTextCenter("", "", ""),
-                RingChartTextCenter("", "", "")
+                CircularRingTextCenter("", "", ""),
+                CircularRingTextCenter("", "", "")
             ),
-            circularData: List<TargetData>,
+            circularData: List<CircularTargetDataBuilder>,
             circularDecoration: List<CircularDecoration> = listOf(
                 CircularDecoration.ringChartDecoration(),
                 CircularDecoration.ringChartDecoration()
             ),
             circularForeground: List<CircularForegroundInterface> = listOf(
-                RingChartForeground(),
-                RingChartForeground()
+                CircularRingForeground(),
+                CircularRingForeground()
             ),
             circularColorConvention: List<CircularColorConventionInterface> = listOf(
                 CircularDefaultColorConvention(),
@@ -166,7 +166,7 @@ class RingChart(
                         contentAlignment = Alignment.Center
                     ) {
 
-                        RingChart(
+                        CircularRingChart(
                             circularCenter[index],
                             circularRingData.toRingTargetData(),
                             circularDecoration[index],

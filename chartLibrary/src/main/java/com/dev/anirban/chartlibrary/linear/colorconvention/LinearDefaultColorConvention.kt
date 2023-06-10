@@ -10,7 +10,7 @@ import com.dev.anirban.chartlibrary.linear.interfaces.LinearColorConventionInter
  *
  * @property textList This contains the list of strings which needs to be drawn in the Chart
  */
-class DefaultColorConvention : LinearColorConventionInterface {
+class LinearDefaultColorConvention : LinearColorConventionInterface {
 
     override val textList: List<String> = emptyList()
 

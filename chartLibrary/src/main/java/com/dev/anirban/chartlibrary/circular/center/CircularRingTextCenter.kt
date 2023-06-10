@@ -25,7 +25,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
  * @param centerValue This is the text which contains the value and shown in the middle
  * @param status This contains the status message fpr the user
  */
-class RingChartTextCenter(
+class CircularRingTextCenter(
     private val title: String,
     private val centerValue: String,
     private val status: String

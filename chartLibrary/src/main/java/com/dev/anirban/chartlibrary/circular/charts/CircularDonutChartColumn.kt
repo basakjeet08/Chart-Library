@@ -14,9 +14,9 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.circular.CircularChart
 import com.dev.anirban.chartlibrary.circular.center.CircularDefaultCenter
-import com.dev.anirban.chartlibrary.circular.colorconvention.GridColorConvention
+import com.dev.anirban.chartlibrary.circular.colorconvention.CircularGridColorConvention
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
-import com.dev.anirban.chartlibrary.circular.foreground.DonutChartForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
@@ -35,7 +35,7 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * @param circularForeground This is the implementation which draws the foreground of the chart
  * @param circularColorConvention This is the color Convention implementation of the chart
  */
-class DonutChartWithDataAtBottom(
+class CircularDonutChartColumn(
     override val circularCenter: CircularCenterInterface,
     override val circularData: CircularDataInterface,
     override val circularDecoration: CircularDecoration,
@@ -98,13 +98,13 @@ class DonutChartWithDataAtBottom(
 
 
     /**
-     * Builder Composable Functions which makes the objects of [DonutChartWithDataAtBottom] and these are
+     * Builder Composable Functions which makes the objects of [CircularDonutChartColumn] and these are
      * actually called by the users to make charts
      */
     companion object {
 
         /**
-         * This function creates an object of the [DonutChartWithDataAtBottom] which draws a basic
+         * This function creates an object of the [CircularDonutChartColumn] which draws a basic
          * donut chart with its color conventions drawn at bottom
          *
          * @param modifier This is for modifications to be passed from the Parent Function
@@ -115,15 +115,15 @@ class DonutChartWithDataAtBottom(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun ColumnDonutChart(
+        fun DonutChartColumn(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
-            circularForeground: CircularForegroundInterface = DonutChartForeground(),
-            circularColorConvention: CircularColorConventionInterface = GridColorConvention()
+            circularForeground: CircularForegroundInterface = CircularDonutForeground(),
+            circularColorConvention: CircularColorConventionInterface = CircularGridColorConvention()
         ) {
-            DonutChartWithDataAtBottom(
+            CircularDonutChartColumn(
                 circularCenter = circularCenter,
                 circularData = circularData,
                 circularForeground = circularForeground,

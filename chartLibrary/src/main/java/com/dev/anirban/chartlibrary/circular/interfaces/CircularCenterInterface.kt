@@ -1,10 +1,14 @@
 package com.dev.anirban.chartlibrary.circular.interfaces
 
 import androidx.compose.runtime.Composable
+import com.dev.anirban.chartlibrary.circular.center.*
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 
 /**
  * This interface implements a function to draw the center of the circular chart
+ *
+ * Different Implementations for the interface are [CircularDefaultCenter],
+ * [CircularRingTextCenter],[CircularTargetTextCenter]
  */
 interface CircularCenterInterface {
 

@@ -1,8 +1,13 @@
 package com.dev.anirban.chartlibrary.circular.interfaces
 
+import com.dev.anirban.chartlibrary.circular.data.*
+
 /**
  * This implementation needs to be implemented by all the classes which provide an implementation to
  * handle data
+ *
+ * Implementations for this interface is :- [CircularDonutListData],[CircularDonutTargetData],
+ * [CircularRingTargetData],[CircularTargetDataBuilder]
  *
  * @property itemsList This is the list of items which are shown in the readings
  * @property sweepAngles This is the list of sweep angles which would be used to draw the readings

@@ -9,13 +9,13 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.interfaces.MarginInterface
+import com.dev.anirban.chartlibrary.linear.interfaces.LinearMarginInterface
 
 /**
- * This is one of the implementations of the [MarginInterface] and it provides with a implementation
+ * This is one of the implementations of the [LinearMarginInterface] and it provides with a implementation
  * of how we should draw the Margin
  */
-class NumberMargin : MarginInterface {
+class LinearNumberMargin : LinearMarginInterface {
 
     /**
      * This is the function which contains the actual margin implementation

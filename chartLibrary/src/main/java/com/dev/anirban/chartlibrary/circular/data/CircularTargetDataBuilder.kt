@@ -11,7 +11,7 @@ package com.dev.anirban.chartlibrary.circular.data
  * @param conversionRate This is the conversion rate according to which the CGS values can be
  * transformed into SI Unit
  */
-class TargetData(
+class CircularTargetDataBuilder(
     var target: Float,
     var achieved: Float,
     val siUnit: String,
@@ -20,9 +20,9 @@ class TargetData(
 ) {
 
     /**
-     * This function converts the [TargetData] class object into [DonutTargetData] object
+     * This function converts the [CircularTargetDataBuilder] class object into [CircularDonutTargetData] object
      */
-    fun toDonutTargetData() = DonutTargetData(
+    fun toDonutTargetData() = CircularDonutTargetData(
         itemsList = listOf(
             Pair("Target", target),
             Pair("Achieved", achieved)
@@ -33,9 +33,9 @@ class TargetData(
     )
 
     /**
-     * This function converts the [TargetData] class object into [RingTargetData] class object
+     * This function converts the [CircularTargetDataBuilder] class object into [CircularRingTargetData] class object
      */
-    fun toRingTargetData() = RingTargetData(
+    fun toRingTargetData() = CircularRingTargetData(
         itemsList = listOf(
             Pair("Target", target),
             Pair("Achieved", achieved)
