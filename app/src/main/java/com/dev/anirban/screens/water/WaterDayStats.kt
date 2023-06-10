@@ -35,21 +35,21 @@ import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
-import com.dev.anirban.screens.utils.CustomCard
-import com.dev.anirban.screens.utils.WaterSunnyCardBody
-import com.dev.anirban.screens.utils.WaterWeatherCardBody
+import com.dev.anirban.screens.components.CustomCard
+import com.dev.anirban.screens.components.WaterSunnyCardBody
+import com.dev.anirban.screens.components.WaterWeatherCardBody
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 import com.dev.anirban.ui.theme.InterFontFamily
 
 // Preview Composable Function
 @Preview(
     "Light",
-    heightDp = 1530,
+    heightDp = 1585,
     showBackground = true
 )
 @Preview(
     name = "Dark",
-    heightDp = 1530,
+    heightDp = 1585,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true
 )

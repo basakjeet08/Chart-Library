@@ -36,7 +36,7 @@ import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
-import com.dev.anirban.screens.utils.CustomCard
+import com.dev.anirban.screens.components.CustomCard
 
 @Composable
 fun LibraryUIExample() {

@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.dev.anirban.screens.LibraryUIExample
-import com.dev.anirban.screens.utils.TabOptionListUI
+import com.dev.anirban.screens.components.TabOptionListUI
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 // Preview Composable Function
@@ -59,7 +59,7 @@ fun WaterStatsScreen(
 
         when (selectedItem.value) {
             0 -> WaterDayStats()
-            1 -> LibraryUIExample()
+            1 -> WaterWeekStats()
             2 -> WaterDayStats()
             3 -> LibraryUIExample()
         }

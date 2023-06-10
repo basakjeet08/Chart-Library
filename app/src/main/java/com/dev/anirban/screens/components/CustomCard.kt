@@ -1,4 +1,4 @@
-package com.dev.anirban.screens.utils
+package com.dev.anirban.screens.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
