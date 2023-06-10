@@ -9,7 +9,17 @@ import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.PlottingInterface
 
-class BarPlot : PlottingInterface {
+/**
+ * This is the Line Plot class which implements the [PlottingInterface] Interface and makes a bar
+ * Chart
+ *
+ * @param barWidth This defines the width of the bars of the bar Chart
+ * @param cornerRadius This defines the radius of curve of the corners of the bars
+ */
+class BarPlot(
+    private val barWidth: Float = 30f,
+    private val cornerRadius: Float = 12f
+) : PlottingInterface {
 
     /**
      * This function plots the Bar Chart in the canvas
@@ -36,14 +46,14 @@ class BarPlot : PlottingInterface {
                         )
                     ),
                     topLeft = Offset(
-                        x = point.xCoordinate - 15f,
+                        x = point.xCoordinate - barWidth / 2f,
                         y = point.yCoordinate
                     ),
                     size = Size(
-                        width = 30f,
+                        width = barWidth,
                         height = linearData.yMarkerList[linearData.yMarkerList.size - 1].yCoordinate - point.yCoordinate - 12f
                     ),
-                    cornerRadius = CornerRadius(12f)
+                    cornerRadius = CornerRadius(cornerRadius)
                 )
             }
         }

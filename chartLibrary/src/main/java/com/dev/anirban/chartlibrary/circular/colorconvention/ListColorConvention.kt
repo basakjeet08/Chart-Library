@@ -15,17 +15,25 @@ import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
+import java.text.DecimalFormat
 
 /**
  * This class is the implementation of [CircularColorConventionInterface] which provides the
  * implementations for drawing the color conventions in the canvas
+ *
+ * @param fontSize This defines the size of the font
+ * @param fontWeight This Defines the weight of the font
  */
-class ListColorConvention : CircularColorConventionInterface {
+class ListColorConvention(
+    private val fontSize: TextUnit = 14.sp,
+    private val fontWeight: FontWeight = FontWeight.W500
+) : CircularColorConventionInterface {
 
     /**
      * This function draws the color conventions in the canvas
@@ -108,9 +116,9 @@ class ListColorConvention : CircularColorConventionInterface {
 
             // Determining the text to be shown. Would it be in SI or CGS
             val textToBeShown = "${pair.first} - " + if (convertedValue < 1f)
-                "${pair.second} $cgsUnit"
+                "${DecimalFormat("#.##").format(pair.second)} $cgsUnit"
             else
-                "$convertedValue $siUnit"
+                "${DecimalFormat("#.##").format(convertedValue)} $siUnit"
 
             // Item Value
             Text(
@@ -118,8 +126,8 @@ class ListColorConvention : CircularColorConventionInterface {
 
                 // Text Features
                 textAlign = TextAlign.Center,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.W500,
+                fontSize = fontSize,
+                fontWeight = fontWeight,
                 color = textColor
             )
         }

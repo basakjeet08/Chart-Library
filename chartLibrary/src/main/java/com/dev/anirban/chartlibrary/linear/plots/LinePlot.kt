@@ -11,8 +11,14 @@ import com.dev.anirban.chartlibrary.linear.interfaces.PlottingInterface
 /**
  * This is the Line Plot class which implements the [PlottingInterface] Interface and makes a Line
  * Chart
+ *
+ * @param lineStroke This defines the stroke of the line
+ * @param circleRadius This defines the radius of curve of the Circle
  */
-class LinePlot : PlottingInterface {
+class LinePlot(
+    private val lineStroke: Float = 3f,
+    private val circleRadius: Float = 6f
+) : PlottingInterface {
 
     /**
      * This is the function which contains the actual margin implementation
@@ -89,7 +95,7 @@ class LinePlot : PlottingInterface {
                 path = path,
                 color = decoration.plotPrimaryColor[i],
                 style = Stroke(
-                    width = 4f
+                    width = lineStroke
                 )
             )
         }
@@ -100,7 +106,7 @@ class LinePlot : PlottingInterface {
                 // This function draws the Circle points
                 drawCircle(
                     color = decoration.plotSecondaryColor[index],
-                    radius = 8f,
+                    radius = circleRadius,
                     center = it
                 )
             }

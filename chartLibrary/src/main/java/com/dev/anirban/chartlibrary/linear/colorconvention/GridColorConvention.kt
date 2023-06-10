@@ -17,6 +17,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
@@ -27,9 +28,13 @@ import com.dev.anirban.chartlibrary.linear.interfaces.LinearColorConventionInter
  * implementations for drawing the color conventions in the canvas
  *
  * @param textList This contains the list of strings which needs to be drawn in the Chart
+ * @param fontSize This defines the size of the font
+ * @param fontWeight This Defines the weight of the font
  */
 class GridColorConvention(
-    override val textList: List<String>
+    override val textList: List<String>,
+    private val fontSize: TextUnit = 14.sp,
+    private val fontWeight: FontWeight = FontWeight.W500
 ) : LinearColorConventionInterface {
 
     /**
@@ -75,8 +80,8 @@ class GridColorConvention(
 
                 // Text Features
                 textAlign = TextAlign.Center,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.W500,
+                fontSize = fontSize,
+                fontWeight = fontWeight,
                 color = textColor
             )
         }

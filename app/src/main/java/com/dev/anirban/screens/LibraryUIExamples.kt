@@ -9,15 +9,21 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.circular.center.DonutTargetTextCenter
 import com.dev.anirban.chartlibrary.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.circular.charts.DonutChartWithDataAtBottom
 import com.dev.anirban.chartlibrary.circular.charts.DonutChartWithDataAtSide
 import com.dev.anirban.chartlibrary.circular.charts.RingChart
 import com.dev.anirban.chartlibrary.circular.data.DonutListData
 import com.dev.anirban.chartlibrary.circular.data.TargetData
+import com.dev.anirban.chartlibrary.circular.foreground.DonutChartForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.plots.BarPlot
+import com.dev.anirban.chartlibrary.linear.plots.LinePlot
 import com.dev.anirban.chartlibrary.linear.util.Point
 
 @Composable
@@ -44,6 +50,10 @@ fun LibraryUIExample() {
                     xAxisReadings = Point.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
+                ),
+                plotting = LinePlot(
+                    lineStroke = 5f,
+                    circleRadius = 8f
                 )
             )
         }
@@ -65,6 +75,10 @@ fun LibraryUIExample() {
                     xAxisReadings = Point.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
+                ),
+                plotting = LinePlot(
+                    lineStroke = 8f,
+                    circleRadius = 8f
                 )
             )
         }
@@ -107,6 +121,10 @@ fun LibraryUIExample() {
                     xAxisReadings = Point.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
+                ),
+                plotting = BarPlot(
+                    barWidth = 40f,
+                    cornerRadius = 16f
                 )
             )
         }
@@ -130,6 +148,15 @@ fun LibraryUIExample() {
                     siUnit = "L",
                     cgsUnit = "mL",
                     conversionRate = { it / 1000f }
+                ),
+                circularForeground = DonutChartForeground(
+                    radiusMultiplier = 1.7f,
+                    strokeWidth = 10f,
+                    startAngle = 30f
+                ),
+                circularCenter = DonutTargetTextCenter(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.W800
                 )
             )
         }
@@ -174,6 +201,10 @@ fun LibraryUIExample() {
                     siUnit = "Km",
                     cgsUnit = "m",
                     conversionRate = { it / 1000f }
+                ),
+                circularCenter = DonutTargetTextCenter(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.W700
                 )
             )
         }

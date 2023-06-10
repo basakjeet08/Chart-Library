@@ -11,8 +11,16 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * This class implements the [CircularForegroundInterface] which is responsible for making the
  * foreground reading of the chart
  *
+ * @param radiusMultiplier This is the multiplier to radius of the circle to make the Arcs a bit
+ * bigger... Note :- Higher this value bigger the radius
+ * @param strokeWidth This is the width of the stroke of the Arc
+ * @param startAngle This defines the starting angle of the Chart Arc
  */
-class DonutChartForeground : CircularForegroundInterface {
+class DonutChartForeground(
+    private val radiusMultiplier: Float = 1.2f,
+    private val strokeWidth: Float = 45f,
+    private val startAngle: Float = 270f
+) : CircularForegroundInterface {
 
     /**
      * This is the function which draws all the readings
@@ -27,7 +35,7 @@ class DonutChartForeground : CircularForegroundInterface {
 
         val centerX = size.width / 2
         val centerY = size.height / 2
-        val radius = (size.width / 4).coerceAtMost(size.height / 4) * 1.2f
+        val radius = (size.width / 4).coerceAtMost(size.height / 4) * radiusMultiplier
 
         val arcRect = Rect(
             centerX - radius,
@@ -37,7 +45,7 @@ class DonutChartForeground : CircularForegroundInterface {
         )
 
         // This is used to define the sweep angle of each and every Floating Data
-        var currentSweepAngle = 270f
+        var currentSweepAngle = startAngle
 
         // Drawing all the arcs
         circularData.sweepAngles.forEachIndexed { index, fl ->
@@ -50,7 +58,7 @@ class DonutChartForeground : CircularForegroundInterface {
                 useCenter = false,
                 size = arcRect.size,
                 style = Stroke(
-                    width = 45f
+                    width = strokeWidth
                 ),
                 topLeft = arcRect.topLeft
             )

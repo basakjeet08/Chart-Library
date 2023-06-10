@@ -14,8 +14,16 @@ import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterf
  * This class implements the [CircularForegroundInterface] which is responsible for making the
  * foreground reading of the chart
  *
+ * @param radiusMultiplier This is the multiplier to radius of the circle to make the Arcs a bit
+ * bigger... Note :- Higher this value bigger the radius
+ * @param strokeWidth This is the width of the stroke of the Arc
+ * @param startAngle This defines the starting angle of the Chart Arc
  */
-class RingChartForeground : CircularForegroundInterface {
+class RingChartForeground(
+    private val radiusMultiplier: Float = 1.5f,
+    private val strokeWidth: Float = 30f,
+    private val startAngle: Float = 120f
+) : CircularForegroundInterface {
 
     /**
      * This is the function which draws all the readings
@@ -30,7 +38,7 @@ class RingChartForeground : CircularForegroundInterface {
 
         val centerX = size.width / 2
         val centerY = size.height / 2
-        val radius = (size.width / 4).coerceAtMost(size.height / 4) * 1.5f
+        val radius = (size.width / 4).coerceAtMost(size.height / 4) * radiusMultiplier
 
         val arcRect = Rect(
             centerX - radius,
@@ -42,19 +50,16 @@ class RingChartForeground : CircularForegroundInterface {
         //This function draws the Background Arc
         drawArc(
             color = Color.LightGray.copy(alpha = .2f),
-            startAngle = 120f,
+            startAngle = startAngle,
             sweepAngle = 300f,
             useCenter = false,
             size = arcRect.size,
             style = Stroke(
-                width = 30f,
+                width = strokeWidth,
                 cap = StrokeCap.Round
             ),
             topLeft = arcRect.topLeft
         )
-
-        // This is used to define the sweep angle of each and every Floating Data
-        val startingAngle = 120f
 
         //This function draws the Foreground Arc
         drawArc(
@@ -63,12 +68,12 @@ class RingChartForeground : CircularForegroundInterface {
                 start = arcRect.bottomLeft,
                 end = arcRect.topRight
             ),
-            startAngle = startingAngle,
+            startAngle = startAngle,
             sweepAngle = circularData.sweepAngles.first(),
             useCenter = false,
             size = arcRect.size,
             style = Stroke(
-                width = 30f,
+                width = strokeWidth,
                 cap = StrokeCap.Round
             ),
             topLeft = arcRect.topLeft

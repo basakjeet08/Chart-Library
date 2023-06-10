@@ -9,17 +9,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
+import java.text.DecimalFormat
 
 /**
  * This class is the implementation of [CircularColorConventionInterface] which provides the
  * implementations for drawing the color conventions in the canvas
+ *
+ * @param fontSize This defines the size of the font
+ * @param fontWeight This Defines the weight of the font
  */
-class TargetColorConvention : CircularColorConventionInterface {
+class TargetColorConvention(
+    private val fontSize: TextUnit = 14.sp,
+    private val fontWeight: FontWeight = FontWeight.W500
+) : CircularColorConventionInterface {
 
     /**
      * This function draws the color conventions in the canvas
@@ -37,7 +45,7 @@ class TargetColorConvention : CircularColorConventionInterface {
         Column(
             modifier = Modifier,
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
 
             circularData.itemsList.forEach {
@@ -47,9 +55,9 @@ class TargetColorConvention : CircularColorConventionInterface {
 
                 // This is the output to be shown to the user
                 val textToShow = "${it.first} - " + if (convertedValue < 1f)
-                    "${it.second} ${circularData.cgsUnit}"
+                    "${DecimalFormat("#.##").format(it.second)} ${circularData.cgsUnit}"
                 else
-                    "$convertedValue ${circularData.siUnit}"
+                    "${DecimalFormat("#.##").format(convertedValue)} ${circularData.siUnit}"
 
                 // Item and Value
                 Text(
@@ -59,9 +67,9 @@ class TargetColorConvention : CircularColorConventionInterface {
                         .padding(vertical = 4.dp),
 
                     // Text Features
-                    textAlign = TextAlign.Center,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.W500,
+                    textAlign = TextAlign.Start,
+                    fontSize = fontSize,
+                    fontWeight = fontWeight,
                     color = decoration.textColor
                 )
             }

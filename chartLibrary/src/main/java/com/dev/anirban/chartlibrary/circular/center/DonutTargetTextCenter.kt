@@ -5,20 +5,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
+import java.text.DecimalFormat
 
 /**
  * This class is the implementation of [CircularCenterInterface] which focuses on providing an
  * implementation to draw something on the center of the Circular Chart
  *
  * This Class in particular is the implementation to draw texts
+ *
+ * @param fontSize This defines the size of the font
+ * @param fontWeight This Defines the weight of the font
  */
-class DonutTargetTextCenter : CircularCenterInterface {
+class DonutTargetTextCenter(
+    private val fontSize: TextUnit = 12.sp,
+    private val fontWeight: FontWeight = FontWeight.W500
+) : CircularCenterInterface {
 
     /**
      * This function does nothing which is fine since we want the default Circle Center to be nothing
@@ -43,15 +50,14 @@ class DonutTargetTextCenter : CircularCenterInterface {
 
         // Item and Value
         Text(
-            text = "$percentage %",
+            text = "${DecimalFormat("#.##").format(percentage)} %",
 
             modifier = Modifier
                 .padding(vertical = 4.dp),
 
             // Text Features
-            textAlign = TextAlign.Center,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.W500,
+            fontSize = fontSize,
+            fontWeight = fontWeight,
             color = decoration.textColor
         )
     }
