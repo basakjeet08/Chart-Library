@@ -1,16 +1,12 @@
 package com.dev.anirban.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.center.DonutTargetTextCenter
 import com.dev.anirban.chartlibrary.circular.center.RingChartTextCenter
@@ -25,6 +21,7 @@ import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.plots.BarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinePlot
 import com.dev.anirban.chartlibrary.linear.util.Point
+import com.dev.anirban.screens.utils.CustomCard
 
 @Composable
 fun LibraryUIExample() {
@@ -32,17 +29,15 @@ fun LibraryUIExample() {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
+            .fillMaxSize()
     ) {
 
         // Design Pattern Single Line Chart
-        ElevatedCard(
-            modifier = Modifier
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Single Line Chart"
         ) {
 
             LinearChart.LineChart(
-                chartTitle = "Single Line Chart",
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -59,14 +54,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Double Line Chart
-        ElevatedCard(
-            modifier = Modifier
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Double Line Chart"
         ) {
 
             LinearChart.LineChart(
-                chartTitle = "Double Line Chart",
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -84,14 +76,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Triple Line Chart
-        ElevatedCard(
-            modifier = Modifier
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Multiple Line Chart"
         ) {
 
             LinearChart.LineChart(
-                chartTitle = "Triple Line Chart",
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
@@ -106,14 +95,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Bar Chart
-        ElevatedCard(
-            modifier = Modifier
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Bar Chart"
         ) {
 
             LinearChart.BarChart(
-                chartTitle = "Bar Chart",
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         Point.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
@@ -130,15 +116,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Same row Donut Chart
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = " Row Donut Chart"
         ) {
 
             DonutChartWithDataAtSide.RowDonutChart(
-                chartTitle = "Row Donut Chart",
                 circularData = DonutListData(
                     itemsList = listOf(
                         Pair("Water", 1500.0f),
@@ -162,15 +144,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Different row Donut Chart
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Column Donut Chart"
         ) {
 
             DonutChartWithDataAtBottom.ColumnDonutChart(
-                chartTitle = "Column Donut Chart",
                 circularData = DonutListData(
                     itemsList = listOf(
                         Pair("Normal", 450f),
@@ -186,15 +164,11 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Target Achieved Donut Chart
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Target Donut Chart"
         ) {
 
             DonutChartWithDataAtSide.TargetDonutChart(
-                chartTitle = "Target Donut Chart",
                 circularData = TargetData(
                     target = 4340f,
                     achieved = 2823f,
@@ -210,14 +184,10 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Single Ring Chart
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Single Ring Chart"
         ) {
             RingChart.SingleRingChart(
-                chartTitle = "Single Ring Chart",
                 circularData = TargetData(
                     target = 500f,
                     achieved = 489f,
@@ -234,14 +204,10 @@ fun LibraryUIExample() {
         }
 
         // Design Pattern Double Ring Chart
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+        CustomCard(
+            title = "Double Ring Chart"
         ) {
             RingChart.MultipleRingChartRowWise(
-                chartTitle = "Multiple Ring Chart",
                 circularData = listOf(
                     TargetData(
                         target = 100f,

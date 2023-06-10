@@ -4,20 +4,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.CircularChart
 import com.dev.anirban.chartlibrary.circular.center.CircularDefaultCenter
 import com.dev.anirban.chartlibrary.circular.colorconvention.GridColorConvention
@@ -59,13 +53,9 @@ class DonutChartWithDataAtBottom(
      * This is the Build Function which starts composing the Charts and composes the Charts
      *
      * @param modifier This is for default modifications to be passed from the parent Class
-     * @param chartTitle This is the title of the chart
      */
     @Composable
-    override fun Build(
-        modifier: Modifier,
-        chartTitle: String
-    ) {
+    override fun Build(modifier: Modifier) {
 
         // Making a row to fit the canvas and the color conventions
         Column(
@@ -74,25 +64,6 @@ class DonutChartWithDataAtBottom(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // Chart Title
-            if (chartTitle.isNotBlank()) {
-                Text(
-                    text = chartTitle,
-
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 24.dp, start = 24.dp, end = 24.dp),
-
-                    // Text Features
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W600,
-                    color = circularDecoration.textColor,
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-            }
 
             // Donut Chart
             Box(
@@ -137,7 +108,6 @@ class DonutChartWithDataAtBottom(
          * donut chart with its color conventions drawn at bottom
          *
          * @param modifier This is for modifications to be passed from the Parent Function
-         * @param chartTitle This is the title for the chart
          * @param circularCenter This is the implementation which draws the center of the circle
          * @param circularData This is the data class implementation which handles the data
          * @param circularDecoration This is the decorations for the Circular Chart
@@ -147,7 +117,6 @@ class DonutChartWithDataAtBottom(
         @Composable
         fun ColumnDonutChart(
             modifier: Modifier = Modifier,
-            chartTitle: String,
             circularCenter: CircularCenterInterface = CircularDefaultCenter(),
             circularData: CircularDataInterface,
             circularDecoration: CircularDecoration = CircularDecoration.donutChartDecorations(),
@@ -160,10 +129,7 @@ class DonutChartWithDataAtBottom(
                 circularForeground = circularForeground,
                 circularDecoration = circularDecoration,
                 circularColorConvention = circularColorConvention
-            ).Build(
-                modifier = modifier,
-                chartTitle = chartTitle
-            )
+            ).Build(modifier = modifier)
         }
     }
 }

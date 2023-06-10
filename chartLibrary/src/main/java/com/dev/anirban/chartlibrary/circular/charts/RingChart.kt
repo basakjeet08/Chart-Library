@@ -4,20 +4,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.circular.CircularChart
 import com.dev.anirban.chartlibrary.circular.center.RingChartTextCenter
 import com.dev.anirban.chartlibrary.circular.colorconvention.CircularDefaultColorConvention
@@ -59,13 +52,9 @@ class RingChart(
      * This is the Build Function which starts composing the Charts and composes the Charts
      *
      * @param modifier This is for default modifications to be passed from the parent Class
-     * @param chartTitle This is the title of the chart
      */
     @Composable
-    override fun Build(
-        modifier: Modifier,
-        chartTitle: String
-    ) {
+    override fun Build(modifier: Modifier) {
 
         // Donut Chart
         Column(
@@ -74,25 +63,6 @@ class RingChart(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // Chart Title
-            if (chartTitle.isNotBlank()) {
-                Text(
-                    text = chartTitle,
-
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 24.dp, start = 24.dp, end = 24.dp),
-
-                    // Text Features
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W600,
-                    color = circularDecoration.textColor,
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-            }
 
             Box(
                 modifier = modifier
@@ -127,7 +97,6 @@ class RingChart(
          * This function creates an object of the [RingChart] which draws a basic single ring chart
          *
          * @param modifier modifier to be passed down from the parent function
-         * @param chartTitle This is the title for the chart
          * @param circularCenter This is the implementation which draws the center of the circle
          * @param circularData This is the data class implementation which handles the data
          * @param circularDecoration This is the decorations for the Circular Chart
@@ -137,7 +106,6 @@ class RingChart(
         @Composable
         fun SingleRingChart(
             modifier: Modifier = Modifier,
-            chartTitle: String,
             circularCenter: CircularCenterInterface = RingChartTextCenter("", "", ""),
             circularData: TargetData,
             circularDecoration: CircularDecoration = CircularDecoration.ringChartDecoration(),
@@ -149,17 +117,13 @@ class RingChart(
             circularDecoration,
             circularForeground,
             circularColorConvention
-        ).Build(
-            modifier = modifier,
-            chartTitle = chartTitle
-        )
+        ).Build(modifier = modifier)
 
 
         /**
          * This function creates an object of the [RingChart] which draws a basic multiple ring chart
          *
          * @param modifier modifier to be passed down from the parent function
-         * @param chartTitle This is the title for the chart
          * @param circularCenter This is the implementation which draws the center of the circle
          * @param circularData This is the data class implementation which handles the data
          * @param circularDecoration This is the decorations for the Circular Chart
@@ -169,7 +133,6 @@ class RingChart(
         @Composable
         fun MultipleRingChartRowWise(
             modifier: List<Modifier> = listOf(Modifier, Modifier),
-            chartTitle: String,
             circularCenter: List<CircularCenterInterface> = listOf(
                 RingChartTextCenter("", "", ""),
                 RingChartTextCenter("", "", "")
@@ -188,53 +151,28 @@ class RingChart(
                 CircularDefaultColorConvention()
             )
         ) {
-            Column(
+
+            Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
 
-                // Chart Title
-                if (chartTitle.isNotBlank()) {
-                    Text(
-                        text = chartTitle,
-
+                circularData.forEachIndexed { index, circularRingData ->
+                    Box(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 24.dp, start = 24.dp, end = 24.dp),
+                            .weight(1f),
+                        contentAlignment = Alignment.Center
+                    ) {
 
-                        // Text Features
-                        textAlign = TextAlign.Start,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.W600,
-                        color = circularDecoration[0].textColor,
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
-
-                Row {
-
-                    circularData.forEachIndexed { index, circularRingData ->
-                        Box(
-                            modifier = Modifier
-                                .weight(1f),
-                            contentAlignment = Alignment.Center
-                        ) {
-
-                            RingChart(
-                                circularCenter[index],
-                                circularRingData.toRingTargetData(),
-                                circularDecoration[index],
-                                circularForeground[index],
-                                circularColorConvention[index]
-                            ).Build(
-                                modifier = modifier[index]
-                                    .size(250.dp),
-                                chartTitle = ""
-                            )
-                        }
+                        RingChart(
+                            circularCenter[index],
+                            circularRingData.toRingTargetData(),
+                            circularDecoration[index],
+                            circularForeground[index],
+                            circularColorConvention[index]
+                        ).Build(modifier = modifier[index].size(250.dp))
                     }
                 }
             }

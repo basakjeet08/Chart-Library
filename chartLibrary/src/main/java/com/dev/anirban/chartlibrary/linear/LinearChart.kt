@@ -7,16 +7,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.linear.colorconvention.DefaultColorConvention
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearChartInterface
@@ -84,13 +80,9 @@ open class LinearChart(
      * This is the Build Function which starts composing the Charts and composes the Charts
      *
      * @param modifier This is for default modifications to be passed from the parent Class
-     * @param chartTitle This is the title of the chart
      */
     @Composable
-    override fun Build(
-        modifier: Modifier,
-        chartTitle: String
-    ) {
+    override fun Build(modifier: Modifier) {
 
         Column(
             modifier = Modifier
@@ -99,26 +91,6 @@ open class LinearChart(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // Checking if any chart title is passed
-            if (chartTitle.isNotBlank()) {
-
-                // Chart Title
-                Text(
-                    text = chartTitle,
-
-                    modifier = Modifier
-                        .fillMaxWidth(),
-
-                    // Text Features
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.W600,
-                    color = decoration.textColor,
-                )
-
-                Spacer(modifier = Modifier.height(32.dp))
-            }
 
             Box(
                 modifier = modifier
@@ -155,7 +127,6 @@ open class LinearChart(
          * It can draw Single Line Charts as well as multiple Line Charts
          *
          * @param modifier This is to be passed from the Parent Class for the modifications
-         * @param chartTitle This is the title of the Whole Chart
          * @param margin This is the implementation for drawing the Margins
          * @param decoration This is the implementation for drawing the Decorations
          * @param linearData This is the implementation for keeping the Linear Chart data and calculations
@@ -166,7 +137,6 @@ open class LinearChart(
         @Composable
         fun LineChart(
             modifier: Modifier = Modifier,
-            chartTitle: String,
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
             linearData: LinearDataInterface,
@@ -178,16 +148,12 @@ open class LinearChart(
             linearData = linearData,
             plotting = plotting,
             colorConvention = colorConvention
-        ).Build(
-            modifier = modifier,
-            chartTitle = chartTitle
-        )
+        ).Build(modifier = modifier)
 
         /**
          * This function creates an object of the LinearChart which draws a basic Bar chart
          *
          * @param modifier This is to be passed from the Parent Class for the modifications
-         * @param chartTitle This is the title of the Whole Chart
          * @param margin This is the implementation for drawing the Margins
          * @param decoration This is the implementation for drawing the Decorations
          * @param linearData This is the implementation for keeping the Linear Chart data and calculations
@@ -198,7 +164,6 @@ open class LinearChart(
         @Composable
         fun BarChart(
             modifier: Modifier = Modifier,
-            chartTitle: String,
             margin: MarginInterface = NumberMargin(),
             decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
@@ -210,9 +175,6 @@ open class LinearChart(
             linearData = linearData,
             plotting = plotting,
             colorConvention = colorConvention
-        ).Build(
-            modifier = modifier,
-            chartTitle = chartTitle
-        )
+        ).Build(modifier = modifier)
     }
 }

@@ -2,6 +2,7 @@ package com.dev.anirban.screens.utils
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,10 +11,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * This function is the Card view Template used
@@ -24,6 +29,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CustomCard(
     modifier: Modifier = Modifier,
+    title: String? = null,
     body: @Composable () -> Unit
 ) {
 
@@ -44,8 +50,28 @@ fun CustomCard(
                 .background(MaterialTheme.colorScheme.surface)
                 .fillMaxWidth()
         ) {
-            // Graph Body Function
-            body()
+
+            Column {
+                if (!title.isNullOrEmpty()) {
+
+                    Text(
+                        text = title,
+
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 24.dp, start = 24.dp, end = 24.dp),
+
+                        // Text Features
+                        textAlign = TextAlign.Start,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.W600,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
+
+                // Graph Body Function
+                body()
+            }
         }
     }
 

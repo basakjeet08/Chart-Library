@@ -44,12 +44,12 @@ import com.dev.anirban.ui.theme.InterFontFamily
 // Preview Composable Function
 @Preview(
     "Light",
-    heightDp = 1570,
+    heightDp = 1530,
     showBackground = true
 )
 @Preview(
     name = "Dark",
-    heightDp = 1570,
+    heightDp = 1530,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true
 )
@@ -72,11 +72,12 @@ fun WaterDayStats() {
     ) {
 
         // This function draws an elevated Card View
-        CustomCard {
+        CustomCard(
+            title = "Daily Progress"
+        ) {
 
             Column {
                 DonutChartWithDataAtSide.TargetDonutChart(
-                    chartTitle = "Daily Progress",
                     circularData = TargetData(
                         target = 4000f,
                         achieved = 5000f,
@@ -158,9 +159,10 @@ fun WaterDayStats() {
             WaterWeatherCardBody()
         }
 
-        CustomCard {
+        CustomCard(
+            title = "Daily Progress"
+        ) {
             LinearChart.BarChart(
-                chartTitle = "Daily Progress",
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         Point.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
@@ -172,9 +174,10 @@ fun WaterDayStats() {
             )
         }
 
-        CustomCard {
+        CustomCard(
+            title = "Ratio"
+        ) {
             DonutChartWithDataAtSide.RowDonutChart(
-                chartTitle = "Ratio",
                 circularData = DonutListData(
                     itemsList = listOf(
                         Pair("Water", 1500f),
@@ -196,10 +199,11 @@ fun WaterDayStats() {
             )
         }
 
-        CustomCard {
+        CustomCard(
+            title = "Beverages"
+        ) {
             Column {
                 LinearChart.LineChart(
-                    chartTitle = "Beverages",
                     linearData = LinearData(
                         yAxisReadings = listOf(
                             Point.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),

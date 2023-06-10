@@ -70,8 +70,7 @@ interface LinearChartInterface {
      * This is the Build Function which starts composing the Charts and composes the Charts
      *
      * @param modifier This is for default modifications to be passed from the parent Class
-     * @param chartTitle This is the title of the chart
      */
     @Composable
-    fun Build(modifier: Modifier, chartTitle: String)
+    fun Build(modifier: Modifier)
 }
