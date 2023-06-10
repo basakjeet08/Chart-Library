@@ -70,10 +70,10 @@ fun WaterMonthStats() {
             LinearChart.LineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(5f, 10f, 6f, 4f, 8f, 10f, 6f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6.2f, 7.4f, 7f, 5.9f)
                     ),
                     xAxisReadings = LinearPoint.pointDataBuilder(
-                        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 )
             )
@@ -108,7 +108,7 @@ fun WaterMonthStats() {
                             LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
                         ),
                         xAxisReadings = LinearPoint.pointDataBuilder(
-                            "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+                            "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                         )
                     ),
                     colorConvention = LinearGridColorConvention(
