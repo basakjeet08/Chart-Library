@@ -10,7 +10,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.dev.anirban.screens.LibraryUIExample
 import com.dev.anirban.screens.components.TabOptionListUI
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
@@ -60,8 +59,8 @@ fun WaterStatsScreen(
         when (selectedItem.value) {
             0 -> WaterDayStats()
             1 -> WaterWeekStats()
-            2 -> WaterDayStats()
-            3 -> LibraryUIExample()
+            2 -> WaterMonthStats()
+            3 -> WaterYearlyStats()
         }
     }
 }
