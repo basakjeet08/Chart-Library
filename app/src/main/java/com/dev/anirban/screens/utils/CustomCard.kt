@@ -51,7 +51,10 @@ fun CustomCard(
                 .fillMaxWidth()
         ) {
 
-            Column {
+            Column(
+                modifier = Modifier
+                    .padding(8.dp)
+            ) {
                 if (!title.isNullOrEmpty()) {
 
                     Text(
@@ -59,7 +62,7 @@ fun CustomCard(
 
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 24.dp, start = 24.dp, end = 24.dp),
+                            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
 
                         // Text Features
                         textAlign = TextAlign.Start,

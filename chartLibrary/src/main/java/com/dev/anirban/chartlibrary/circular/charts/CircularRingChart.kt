@@ -113,7 +113,7 @@ class CircularRingChart(
             circularColorConvention: CircularColorConventionInterface = CircularDefaultColorConvention()
         ) = CircularRingChart(
             circularCenter,
-            circularData.toRingTargetData(),
+            circularData.toCircularRingTargetData(),
             circularDecoration,
             circularForeground,
             circularColorConvention
@@ -168,7 +168,7 @@ class CircularRingChart(
 
                         CircularRingChart(
                             circularCenter[index],
-                            circularRingData.toRingTargetData(),
+                            circularRingData.toCircularRingTargetData(),
                             circularDecoration[index],
                             circularForeground[index],
                             circularColorConvention[index]

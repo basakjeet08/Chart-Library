@@ -22,7 +22,7 @@ class CircularTargetDataBuilder(
     /**
      * This function converts the [CircularTargetDataBuilder] class object into [CircularDonutTargetData] object
      */
-    fun toDonutTargetData() = CircularDonutTargetData(
+    fun toCircularDonutTargetData() = CircularDonutTargetData(
         itemsList = listOf(
             Pair("Target", target),
             Pair("Achieved", achieved)
@@ -35,7 +35,7 @@ class CircularTargetDataBuilder(
     /**
      * This function converts the [CircularTargetDataBuilder] class object into [CircularRingTargetData] class object
      */
-    fun toRingTargetData() = CircularRingTargetData(
+    fun toCircularRingTargetData() = CircularRingTargetData(
         itemsList = listOf(
             Pair("Target", target),
             Pair("Achieved", achieved)

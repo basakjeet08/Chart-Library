@@ -1,13 +1,27 @@
 package com.dev.anirban.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.circular.CircularChart
+import com.dev.anirban.chartlibrary.circular.center.CircularImageCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularTargetTextCenter
 import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartColumn
@@ -16,6 +30,7 @@ import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart
 import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
 import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
@@ -237,6 +252,52 @@ fun LibraryUIExample() {
                     )
                 )
             )
+        }
+
+        CustomCard(
+            title = "Weekly Progress"
+        ) {
+            Row {
+
+                listOf("M", "T", "W", "T", "F", "S", "S").forEach {
+
+                    Column(
+                        modifier = Modifier
+                            .weight(1f),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+
+                        CircularChart.DonutChartImage(
+                            modifier = Modifier
+                                .size(55.dp),
+                            circularData = CircularTargetDataBuilder(
+                                target = 100f,
+                                achieved = 81f,
+                                siUnit = "",
+                                cgsUnit = "",
+                                conversionRate = { it }
+                            ),
+                            circularCenter = CircularImageCenter(
+                                image = Icons.Default.Check,
+                                contentDescription = "Achieved"
+                            ),
+                            circularForeground = CircularDonutTargetForeground(strokeWidth = 10f)
+                        )
+
+                        Text(
+                            text = it,
+
+                            // Text Features
+                            textAlign = TextAlign.Start,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.W700,
+                            color = MaterialTheme.colorScheme.onSurface,
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                }
+            }
         }
     }
 }

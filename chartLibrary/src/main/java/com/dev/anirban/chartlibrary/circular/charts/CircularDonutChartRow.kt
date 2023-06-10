@@ -142,7 +142,7 @@ open class CircularDonutChartRow(
 
 
         /**
-         * This function creates an object of the [CircularDonutChartColumn] which draws a basic
+         * This function creates an object of the [CircularDonutChartRow] which draws a basic
          * donut chart with its color conventions drawn at side but the data is in the form of
          * Target and Achieved
          *
@@ -163,7 +163,7 @@ open class CircularDonutChartRow(
             circularColorConvention: CircularColorConventionInterface = CircularTargetColorConvention()
         ) = CircularDonutChartRow(
             circularCenter = circularCenter,
-            circularData = circularData.toDonutTargetData(),
+            circularData = circularData.toCircularDonutTargetData(),
             circularDecoration = circularDecoration,
             circularForeground = circularForeground,
             circularColorConvention = circularColorConvention
