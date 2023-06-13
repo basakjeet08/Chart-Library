@@ -19,40 +19,37 @@ import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow
 import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
-import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
-import com.dev.anirban.screens.components.WaterOverHydrationNote
-import com.dev.anirban.screens.components.WaterSunnyCardBody
-import com.dev.anirban.screens.components.WaterWeatherCardBody
+import com.dev.anirban.screens.components.WaterAmountConsumedBody
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 import com.dev.anirban.ui.theme.InterFontFamily
 
 // Preview Composable Function
 @Preview(
     "Light",
-    heightDp = 1585,
+    heightDp = 1060,
     showBackground = true
 )
 @Preview(
     name = "Dark",
-    heightDp = 1585,
+    heightDp = 1060,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true
 )
 @Composable
 private fun DefaultPreview() {
     ChartLibraryTheme {
-        WaterDayStats()
+        WaterYearlyStats()
     }
 }
 
 @Composable
-fun WaterDayStats() {
+fun WaterYearlyStats() {
 
     // This Column contains the body of the screen
     Column(
@@ -61,86 +58,53 @@ fun WaterDayStats() {
             .fillMaxSize()
     ) {
 
-        // This function draws an elevated Card View
+        // Amount Consumed Card
         CustomCard(
-            title = "Daily Progress"
+            title = "Amount Consumed",
+            heightBetweenTitleAndBody = 24.dp
         ) {
-
-            Column {
-                CircularDonutChartRow.DonutChartTarget(
-                    circularData = CircularTargetDataBuilder(
-                        target = 4000f,
-                        achieved = 5000f,
-                        siUnit = "L",
-                        cgsUnit = "mL",
-                        conversionRate = { it / 1000f }
-                    )
-                )
-
-                // Draw Over Hydration Text in the UI
-                WaterOverHydrationNote(labelIcon = R.drawable.image_note)
-            }
-        }
-
-        // Sunny Water Intake Increase Prompt Card
-        CustomCard {
-            WaterSunnyCardBody(
-                startLabelIcon = R.drawable.image_sunny,
-                endLabelIcon = R.drawable.image_upward_arrow
+            WaterAmountConsumedBody(
+                averageIcon = R.drawable.image_water_daily_average,
+                totalIcon = R.drawable.image_water_total
             )
         }
 
-        // Weather Water Intake Increase Prompt Card
-        CustomCard {
-            WaterWeatherCardBody(
-                startLabelIcon = R.drawable.image_night_shift,
-                endLabelIcon = R.drawable.image_upward_arrow
-            )
-        }
+        // Weekly Progress Line Chart
+        CustomCard(title = "Yearly Progress") {
 
-        CustomCard(
-            title = "Daily Progress"
-        ) {
-            LinearChart.BarChart(
+            LinearChart.LineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6.2f, 7.4f, 7f, 5.9f)
                     ),
                     xAxisReadings = LinearPoint.pointDataBuilder(
-                        "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
+                        "2016", "2017", "2018", "2019", "2020", "2021", "2022"
                     )
                 )
             )
         }
 
-        CustomCard(
-            title = "Ratio"
-        ) {
+        // Ratio Chart
+        CustomCard(title = "Ratio") {
             CircularDonutChartRow.DonutChartRow(
                 circularData = CircularDonutListData(
                     itemsList = listOf(
                         Pair("Water", 1500f),
                         Pair("Juice", 300f),
-                        Pair("Soft Drink", 500f)
+                        Pair("Soft Drinks", 500f)
                     ),
                     siUnit = "L",
                     cgsUnit = "mL",
                     conversionRate = { it / 1000f }
                 ),
-                circularDecoration = CircularDecoration(
-                    textColor = MaterialTheme.colorScheme.onSurface,
-                    colorList = listOf(
-                        Color.Blue,
-                        Color.Green,
-                        Color.Red
-                    )
+                circularDecoration = CircularDecoration.donutChartDecorations(
+                    colorList = listOf(Color.Blue, Color.Green, Color.Red)
                 )
             )
         }
 
-        CustomCard(
-            title = "Beverages"
-        ) {
+        // Double Line Chart for the Beverages
+        CustomCard(title = "Beverages") {
             Column {
                 LinearChart.LineChart(
                     linearData = LinearData(
@@ -158,7 +122,7 @@ fun WaterDayStats() {
                 )
 
                 Text(
-                    text = "Over hydration",
+                    text = "Beverages",
 
                     // Modifications
                     modifier = Modifier
@@ -166,7 +130,7 @@ fun WaterDayStats() {
 
                     // Text and Font Properties
                     textAlign = TextAlign.Start,
-                    color = Color.Red,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontFamily = InterFontFamily,
                     fontWeight = FontWeight.W600,
                     fontSize = 16.sp

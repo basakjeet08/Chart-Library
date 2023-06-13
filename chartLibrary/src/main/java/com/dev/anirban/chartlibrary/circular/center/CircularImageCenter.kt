@@ -31,11 +31,20 @@ class CircularImageCenter(
         circularData: CircularDataInterface,
         decoration: CircularDecoration
     ) {
-        Icon(
-            imageVector = image,
-            contentDescription = contentDescription,
-            modifier = Modifier
-                .size(24.dp)
-        )
+
+        // Percentage to be shown
+        var percentage = circularData.itemsList[1].second / circularData.itemsList[0].second * 100
+
+        if (percentage.isNaN())
+            percentage = 0f
+
+        if (percentage >= 100f) {
+            Icon(
+                imageVector = image,
+                contentDescription = contentDescription,
+                modifier = Modifier
+                    .size(24.dp)
+            )
+        }
     }
 }

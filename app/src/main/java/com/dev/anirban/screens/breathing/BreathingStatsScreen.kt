@@ -1,4 +1,4 @@
-package com.dev.anirban.screens.water
+package com.dev.anirban.screens.breathing
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -16,23 +16,23 @@ import com.dev.anirban.ui.theme.ChartLibraryTheme
 // Preview Composable Function
 @Preview(
     "Light",
-    heightDp = 1630
+    heightDp = 2000
 )
 @Preview(
     name = "Dark",
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true,
-    heightDp = 1630
+    heightDp = 2000
 )
 @Composable
 private fun DefaultPreview() {
     ChartLibraryTheme {
-        WaterStatsScreen()
+        BreathingStatsScreen()
     }
 }
 
 @Composable
-fun WaterStatsScreen(
+fun BreathingStatsScreen(
     modifier: Modifier = Modifier
 ) {
 
@@ -61,10 +61,10 @@ fun WaterStatsScreen(
         }
 
         when (selectedItem.value) {
-            0 -> WaterDayStats()
-            1 -> WaterWeekStats()
-            2 -> WaterMonthStats()
-            3 -> WaterYearlyStats()
+            0 -> BreathingDayStats()
+            1 -> BreathingWeeklyStats()
+            2 -> BreathingMonthlyStats()
+            3 -> BreathingYearlyStats()
         }
     }
 }
