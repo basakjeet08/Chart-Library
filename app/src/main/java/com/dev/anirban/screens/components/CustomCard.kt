@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -24,12 +25,15 @@ import androidx.compose.ui.unit.sp
  * This function is the Card view Template used
  *
  * @param modifier To be passed by the Parent Class
+ * @param title This is the title for the card
+ * @param heightBetweenTitleAndBody This is the extra height between the body and the title
  * @param body The UI which will be drawn inside this card
  */
 @Composable
 fun CustomCard(
     modifier: Modifier = Modifier,
     title: String? = null,
+    heightBetweenTitleAndBody: Dp = 0.dp,
     body: @Composable () -> Unit
 ) {
 
@@ -70,6 +74,9 @@ fun CustomCard(
                         fontWeight = FontWeight.W600,
                         color = MaterialTheme.colorScheme.onSurface,
                     )
+
+                    // Giving a space between the title and the body of the card
+                    Spacer(modifier = Modifier.height(heightBetweenTitleAndBody))
                 }
 
                 // Graph Body Function

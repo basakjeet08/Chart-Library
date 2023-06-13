@@ -39,7 +39,10 @@ import com.dev.anirban.ui.theme.InterFontFamily
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            WaterAmountConsumedBody()
+            WaterAmountConsumedBody(
+                averageIcon = R.drawable.image_water_daily_average,
+                totalIcon = R.drawable.image_water_total
+            )
         }
     }
 }
@@ -47,7 +50,9 @@ private fun DefaultPreview() {
 
 @Composable
 fun WaterAmountConsumedBody(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    averageIcon: Int,
+    totalIcon: Int
 ) {
 
     Row(
@@ -63,10 +68,10 @@ fun WaterAmountConsumedBody(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = averageIcon),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(68.dp)
+                    .size(32.dp)
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -78,8 +83,8 @@ fun WaterAmountConsumedBody(
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f),
                 fontFamily = InterFontFamily,
-                fontWeight = FontWeight.W400,
-                fontSize = 14.sp
+                fontWeight = FontWeight.W500,
+                fontSize = 12.sp
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -89,7 +94,7 @@ fun WaterAmountConsumedBody(
 
                 // Text and Font Properties
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f),
+                color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = InterFontFamily,
                 fontWeight = FontWeight.W700,
                 fontSize = 16.sp
@@ -102,10 +107,10 @@ fun WaterAmountConsumedBody(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = totalIcon),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(68.dp)
+                    .size(34.dp)
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -117,8 +122,8 @@ fun WaterAmountConsumedBody(
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f),
                 fontFamily = InterFontFamily,
-                fontWeight = FontWeight.W400,
-                fontSize = 14.sp
+                fontWeight = FontWeight.W500,
+                fontSize = 12.sp
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -128,7 +133,7 @@ fun WaterAmountConsumedBody(
 
                 // Text and Font Properties
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f),
+                color = MaterialTheme.colorScheme.onSurface,
                 fontFamily = InterFontFamily,
                 fontWeight = FontWeight.W700,
                 fontSize = 16.sp

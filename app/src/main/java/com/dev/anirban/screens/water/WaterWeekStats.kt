@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow
 import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
@@ -66,9 +67,13 @@ fun WaterWeekStats() {
 
         // Amount Consumed Card
         CustomCard(
-            title = "Amount Consumed"
+            title = "Amount Consumed",
+            heightBetweenTitleAndBody = 24.dp
         ) {
-            WaterAmountConsumedBody()
+            WaterAmountConsumedBody(
+                averageIcon = R.drawable.image_water_daily_average,
+                totalIcon = R.drawable.image_water_total
+            )
         }
 
         // Weekly Progress Bar Chart

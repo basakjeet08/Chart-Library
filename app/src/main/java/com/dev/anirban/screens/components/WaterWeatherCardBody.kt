@@ -1,6 +1,7 @@
 package com.dev.anirban.screens.components
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,21 +11,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 import com.dev.anirban.ui.theme.InterFontFamily
 
@@ -39,16 +38,23 @@ import com.dev.anirban.ui.theme.InterFontFamily
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            WaterWeatherCardBody()
+            WaterWeatherCardBody(
+                startLabelIcon = R.drawable.image_night_shift,
+                endLabelIcon = R.drawable.image_upward_arrow
+            )
         }
     }
 }
 
 @Composable
-fun WaterWeatherCardBody() {
+fun WaterWeatherCardBody(
+    modifier: Modifier = Modifier,
+    startLabelIcon: Int,
+    endLabelIcon: Int
+) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(12.dp)
             .fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -63,10 +69,10 @@ fun WaterWeatherCardBody() {
         ) {
             Row {
 
-                Icon(
+                Image(
                     modifier = Modifier
                         .size(24.dp),
-                    imageVector = Icons.Default.Settings,
+                    painter = painterResource(id = startLabelIcon),
                     contentDescription = "Anything"
                 )
 
@@ -79,12 +85,14 @@ fun WaterWeatherCardBody() {
                     textAlign = TextAlign.Start,
                     color = MaterialTheme.colorScheme.onSurface,
                     fontFamily = InterFontFamily,
-                    fontWeight = FontWeight.W500,
+                    fontWeight = FontWeight.W400,
                     fontSize = 16.sp
                 )
             }
 
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
                     text = "500 mL",
 
@@ -96,12 +104,12 @@ fun WaterWeatherCardBody() {
                     fontSize = 16.sp
                 )
 
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(6.dp))
 
-                Icon(
+                Image(
                     modifier = Modifier
-                        .size(24.dp),
-                    imageVector = Icons.Default.KeyboardArrowUp,
+                        .size(16.dp),
+                    painter = painterResource(id = endLabelIcon),
                     contentDescription = "increase"
                 )
             }

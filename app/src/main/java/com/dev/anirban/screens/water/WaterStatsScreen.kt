@@ -4,21 +4,25 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.dev.anirban.screens.components.TabOptionListUI
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 // Preview Composable Function
-@Preview("Light")
+@Preview(
+    "Light",
+    heightDp = 1630
+)
 @Preview(
     name = "Dark",
     uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true
+    showBackground = true,
+    heightDp = 1630
 )
 @Composable
 private fun DefaultPreview() {
@@ -35,7 +39,7 @@ fun WaterStatsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.LightGray)
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = .9f))
     ) {
 
         // This is the Item which is selected in the Tab Option Layout

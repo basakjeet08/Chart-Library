@@ -1,6 +1,7 @@
 package com.dev.anirban.screens.components
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,21 +11,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 import com.dev.anirban.ui.theme.InterFontFamily
 
@@ -39,7 +38,10 @@ import com.dev.anirban.ui.theme.InterFontFamily
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            WaterSunnyCardBody()
+            WaterSunnyCardBody(
+                startLabelIcon = R.drawable.image_sunny,
+                endLabelIcon = R.drawable.image_upward_arrow
+            )
         }
     }
 }
@@ -50,7 +52,9 @@ private fun DefaultPreview() {
  */
 @Composable
 fun WaterSunnyCardBody(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    startLabelIcon: Int,
+    endLabelIcon: Int
 ) {
     Column(
         modifier = modifier
@@ -72,10 +76,10 @@ fun WaterSunnyCardBody(
             ) {
 
                 // Sunny Icon
-                Icon(
+                Image(
                     modifier = Modifier
                         .size(24.dp),
-                    imageVector = Icons.Default.AccountBox,
+                    painter = painterResource(id = startLabelIcon),
                     contentDescription = null
                 )
 
@@ -92,7 +96,7 @@ fun WaterSunnyCardBody(
                         textAlign = TextAlign.Start,
                         color = MaterialTheme.colorScheme.onSurface,
                         fontFamily = InterFontFamily,
-                        fontWeight = FontWeight.W500,
+                        fontWeight = FontWeight.W400,
                         fontSize = 16.sp
                     )
 
@@ -105,13 +109,15 @@ fun WaterSunnyCardBody(
                         color = MaterialTheme.colorScheme.onSurface,
                         fontFamily = InterFontFamily,
                         fontWeight = FontWeight.W600,
-                        fontSize = 16.sp
+                        fontSize = 18.sp
                     )
                 }
             }
 
             // 500mL Text with the Upward Arrow Icon
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
                 // 500mL addition Text
                 Text(
@@ -125,13 +131,13 @@ fun WaterSunnyCardBody(
                     fontSize = 16.sp
                 )
 
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(6.dp))
 
                 // Upward Icon Text
-                Icon(
+                Image(
                     modifier = Modifier
-                        .size(24.dp),
-                    imageVector = Icons.Default.KeyboardArrowUp,
+                        .size(16.dp),
+                    painter = painterResource(id = endLabelIcon),
                     contentDescription = "increase"
                 )
             }
