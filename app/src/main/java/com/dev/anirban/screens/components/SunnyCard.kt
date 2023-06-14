@@ -37,22 +37,31 @@ import com.dev.anirban.ui.theme.ChartLibraryTheme
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            BreathingSunnyCard()
+            SunnyCard(
+                temperature = "22°C",
+                location = "Bengaluru",
+                image = R.drawable.image_sun
+            )
         }
     }
 }
 
 @Composable
-fun BreathingSunnyCard() {
+fun SunnyCard(
+    modifier: Modifier = Modifier,
+    temperature: String,
+    location: String,
+    image: Int
+) {
     Column {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "Sunny - 22°C",
+                    text = "Sunny - $temperature",
 
                     modifier = Modifier
                         .padding(top = 16.dp, start = 16.dp),
@@ -66,7 +75,7 @@ fun BreathingSunnyCard() {
 
 
                 Text(
-                    text = "Bengaluru",
+                    text = location,
 
                     modifier = Modifier
                         .padding(top = 4.dp, start = 16.dp),
@@ -81,8 +90,8 @@ fun BreathingSunnyCard() {
             }
 
             Image(
-                painter = painterResource(id = R.drawable.image_sun),
-                contentDescription = "Sun",
+                painter = painterResource(id = image),
+                contentDescription = null,
                 modifier = Modifier
                     .size(120.dp)
                     .weight(1f),

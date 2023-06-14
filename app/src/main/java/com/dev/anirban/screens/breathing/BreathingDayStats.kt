@@ -19,10 +19,10 @@ import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
-import com.dev.anirban.screens.components.BreathingMoodCard
-import com.dev.anirban.screens.components.BreathingSunnyCard
+import com.dev.anirban.screens.components.SunnyCard
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
+import com.dev.anirban.screens.components.MoodCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 // Preview Composable Function
@@ -70,7 +70,11 @@ fun BreathingDayStats() {
 
         // Sunny Card
         CustomCard {
-            BreathingSunnyCard()
+            SunnyCard(
+                temperature = "22°C",
+                location = "Bengaluru",
+                image = R.drawable.image_sun
+            )
         }
 
         // Air Purity Ring Chart
@@ -151,7 +155,10 @@ fun BreathingDayStats() {
 
         // Shows today's Mood
         CustomCard {
-            BreathingMoodCard()
+            MoodCard(
+                moodImage = R.drawable.image_happy_face,
+                moodText = "I feel Happy Today"
+            )
         }
 
         // Heart Rate Line Chart

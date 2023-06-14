@@ -38,13 +38,19 @@ import com.dev.anirban.ui.theme.ChartLibraryTheme
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            BreathingMoodCard()
+            MoodCard(
+                moodImage = R.drawable.image_happy_face,
+                moodText = "I feel Happy Today"
+            )
         }
     }
 }
 
 @Composable
-fun BreathingMoodCard() {
+fun MoodCard(
+    moodImage: Int,
+    moodText: String
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -69,10 +75,9 @@ fun BreathingMoodCard() {
                 fontWeight = FontWeight.W600,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = .7f),
             )
-
             Image(
-                painter = painterResource(id = R.drawable.image_happy_face),
-                contentDescription = "Happy Face",
+                painter = painterResource(id = moodImage),
+                contentDescription = null,
                 modifier = Modifier
                     .size(58.dp)
                     .padding(top = 8.dp)
@@ -80,7 +85,7 @@ fun BreathingMoodCard() {
         }
 
         Text(
-            text = "I feel Happy Today",
+            text = moodText,
 
             modifier = Modifier
                 .weight(1f),
@@ -91,6 +96,5 @@ fun BreathingMoodCard() {
             fontWeight = FontWeight.W600,
             color = Color.Blue,
         )
-
     }
 }

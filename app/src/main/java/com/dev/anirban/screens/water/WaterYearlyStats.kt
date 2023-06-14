@@ -25,7 +25,7 @@ import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConven
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
-import com.dev.anirban.screens.components.WaterAmountConsumedBody
+import com.dev.anirban.screens.components.DetailsCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 import com.dev.anirban.ui.theme.InterFontFamily
 
@@ -63,9 +63,13 @@ fun WaterYearlyStats() {
             title = "Amount Consumed",
             heightBetweenTitleAndBody = 24.dp
         ) {
-            WaterAmountConsumedBody(
-                averageIcon = R.drawable.image_water_daily_average,
-                totalIcon = R.drawable.image_water_total
+            DetailsCard(
+                imageList = listOf(
+                    R.drawable.image_water_daily_average,
+                    R.drawable.image_water_total
+                ),
+                headerTextList = listOf("Daily Avg", "Total"),
+                valueList = listOf("2875 mL", "2025 mL")
             )
         }
 

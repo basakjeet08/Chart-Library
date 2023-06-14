@@ -40,7 +40,13 @@ import com.dev.anirban.ui.theme.InterFontFamily
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            WaterOverHydrationNote(labelIcon = R.drawable.image_note)
+            NoteCard(
+                labelIcon = R.drawable.image_note,
+                title = "Over hydration",
+                secondaryTitle = "You have crossed your daily intake",
+                bodyText = "Over hydration can lead to water intoxication. This occurs when " +
+                        "the amount of salt and other electrolytes in your body become too diluted."
+            )
         }
     }
 }
@@ -48,9 +54,12 @@ private fun DefaultPreview() {
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
-fun WaterOverHydrationNote(
+fun NoteCard(
     modifier: Modifier = Modifier,
-    labelIcon: Int
+    labelIcon: Int,
+    title: String,
+    secondaryTitle: String,
+    bodyText: String
 ) {
     Column {
 
@@ -69,7 +78,7 @@ fun WaterOverHydrationNote(
             Spacer(modifier = Modifier.width(4.dp))
 
             Text(
-                text = "Over hydration",
+                text = title,
 
                 // Text and Font Properties
                 textAlign = TextAlign.Start,
@@ -81,7 +90,7 @@ fun WaterOverHydrationNote(
         }
 
         Text(
-            text = "You have crossed your daily intake",
+            text = secondaryTitle,
 
             // Modifications
             modifier = Modifier
@@ -96,8 +105,7 @@ fun WaterOverHydrationNote(
         )
 
         Text(
-            text = "Over hydration can lead to water intoxication. This occurs when " +
-                    "the amount of salt and other electrolytes in your body become too diluted.",
+            text = bodyText,
 
             // Modifications
             modifier = Modifier

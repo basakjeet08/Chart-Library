@@ -38,10 +38,41 @@ import com.dev.anirban.ui.theme.InterFontFamily
 private fun DefaultPreview() {
     ChartLibraryTheme {
         Surface {
-            WaterSunnyCardBody(
+            ChangeInPlanCard(
                 startLabelIcon = R.drawable.image_sunny,
-                endLabelIcon = R.drawable.image_upward_arrow
-            )
+                endLabelIcon = R.drawable.image_upward_arrow,
+                value = "500 mL",
+                bodyText = "Due to high rise in temperature extra 500 ml " +
+                        " of water is added to the Target. "
+            ) {
+                // Sunny Text and the temperature in Degree
+                Column {
+
+                    // Sunny Text
+                    Text(
+                        text = "Sunny",
+
+                        // Text and Font Properties
+                        textAlign = TextAlign.Start,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontFamily = InterFontFamily,
+                        fontWeight = FontWeight.W400,
+                        fontSize = 16.sp
+                    )
+
+                    // Degree Text
+                    Text(
+                        text = "32 °C",
+
+                        // Text and Font Properties
+                        textAlign = TextAlign.Start,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontFamily = InterFontFamily,
+                        fontWeight = FontWeight.W600,
+                        fontSize = 18.sp
+                    )
+                }
+            }
         }
     }
 }
@@ -51,10 +82,13 @@ private fun DefaultPreview() {
  * Sunny Conditions
  */
 @Composable
-fun WaterSunnyCardBody(
+fun ChangeInPlanCard(
     modifier: Modifier = Modifier,
     startLabelIcon: Int,
-    endLabelIcon: Int
+    endLabelIcon: Int,
+    value: String,
+    bodyText: String,
+    titleComposable: @Composable () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -85,33 +119,8 @@ fun WaterSunnyCardBody(
 
                 Spacer(modifier = Modifier.width(8.dp))
 
-                // Sunny Text and the temperature in Degree
-                Column {
-
-                    // Sunny Text
-                    Text(
-                        text = "Sunny",
-
-                        // Text and Font Properties
-                        textAlign = TextAlign.Start,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontFamily = InterFontFamily,
-                        fontWeight = FontWeight.W400,
-                        fontSize = 16.sp
-                    )
-
-                    // Degree Text
-                    Text(
-                        text = "32 °C",
-
-                        // Text and Font Properties
-                        textAlign = TextAlign.Start,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontFamily = InterFontFamily,
-                        fontWeight = FontWeight.W600,
-                        fontSize = 18.sp
-                    )
-                }
+                // Drawing the Header Title Composable
+                titleComposable()
             }
 
             // 500mL Text with the Upward Arrow Icon
@@ -121,7 +130,7 @@ fun WaterSunnyCardBody(
 
                 // 500mL addition Text
                 Text(
-                    text = "500 mL",
+                    text = value,
 
                     // Text and Font Properties
                     textAlign = TextAlign.Start,
@@ -138,7 +147,7 @@ fun WaterSunnyCardBody(
                     modifier = Modifier
                         .size(16.dp),
                     painter = painterResource(id = endLabelIcon),
-                    contentDescription = "increase"
+                    contentDescription = null
                 )
             }
         }
@@ -147,7 +156,7 @@ fun WaterSunnyCardBody(
 
         // Body Text of the function explaining the user what happened and why his intake has increased
         Text(
-            text = "Due to high rise in temperature extra 500 ml  of water is added to the Target. ",
+            text = bodyText,
 
             // Text and Font Properties
             textAlign = TextAlign.Start,
