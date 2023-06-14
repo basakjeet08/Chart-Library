@@ -10,8 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.dev.anirban.screens.LibraryUIExample
 import com.dev.anirban.screens.components.TopBarUI
-import com.dev.anirban.screens.water.WaterStatsScreen
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                             // Water Stats Main Screen
-                            WaterStatsScreen()
+                            LibraryUIExample()
                         }
                     }
                 }

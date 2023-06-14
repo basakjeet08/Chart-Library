@@ -33,6 +33,8 @@ import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
+import com.dev.anirban.chartlibrary.linear.margins.LinearStringMargin
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
@@ -298,6 +300,29 @@ fun LibraryUIExample() {
                     }
                 }
             }
+        }
+
+        CustomCard {
+            LinearChart.LineChart(
+                linearData = LinearStringData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            4f, 3f, 1f, 2f, 3f, 4f, 2f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        "Hazardous",
+                        "Very Unhealthy",
+                        "Unhealthy",
+                        "Moderate",
+                        "Good"
+                    ).toMutableList()
+                ),
+                margin = LinearStringMargin()
+            )
         }
     }
 }
