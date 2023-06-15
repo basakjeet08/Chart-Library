@@ -2,13 +2,13 @@ package com.dev.anirban.chartlibrary.linear.interfaces
 
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
-import com.dev.anirban.chartlibrary.linear.margins.*
+import com.dev.anirban.chartlibrary.linear.margins.LinearMargin
 
 /**
  * This is the interface which defines that all the Implementation for the Drawing of the margins
  * need to implement this interface.
  *
- * Implementations for this interface are :- [LinearNumberMargin]
+ * Implementations for this interface are :- [LinearMargin]
  *
  */
 interface LinearMarginInterface {

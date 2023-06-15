@@ -20,7 +20,7 @@ import com.dev.anirban.chartlibrary.linear.interfaces.LinearColorConventionInter
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearMarginInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
-import com.dev.anirban.chartlibrary.linear.margins.LinearNumberMargin
+import com.dev.anirban.chartlibrary.linear.margins.LinearMargin
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 
@@ -99,7 +99,9 @@ open class LinearChart(
                     .drawBehind {
 
                         // Calling all the necessary functions
-                        linearData.doCalculations(size)
+                        linearData.apply {
+                            doCalculations(size = size)
+                        }
                         drawMargin()
                         plotChart()
 
@@ -137,7 +139,7 @@ open class LinearChart(
         @Composable
         fun LineChart(
             modifier: Modifier = Modifier,
-            margin: LinearMarginInterface = LinearNumberMargin(),
+            margin: LinearMarginInterface = LinearMargin(),
             decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
             linearData: LinearDataInterface,
             plot: LinearPlotInterface = LinearLinePlot(),
@@ -164,7 +166,7 @@ open class LinearChart(
         @Composable
         fun BarChart(
             modifier: Modifier = Modifier,
-            margin: LinearMarginInterface = LinearNumberMargin(),
+            margin: LinearMarginInterface = LinearMargin(),
             decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
             plot: LinearPlotInterface = LinearBarPlot(),

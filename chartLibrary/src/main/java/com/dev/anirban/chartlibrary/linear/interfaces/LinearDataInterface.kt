@@ -1,8 +1,9 @@
 package com.dev.anirban.chartlibrary.linear.interfaces
 
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
-import com.dev.anirban.chartlibrary.linear.data.*
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new
@@ -40,6 +41,6 @@ interface LinearDataInterface {
     /**
      * THis is the function which contains most of the calculation logic of the graph
      */
-    fun doCalculations(size: Size)
+    fun DrawScope.doCalculations(size: Size)
 
 }
