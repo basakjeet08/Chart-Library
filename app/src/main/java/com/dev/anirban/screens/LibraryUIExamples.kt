@@ -38,7 +38,6 @@ import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeg
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
-import com.dev.anirban.chartlibrary.linear.margins.LinearEmojiMargin
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
@@ -119,7 +118,7 @@ fun LibraryUIExample() {
         CustomCard(
             title = "String Marker Chart"
         ) {
-            LinearChart.LineChart(
+            LinearChart.StringLineChart(
                 linearData = LinearData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(
@@ -144,7 +143,7 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Emoji Marker Chart"
         ) {
-            LinearChart.LineChart(
+            LinearChart.EmojiLineChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(
@@ -172,8 +171,7 @@ fun LibraryUIExample() {
                         getDrawable(LocalContext.current, R.drawable.emoji_calm) as BitmapDrawable,
                         getDrawable(LocalContext.current, R.drawable.emoji_happy) as BitmapDrawable
                     ).toMutableList()
-                ),
-                margin = LinearEmojiMargin()
+                )
             )
         }
 

@@ -14,12 +14,15 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearDefaultColorConvention
+import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearColorConventionInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearMarginInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
+import com.dev.anirban.chartlibrary.linear.margins.LinearEmojiMargin
 import com.dev.anirban.chartlibrary.linear.margins.LinearMargin
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
@@ -170,6 +173,60 @@ open class LinearChart(
             decoration: LinearDecoration = LinearDecoration.barDecorationColors(),
             linearData: LinearDataInterface,
             plot: LinearPlotInterface = LinearBarPlot(),
+            colorConvention: LinearColorConventionInterface = LinearDefaultColorConvention()
+        ) = LinearChart(
+            margin = margin,
+            decoration = decoration,
+            linearData = linearData,
+            plot = plot,
+            colorConvention = colorConvention
+        ).Build(modifier = modifier)
+
+        /**
+         * This function creates an object of the LinearChart which draws a basic String Line chart
+         *
+         * @param modifier This is to be passed from the Parent Class for the modifications
+         * @param margin This is the implementation for drawing the Margins
+         * @param decoration This is the implementation for drawing the Decorations
+         * @param linearData This is the implementation for keeping the Linear Chart data and calculations
+         * @param plot This is the implementation for how shall the plotting be drawn on the graph
+         * @param colorConvention This is the implementation for how we are going to draw all
+         * the color conventions in the graph
+         */
+        @Composable
+        fun StringLineChart(
+            modifier: Modifier = Modifier,
+            margin: LinearMargin = LinearMargin(),
+            decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
+            linearData: LinearData,
+            plot: LinearPlotInterface = LinearLinePlot(),
+            colorConvention: LinearColorConventionInterface = LinearDefaultColorConvention()
+        ) = LinearChart(
+            margin = margin,
+            decoration = decoration,
+            linearData = linearData,
+            plot = plot,
+            colorConvention = colorConvention
+        ).Build(modifier = modifier)
+
+        /**
+         * This function creates an object of the LinearChart which draws a basic Emoji Line chart
+         *
+         * @param modifier This is to be passed from the Parent Class for the modifications
+         * @param margin This is the implementation for drawing the Margins
+         * @param decoration This is the implementation for drawing the Decorations
+         * @param linearData This is the implementation for keeping the Linear Chart data and calculations
+         * @param plot This is the implementation for how shall the plotting be drawn on the graph
+         * @param colorConvention This is the implementation for how we are going to draw all
+         * the color conventions in the graph
+         */
+        @Composable
+        fun EmojiLineChart(
+            modifier: Modifier = Modifier,
+            margin: LinearEmojiMargin = LinearEmojiMargin(),
+            decoration: LinearDecoration = LinearDecoration.lineDecorationColors(),
+            linearData: LinearEmojiData,
+            plot: LinearPlotInterface = LinearLinePlot(),
             colorConvention: LinearColorConventionInterface = LinearDefaultColorConvention()
         ) = LinearChart(
             margin = margin,
