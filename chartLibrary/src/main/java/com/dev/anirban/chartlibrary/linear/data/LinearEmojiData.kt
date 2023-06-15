@@ -1,11 +1,9 @@
 package com.dev.anirban.chartlibrary.linear.data
 
-import android.graphics.Paint
-import android.graphics.Rect
-import android.graphics.Typeface
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 
@@ -16,19 +14,19 @@ import com.dev.anirban.chartlibrary.linear.util.LinearPoint
  * @param xAxisReadings These are the readings of the X - Axis
  * @param yAxisReadings These are the readings of the Y - Axis
  * @param yMarkerList This is the list of marker which are present in the Y - Axis
- * @param numOfYMarkers These are teh num of markers in Y-axis
  */
-class LinearData(
+class LinearEmojiData(
     override val yAxisReadings: List<List<LinearPoint<Float>>>,
     override val xAxisReadings: List<LinearPoint<String>>,
     override var yMarkerList: MutableList<LinearPoint<*>> = mutableListOf(),
-    override var numOfYMarkers: Int = 5
+    val dimension: Int = 50
 ) : LinearDataInterface {
 
     /**
      * These are the num of markers in X-Axis
      */
     override val numOfXMarkers: Int = xAxisReadings.size
+    override var numOfYMarkers: Int = yMarkerList.size
 
     /**
      * Upper Y - Axis Reading or the Maximum Reading of the Graph
@@ -47,54 +45,12 @@ class LinearData(
 
     init {
 
-        // Checking if the markers are provided or we need to calculate
-        if (yMarkerList.isNotEmpty()) {
+        // Storing the upper Bound and Lower bound of Y Markers
+        yUpperReading = yMarkerList.size - 1
+        yLowerReading = 0
 
-            numOfYMarkers = yMarkerList.size
-
-            // Storing the upper Bound and Lower bound of Y Markers
-            yUpperReading = yMarkerList.size - 1
-            yLowerReading = 0
-
-            // Difference between each Y Markers
-            yDividend = 1
-        } else {
-
-            // Maximum and minimum value provided is calculated
-            val yMax = yAxisReadings.maxOf {
-                it.maxOf { point ->
-                    point.value
-                }
-            }
-            val yMin = yAxisReadings.minOf {
-                it.minOf { point ->
-                    point.value
-                }
-            }
-
-            // Storing the upper Bound and Lower bound of Y Markers
-            yUpperReading = if (yMax % (numOfYMarkers - 1) != 0.0f)
-                yMax.toInt() + ((numOfYMarkers - 1) - (yMax.toInt() % (numOfYMarkers - 1)))
-            else
-                yMax.toInt()
-
-            yLowerReading = if (yMin.toInt() % (numOfYMarkers - 1) == 0) {
-                yMin.toInt() - (numOfYMarkers - 1)
-            } else {
-                yMin.toInt() - (yMin.toInt() % (numOfYMarkers - 1))
-            }
-
-            // Difference between each Y Markers
-            yDividend = (yUpperReading - yLowerReading) / (numOfYMarkers - 1)
-
-            // Calculating the points for Y - Axis markers
-            for (index in 0 until numOfYMarkers) {
-
-                // This is the value of the current Y Axis Marker
-                val currentYMarker = yUpperReading - (index) * yDividend
-                yMarkerList.add(index, LinearPoint(currentYMarker))
-            }
-        }
+        // Difference between each Y Markers
+        yDividend = 1
     }
 
     /**
@@ -133,32 +89,30 @@ class LinearData(
      *
      * @param yScale This is the scale for the Y - Axis
      */
-    private fun DrawScope.calculateYMarkersCoordinates(yScale: Float): Int {
+    private fun calculateYMarkersCoordinates(yScale: Float): Int {
 
-        var yMarkerMaxWidth = 0
+        var maxDimension = 0
 
         // Calculating all the chart Y - Axis markers in the chart along with their coordinates
         yMarkerList.forEachIndexed { index, point ->
 
-            val bounds = Rect()
-            val paint = Paint()
-
-            paint.textSize = 12.sp.toPx()
-            paint.textAlign = Paint.Align.LEFT
-            paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
-            paint.getTextBounds(point.value.toString(), 0, point.value.toString().length, bounds)
+            point.value as BitmapDrawable
 
             // Current Y Coordinate for the point
-            val currentYCoordinate = (yScale * index) + 12f
+            val currentYCoordinate = (yScale * index) - (dimension.toFloat() / 2f)
+
+            val resizedBitmap =
+                Bitmap.createScaledBitmap(point.value.bitmap, dimension, dimension, true)
+
+            if (resizedBitmap.width > maxDimension)
+                maxDimension = resizedBitmap.width
 
             // Setting the calculated graph coordinates to the object
             point.setXCoordinate(-24f)
             point.setYCoordinate(currentYCoordinate)
 
-            val width = bounds.width()
-            yMarkerMaxWidth = if (yMarkerMaxWidth < width) width else yMarkerMaxWidth
         }
-        return yMarkerMaxWidth
+        return maxDimension
     }
 
     /**

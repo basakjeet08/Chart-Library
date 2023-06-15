@@ -1,5 +1,6 @@
 package com.dev.anirban.screens
 
+import android.graphics.drawable.BitmapDrawable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,10 +17,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.getDrawable
+import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.CircularChart
 import com.dev.anirban.chartlibrary.circular.center.CircularImageCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
@@ -33,6 +37,8 @@ import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
+import com.dev.anirban.chartlibrary.linear.margins.LinearEmojiMargin
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
@@ -109,6 +115,68 @@ fun LibraryUIExample() {
             )
         }
 
+        // Design Pattern String Marker Line Chart
+        CustomCard(
+            title = "String Marker Chart"
+        ) {
+            LinearChart.LineChart(
+                linearData = LinearData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            4f, 3f, 0f, 2f, 3f, 4f, 2f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        "Hazardous",
+                        "Very Unhealthy",
+                        "Unhealthy",
+                        "Moderate",
+                        "Good"
+                    ).toMutableList()
+                )
+            )
+        }
+
+        // Design Pattern String Marker Line Chart
+        CustomCard(
+            title = "Emoji Marker Chart"
+        ) {
+            LinearChart.LineChart(
+                linearData = LinearEmojiData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            6f, 4f, 2f, 0f, 3f, 5f, 6f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_furious
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_angry) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_sad) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_depressed
+                        ) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_confused
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_calm) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_happy) as BitmapDrawable
+                    ).toMutableList()
+                ),
+                margin = LinearEmojiMargin()
+            )
+        }
+
         // Design Pattern Bar Chart
         CustomCard(
             title = "Bar Chart"
@@ -126,31 +194,6 @@ fun LibraryUIExample() {
                 plot = LinearBarPlot(
                     barWidth = 40f,
                     cornerRadius = 16f
-                )
-            )
-        }
-
-        // Design Pattern String Marker Line Chart
-        CustomCard(
-            title = "String Marker Chart"
-        ) {
-            LinearChart.LineChart(
-                linearData = LinearData(
-                    yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
-                            4f, 3f, 1f, 2f, 3f, 5f, 2f
-                        )
-                    ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
-                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
-                    ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
-                        "Hazardous",
-                        "Very Unhealthy",
-                        "Unhealthy",
-                        "Moderate",
-                        "Good"
-                    ).toMutableList()
                 )
             )
         }
