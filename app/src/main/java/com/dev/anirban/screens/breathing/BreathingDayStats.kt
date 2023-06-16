@@ -1,28 +1,33 @@
 package com.dev.anirban.screens.breathing
 
 import android.content.res.Configuration
+import android.graphics.drawable.BitmapDrawable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
 import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow.Companion.DonutChartTarget
 import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.RingChartMultiple
 import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.RingChartSingle
 import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
+import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
-import com.dev.anirban.screens.components.SunnyCard
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
 import com.dev.anirban.screens.components.MoodCard
+import com.dev.anirban.screens.components.SunnyCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 // Preview Composable Function
@@ -158,6 +163,55 @@ fun BreathingDayStats() {
             MoodCard(
                 moodImage = R.drawable.image_happy_face,
                 moodText = "I feel Happy Today"
+            )
+        }
+
+        // Drawing the Emoji Marker Line Chart
+        CustomCard(
+            title = "Mood Graph"
+        ) {
+
+            LinearChart.EmojiLineChart(
+                linearData = LinearEmojiData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            6f, 4f, 2f, 0f, 3f, 5f, 6f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_furious
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_angry
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_sad
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_depressed
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_confused
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_calm
+                        ) as BitmapDrawable,
+                        ContextCompat.getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_happy
+                        ) as BitmapDrawable
+                    ).toMutableList()
+                )
             )
         }
 
