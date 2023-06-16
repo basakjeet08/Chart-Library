@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -39,6 +40,7 @@ import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
+import com.dev.anirban.chartlibrary.linear.plots.LinearGradientLinePlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
@@ -171,6 +173,67 @@ fun LibraryUIExample() {
                         getDrawable(LocalContext.current, R.drawable.emoji_calm) as BitmapDrawable,
                         getDrawable(LocalContext.current, R.drawable.emoji_happy) as BitmapDrawable
                     ).toMutableList()
+                )
+            )
+        }
+
+        // Design Pattern String Marker Gradient Line Chart using colorList
+        CustomCard(
+            title = "Gradient Chart using colorList"
+        ) {
+
+            LinearChart.GradientLineChart(
+                linearData = LinearData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f)
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
+                    )
+                ),
+                colorList = listOf(
+                    Color(0xFFE5E787).copy(alpha = .4f),
+                    Color(0xFF85DE50).copy(alpha = .4f),
+                    Color(0xFF57D6BF).copy(alpha = .4f),
+                    Color(0xFF43B4E4).copy(alpha = .4f),
+                    Color(0xFF3A60E6).copy(alpha = .4f),
+                    Color(0xFF57D6BF).copy(alpha = .4f),
+                    Color(0xFFD02596).copy(alpha = .4f)
+                )
+            )
+        }
+
+        // Design Pattern String Marker Gradient Line Chart using plot object
+        CustomCard(
+            title = "Gradient List using Plot Object"
+        ) {
+
+            LinearChart.GradientLineChart(
+                linearData = LinearData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(4f, 0f, 1.7f, 1.9f, 2f, 4f)
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        "Awake",
+                        "Deep Sleep",
+                        "Sleep",
+                        "Asleep After",
+                        "Bed Time"
+                    ).toMutableList()
+                ),
+                plot = LinearGradientLinePlot(
+                    colorList = listOf(
+                        Color(0xFFE5E787).copy(alpha = .4f),
+                        Color(0xFF85DE50).copy(alpha = .4f),
+                        Color(0xFF57D6BF).copy(alpha = .4f),
+                        Color(0xFF43B4E4).copy(alpha = .4f),
+                        Color(0xFF3A60E6).copy(alpha = .4f),
+                        Color(0xFF57D6BF).copy(alpha = .4f),
+                        Color(0xFFD02596).copy(alpha = .4f)
+                    )
                 )
             )
         }
