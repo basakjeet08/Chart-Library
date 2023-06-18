@@ -17,6 +17,8 @@ import com.dev.anirban.chartlibrary.linear.util.LinearPoint
  * @param yAxisReadings These are the readings of the Y - Axis
  * @param yMarkerList This is the list of marker which are present in the Y - Axis
  * @param numOfYMarkers These are teh num of markers in Y-axis
+ *
+ * @param numOfYMarkers This Is useless when a yMarkerList is passed to the Class constructor
  */
 class LinearData(
     override val yAxisReadings: List<List<LinearPoint<Float>>>,

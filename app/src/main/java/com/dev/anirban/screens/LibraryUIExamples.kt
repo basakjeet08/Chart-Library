@@ -194,13 +194,13 @@ fun LibraryUIExample() {
                     )
                 ),
                 colorList = listOf(
-                    Color(0xFFE5E787).copy(alpha = .4f),
-                    Color(0xFF85DE50).copy(alpha = .4f),
-                    Color(0xFF57D6BF).copy(alpha = .4f),
-                    Color(0xFF43B4E4).copy(alpha = .4f),
-                    Color(0xFF3A60E6).copy(alpha = .4f),
-                    Color(0xFF57D6BF).copy(alpha = .4f),
-                    Color(0xFFD02596).copy(alpha = .4f)
+                    Color(0xFFE5E787).copy(alpha = .6f),
+                    Color(0xFF85DE50).copy(alpha = .6f),
+                    Color(0xFF57D6BF).copy(alpha = .6f),
+                    Color(0xFF43B4E4).copy(alpha = .6f),
+                    Color(0xFF3A60E6).copy(alpha = .6f),
+                    Color(0xFF57D6BF).copy(alpha = .6f),
+                    Color(0xFFD02596).copy(alpha = .6f)
                 )
             )
         }
@@ -228,13 +228,13 @@ fun LibraryUIExample() {
                 ),
                 plot = LinearGradientLinePlot(
                     colorList = listOf(
-                        Color(0xFFE5E787).copy(alpha = .4f),
-                        Color(0xFF85DE50).copy(alpha = .4f),
-                        Color(0xFF57D6BF).copy(alpha = .4f),
-                        Color(0xFF43B4E4).copy(alpha = .4f),
-                        Color(0xFF3A60E6).copy(alpha = .4f),
-                        Color(0xFF57D6BF).copy(alpha = .4f),
-                        Color(0xFFD02596).copy(alpha = .4f)
+                        Color(0xFFE5E787).copy(alpha = .6f),
+                        Color(0xFF85DE50).copy(alpha = .6f),
+                        Color(0xFF57D6BF).copy(alpha = .6f),
+                        Color(0xFF43B4E4).copy(alpha = .6f),
+                        Color(0xFF3A60E6).copy(alpha = .6f),
+                        Color(0xFF57D6BF).copy(alpha = .6f),
+                        Color(0xFFD02596).copy(alpha = .6f)
                     )
                 )
             )

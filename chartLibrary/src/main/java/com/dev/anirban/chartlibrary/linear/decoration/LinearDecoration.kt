@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Color
  *
  * @param textColor this is the text color for all the margins and other things
  * @param plotPrimaryColor THis is the plot color for all the plotted Lines in the graph
- * @param plotSecondaryColor These are points color which are the points plotted in the graph
+ * @param plotSecondaryColor These are color for all the circle points in the graph
  */
 class LinearDecoration(
     val textColor: Color,

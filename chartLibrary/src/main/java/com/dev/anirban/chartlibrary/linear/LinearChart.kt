@@ -18,6 +18,10 @@ import com.dev.anirban.chartlibrary.linear.colorconvention.LinearDefaultColorCon
 import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
+import com.dev.anirban.chartlibrary.linear.exceptions.LinearColorConventionMismatch
+import com.dev.anirban.chartlibrary.linear.exceptions.LinearDataMismatch
+import com.dev.anirban.chartlibrary.linear.exceptions.LinearDecorationMismatch
+import com.dev.anirban.chartlibrary.linear.interfaces.LinearChartExceptionHandler
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearChartInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearColorConventionInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
@@ -45,7 +49,66 @@ open class LinearChart(
     override val linearData: LinearDataInterface,
     override val plot: LinearPlotInterface,
     override val colorConvention: LinearColorConventionInterface
-) : LinearChartInterface {
+) : LinearChartInterface, LinearChartExceptionHandler {
+
+    /**
+     * This functions validates the [LinearDataInterface] is implemented properly and all the
+     * data is given properly over there
+     */
+    override fun validateDataInput() {
+
+        var maxSize = -1
+
+        // calculating the number of max Y - Axis Readings in a particular Coordinate set
+        linearData.yAxisReadings.forEach {
+            if (it.size > maxSize)
+                maxSize = it.size
+        }
+
+        // Comparing the num of max Y - Axis Readings to X - Axis Readings/Markers
+        if (linearData.xAxisReadings.size < maxSize)
+            throw LinearDataMismatch("X - Axis Markers Size is less than Number of Y - Axis Reading")
+    }
+
+    /**
+     * This function validates the [LinearDecoration] is implemented properly and all the data
+     * needed for the Linear Decoration are provided properly
+     */
+    override fun validateDecorationInput() {
+
+        // checking if we have enough Primary Color for the plots
+        if (decoration.plotPrimaryColor.size < linearData.yAxisReadings.size) {
+            if (plot is LinearBarPlot && decoration.plotPrimaryColor.isEmpty())
+                throw Exception(
+                    "plotPrimaryColor for the decoration have 0 Colors whereas at least " +
+                            "one color needs to be provided"
+                )
+            else
+                throw LinearDecorationMismatch(
+                    "Need to provide ${linearData.yAxisReadings.size} number of colors for the " +
+                            "plotPrimaryColor"
+                )
+        }
+
+        // checking if we have enough Secondary Color for the plots
+        if (decoration.plotSecondaryColor.size < linearData.yAxisReadings.size && plot !is LinearBarPlot)
+            throw LinearDecorationMismatch(
+                "Secondary Color of Decoration Class needs " +
+                        "${linearData.yAxisReadings.size} colors but it has " +
+                        "${decoration.plotSecondaryColor.size} colors"
+            )
+
+    }
+
+    /**
+     * This function validates the [LinearColorConventionInterface] is implemented properly
+     */
+    override fun validateColorConventionInput() {
+
+        //Checking if the given textList has more texts than the given yAxisReadings size
+        if (colorConvention.textList.size > linearData.yAxisReadings.size)
+            throw LinearColorConventionMismatch("Texts for Color Lists are More than provided yAxis Coordinate Sets")
+    }
 
     /**
      * This function draws the margins according to the margin implementation passed to it
@@ -88,6 +151,11 @@ open class LinearChart(
      */
     @Composable
     override fun Build(modifier: Modifier) {
+
+        // Validating all the Data if there is any exceptions
+        validateDataInput()
+        validateDecorationInput()
+        validateColorConventionInput()
 
         Column(
             modifier = Modifier
