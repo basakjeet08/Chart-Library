@@ -31,8 +31,13 @@ class CircularRingTextCenter(
     private val status: String
 ) : CircularCenterInterface {
 
+
     /**
-     * This function does nothing which is fine since we want the default Circle Center to be nothing
+     * This function draws 3 Text Composable functions as an implementation for the
+     * Center of the Chart
+     *
+     * @param circularData This object contains the data of the graph
+     * @param decoration THis object contains the decorations of the graph
      */
     @Composable
     override fun DrawCenter(

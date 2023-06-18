@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.getDrawable
 import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.CircularChart
+import com.dev.anirban.chartlibrary.circular.center.CircularCustomCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularImageCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
 import com.dev.anirban.chartlibrary.circular.center.CircularTargetTextCenter
@@ -343,6 +345,73 @@ fun LibraryUIExample() {
                     title = "AQI",
                     centerValue = "489",
                     status = "Moderate"
+                )
+            )
+        }
+
+        // Design Pattern Single Ring Chart using Custom Center
+        CustomCard(
+            title = "Single Ring Chart"
+        ) {
+            CircularRingChart.RingChartSingle(
+                circularData = CircularTargetDataBuilder(
+                    target = 500f,
+                    achieved = 329f,
+                    siUnit = "",
+                    cgsUnit = "",
+                    conversionRate = { it }
+                ),
+                circularCenter = CircularCustomCenter(
+                    body = {
+                        // Holds all the texts composable
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+
+                            // Title
+                            Text(
+                                text = "AQI",
+
+                                modifier = Modifier
+                                    .padding(vertical = 2.dp),
+
+                                // Text Features
+                                textAlign = TextAlign.Center,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.W400,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+
+                            // Item and Value
+                            Text(
+                                text = "329",
+
+                                modifier = Modifier
+                                    .padding(vertical = 2.dp),
+
+                                // Text Features
+                                textAlign = TextAlign.Center,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.W800,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+
+                            // Item and Value
+                            Text(
+                                text = "Moderate",
+
+                                modifier = Modifier
+                                    .padding(vertical = 2.dp),
+
+                                // Text Features
+                                textAlign = TextAlign.Center,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.W400,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                        }
+                    }
                 )
             )
         }

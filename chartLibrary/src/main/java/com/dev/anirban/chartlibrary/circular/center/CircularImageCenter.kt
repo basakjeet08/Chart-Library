@@ -26,6 +26,13 @@ class CircularImageCenter(
     private val contentDescription: String? = null
 ) : CircularCenterInterface {
 
+
+    /**
+     * This function draws an Image (by default a Tick Mark) in the center of the chart
+     *
+     * @param circularData This object contains the data of the graph
+     * @param decoration THis object contains the decorations of the graph
+     */
     @Composable
     override fun DrawCenter(
         circularData: CircularDataInterface,
