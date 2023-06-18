@@ -65,6 +65,9 @@ class CircularDonutChartColumn(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            // Validating the Inputs
+            super.validateAll()
+
             // Donut Chart
             Box(
                 modifier = modifier

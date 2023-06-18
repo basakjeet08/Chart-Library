@@ -61,6 +61,9 @@ open class CircularDonutChartRow(
     @Composable
     override fun Build(modifier: Modifier) {
 
+        // Validating the Inputs
+        super.validateAll()
+
         // Making a row to fit the canvas and the color conventions
         Column(
             modifier = Modifier

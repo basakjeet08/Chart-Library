@@ -56,6 +56,9 @@ class CircularRingChart(
     @Composable
     override fun Build(modifier: Modifier) {
 
+        // Validating the Inputs
+        super.validateAll()
+
         // Donut Chart
         Column(
             modifier = Modifier

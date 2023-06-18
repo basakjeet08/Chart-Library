@@ -15,15 +15,20 @@ import com.dev.anirban.chartlibrary.circular.center.CircularImageCenter
 import com.dev.anirban.chartlibrary.circular.colorconvention.CircularDefaultColorConvention
 import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
+import com.dev.anirban.chartlibrary.circular.exceptions.CircularDecorationMismatch
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
+import com.dev.anirban.chartlibrary.circular.foreground.CircularRingForeground
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularCenterInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularChartInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularColorConventionInterface
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularDataInterface
+import com.dev.anirban.chartlibrary.circular.interfaces.CircularExceptionHandler
 import com.dev.anirban.chartlibrary.circular.interfaces.CircularForegroundInterface
 
 /**
- * This class extends from the [CircularChartInterface] which means its the root level class
+ * This class extends from the [CircularChartInterface] which means its the root level class and it
+ * also implements [CircularExceptionHandler] implementation which provides an implementation for
+ * handling all the Exceptions
  *
  * @property circularCenter Implementation for the center of the chart
  * @property circularData Implementation for the data of the chart
@@ -43,7 +48,32 @@ open class CircularChart(
     override val circularDecoration: CircularDecoration,
     override val circularForeground: CircularForegroundInterface,
     override val circularColorConvention: CircularColorConventionInterface
-) : CircularChartInterface {
+) : CircularChartInterface, CircularExceptionHandler {
+
+    /**
+     * This validates that the decoration stuffs are given correctly or not
+     */
+    override fun validateDecoration() {
+        if (circularForeground !is CircularRingForeground) {
+            if (circularDecoration.colorList.size < circularData.itemsList.size)
+                throw CircularDecorationMismatch(
+                    "Need at least ${circularData.itemsList.size} amount" +
+                            " of Colors for ${circularData.itemsList.size} number of Items in List" +
+                            " where only ${circularDecoration.colorList.size} is passed"
+                )
+        } else {
+            if (circularDecoration.colorList.isEmpty())
+                throw CircularDecorationMismatch("Need at least two color for the Ring Chart Gradients")
+        }
+    }
+
+    /**
+     * This checks and validates all the Exceptions and see if all of them are okay before letting
+     * the user run further for decreasing unnecessary confusion in finding the Exceptions
+     */
+    override fun validateAll() {
+        validateDecoration()
+    }
 
     /**
      * Function to draw something on the center
@@ -93,6 +123,9 @@ open class CircularChart(
      */
     @Composable
     override fun Build(modifier: Modifier) {
+
+        // Validating the Inputs
+        validateAll()
 
         // Donut Chart
         Column(
