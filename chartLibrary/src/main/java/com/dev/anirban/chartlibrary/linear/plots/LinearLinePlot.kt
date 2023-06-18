@@ -1,6 +1,5 @@
 package com.dev.anirban.chartlibrary.linear.plots
 
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -31,53 +30,30 @@ class LinearLinePlot(
         decoration: LinearDecoration
     ) {
 
-        // This variable contains all the Offset of all the graph coordinates
-        val graphCoordinatesList: MutableList<MutableList<Offset>> = mutableListOf()
-
-        // Adding the Offsets to the Variable
-        linearData.yAxisReadings.forEachIndexed { coordinateSetIndex, coordinateSet ->
-
-            // Calculates the coordinate of One Set of the List
-            val graphCoordinates: MutableList<Offset> = mutableListOf()
-
-            coordinateSet.forEach { point ->
-
-                // Adding the Coordinates of points in the same Set
-                graphCoordinates.add(
-                    point.getOffset()
-                )
-            }
-
-            // Adding the coordinates of a whole Set in one Index of the Graph
-            graphCoordinatesList.add(
-                coordinateSetIndex,
-                graphCoordinates
-            )
-        }
-
         // This loop makes the curved line between two points
-        for (i in 0 until graphCoordinatesList.size) {
+        linearData.yAxisReadings.forEachIndexed { coordinateSetIndex, coordinateSet ->
 
             // Path Variable
             val path = Path()
 
-            // This is the current coordinate set
-            val coordinates = graphCoordinatesList[i]
-
             // Moving to the start path of the the coordinate set to start making the Curved lines
             path.moveTo(
-                coordinates[0].x,
-                coordinates[0].y
+                coordinateSet[0].xCoordinate,
+                coordinateSet[0].yCoordinate
             )
 
             // Inner Loop which draws the Lines from point to point of a single coordinate sets
-            for (index in 0 until coordinates.size - 1) {
+            for (index in 0 until coordinateSet.size - 1) {
+
+                // Points needed
+                val currentPoint = coordinateSet[index]
+                val nextPoint = coordinateSet[index + 1]
 
                 // Control Points
-                val control1X = (coordinates[index].x + coordinates[index + 1].x) / 2f
-                val control1Y = coordinates[index].y
-                val control2X = (coordinates[index].x + coordinates[index + 1].x) / 2f
-                val control2Y = coordinates[index + 1].y
+                val control1X = (currentPoint.xCoordinate + nextPoint.xCoordinate) / 2f
+                val control1Y = currentPoint.yCoordinate
+                val control2X = (currentPoint.xCoordinate + nextPoint.xCoordinate) / 2f
+                val control2Y = nextPoint.yCoordinate
 
                 // Defining the path from the last stayed to the next point
                 path.cubicTo(
@@ -85,15 +61,15 @@ class LinearLinePlot(
                     y1 = control1Y,
                     x2 = control2X,
                     y2 = control2Y,
-                    x3 = coordinates[index + 1].x,
-                    y3 = coordinates[index + 1].y
+                    x3 = nextPoint.xCoordinate,
+                    y3 = nextPoint.yCoordinate
                 )
             }
 
             // Drawing path after defining all the points of a single coordinate set in the path
             drawPath(
                 path = path,
-                color = decoration.plotPrimaryColor[i],
+                color = decoration.plotPrimaryColor[coordinateSetIndex],
                 style = Stroke(
                     width = lineStroke
                 )
@@ -101,13 +77,13 @@ class LinearLinePlot(
         }
 
         // This loop draws the circles or the points of the coordinates1
-        graphCoordinatesList.forEachIndexed { index, offsets ->
+        linearData.yAxisReadings.forEachIndexed { index, offsets ->
             offsets.forEach {
                 // This function draws the Circle points
                 drawCircle(
                     color = decoration.plotSecondaryColor[index],
                     radius = circleRadius,
-                    center = it
+                    center = it.getOffset()
                 )
             }
         }
