@@ -19,8 +19,8 @@ import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
-import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
@@ -58,7 +58,7 @@ fun BreathingYearlyStats() {
         // Yearly Progress shown in the Line Chart
         CustomCard(title = "Yearly Progress") {
             LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(20f, 15f, 10f, 21f, 26f, 25f, 19f)
                     ),
@@ -155,8 +155,8 @@ fun BreathingYearlyStats() {
         CustomCard(
             title = "Air purity"
         ) {
-            LinearChart.StringLineChart(
-                linearData = LinearData(
+            LineChart(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(
                             4f, 3f, 0f, 2f, 3f, 4f, 2f
@@ -227,7 +227,7 @@ fun BreathingYearlyStats() {
         // Heart Rate shown by a Single Line Chart
         CustomCard(title = "Heart Rate") {
             LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
                     ),
@@ -241,7 +241,7 @@ fun BreathingYearlyStats() {
         // Blood Pressure Shown by double Line Chart
         CustomCard(title = "Blood Pressure") {
             LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
                         LinearPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)

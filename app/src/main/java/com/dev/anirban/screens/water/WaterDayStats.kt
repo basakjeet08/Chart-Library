@@ -23,7 +23,7 @@ import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
-import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.ChangeInPlanCard
 import com.dev.anirban.screens.components.CustomCard
@@ -155,7 +155,7 @@ fun WaterDayStats() {
             title = "Daily Progress"
         ) {
             LinearChart.BarChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
                     ),
@@ -196,7 +196,7 @@ fun WaterDayStats() {
         ) {
             Column {
                 LinearChart.LineChart(
-                    linearData = LinearData(
+                    linearData = LinearStringData(
                         yAxisReadings = listOf(
                             LinearPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
                             LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)

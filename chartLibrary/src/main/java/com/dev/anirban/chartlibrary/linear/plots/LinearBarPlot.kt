@@ -5,6 +5,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
@@ -32,6 +33,14 @@ class LinearBarPlot(
         decoration: LinearDecoration
     ) {
 
+        // Padding Offset that would be negated from the bar height to make it align with the chart
+        var paddingOffset = 12f
+
+        // If the data are in form of emoji's then the padding offset will change
+        if (linearData is LinearEmojiData) {
+            paddingOffset = -(linearData.dimension.toFloat() / 2f)
+        }
+
         // Adding the Offsets to the Variable
         linearData.yAxisReadings.forEach { coordinateSet ->
 
@@ -51,7 +60,7 @@ class LinearBarPlot(
                     ),
                     size = Size(
                         width = barWidth,
-                        height = linearData.yMarkerList[linearData.yMarkerList.size - 1].yCoordinate - point.yCoordinate - 12f
+                        height = linearData.yMarkerList.last().yCoordinate - point.yCoordinate - paddingOffset
                     ),
                     cornerRadius = CornerRadius(cornerRadius)
                 )

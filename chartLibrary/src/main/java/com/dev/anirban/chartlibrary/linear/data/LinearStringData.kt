@@ -20,7 +20,7 @@ import com.dev.anirban.chartlibrary.linear.util.LinearPoint
  *
  * @param numOfYMarkers This Is useless when a yMarkerList is passed to the Class constructor
  */
-class LinearData(
+class LinearStringData(
     override val yAxisReadings: List<List<LinearPoint<Float>>>,
     override val xAxisReadings: List<LinearPoint<String>>,
     override var yMarkerList: MutableList<LinearPoint<*>> = mutableListOf(),

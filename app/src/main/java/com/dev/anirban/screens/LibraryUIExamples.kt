@@ -1,5 +1,6 @@
 package com.dev.anirban.screens
 
+import android.content.res.Configuration
 import android.graphics.drawable.BitmapDrawable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.getDrawable
@@ -39,13 +41,33 @@ import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutForeground
 import com.dev.anirban.chartlibrary.circular.foreground.CircularDonutTargetForeground
 import com.dev.anirban.chartlibrary.linear.LinearChart
-import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearGradientLinePlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
+import com.dev.anirban.ui.theme.ChartLibraryTheme
+
+// Preview Composable Function
+@Preview(
+    "Light",
+    heightDp = 2000,
+    showBackground = true
+)
+@Preview(
+    name = "Dark",
+    heightDp = 2000,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
+@Composable
+private fun DefaultPreview() {
+    ChartLibraryTheme {
+        LibraryUIExample()
+    }
+}
 
 @Composable
 fun LibraryUIExample() {
@@ -62,7 +84,7 @@ fun LibraryUIExample() {
         ) {
 
             LinearChart.LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
@@ -83,7 +105,7 @@ fun LibraryUIExample() {
         ) {
 
             LinearChart.LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
                         LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
@@ -105,7 +127,7 @@ fun LibraryUIExample() {
         ) {
 
             LinearChart.LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
                         LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
@@ -122,8 +144,8 @@ fun LibraryUIExample() {
         CustomCard(
             title = "String Marker Chart"
         ) {
-            LinearChart.StringLineChart(
-                linearData = LinearData(
+            LinearChart.LineChart(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(
                             4f, 3f, 0f, 2f, 3f, 4f, 2f
@@ -179,39 +201,13 @@ fun LibraryUIExample() {
             )
         }
 
-        // Design Pattern String Marker Gradient Line Chart using colorList
-        CustomCard(
-            title = "Gradient Chart using colorList"
-        ) {
-
-            LinearChart.GradientLineChart(
-                linearData = LinearData(
-                    yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f)
-                    ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
-                        "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
-                    )
-                ),
-                colorList = listOf(
-                    Color(0xFFE5E787).copy(alpha = .6f),
-                    Color(0xFF85DE50).copy(alpha = .6f),
-                    Color(0xFF57D6BF).copy(alpha = .6f),
-                    Color(0xFF43B4E4).copy(alpha = .6f),
-                    Color(0xFF3A60E6).copy(alpha = .6f),
-                    Color(0xFF57D6BF).copy(alpha = .6f),
-                    Color(0xFFD02596).copy(alpha = .6f)
-                )
-            )
-        }
-
         // Design Pattern String Marker Gradient Line Chart using plot object
         CustomCard(
             title = "Gradient List using Plot Object"
         ) {
 
-            LinearChart.GradientLineChart(
-                linearData = LinearData(
+            LinearChart.GradientChart(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(4f, 0f, 1.7f, 1.9f, 2f, 4f)
                     ),
@@ -240,13 +236,61 @@ fun LibraryUIExample() {
             )
         }
 
+        // Design Pattern Custom Chart
+        CustomCard(
+            title = "Custom Chart"
+        ) {
+
+            LinearChart.CustomLinearChart(
+                linearData = LinearEmojiData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            6f, 4f, 2f, 0f, 3f, 5f, 6f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_furious
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_angry) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_sad) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_depressed
+                        ) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_confused
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_calm) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_happy) as BitmapDrawable
+                    ).toMutableList()
+                ),
+                plot = LinearGradientLinePlot(
+                    colorList = listOf(
+                        Color(0xFFE5E787).copy(alpha = .6f),
+                        Color(0xFF85DE50).copy(alpha = .6f),
+                        Color(0xFF57D6BF).copy(alpha = .6f),
+                        Color(0xFF43B4E4).copy(alpha = .6f),
+                        Color(0xFF3A60E6).copy(alpha = .6f),
+                        Color(0xFF57D6BF).copy(alpha = .6f),
+                        Color(0xFFD02596).copy(alpha = .6f)
+                    )
+                )
+            )
+        }
+
         // Design Pattern Bar Chart
         CustomCard(
             title = "Bar Chart"
         ) {
 
             LinearChart.BarChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
@@ -257,6 +301,43 @@ fun LibraryUIExample() {
                 plot = LinearBarPlot(
                     barWidth = 40f,
                     cornerRadius = 16f
+                )
+            )
+        }
+
+        // Design Pattern Emoji Bar Chart
+        CustomCard(
+            title = "Emoji Bar Chart"
+        ) {
+
+            LinearChart.EmojiBarChart(
+                linearData = LinearEmojiData(
+                    yAxisReadings = listOf(
+                        LinearPoint.pointDataBuilder(
+                            6f, 4f, 2f, 0f, 3f, 5f, 6f
+                        )
+                    ),
+                    xAxisReadings = LinearPoint.pointDataBuilder(
+                        "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
+                    ),
+                    yMarkerList = LinearPoint.pointDataBuilder(
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_furious
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_angry) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_sad) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_depressed
+                        ) as BitmapDrawable,
+                        getDrawable(
+                            LocalContext.current,
+                            R.drawable.emoji_confused
+                        ) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_calm) as BitmapDrawable,
+                        getDrawable(LocalContext.current, R.drawable.emoji_happy) as BitmapDrawable
+                    ).toMutableList()
                 )
             )
         }

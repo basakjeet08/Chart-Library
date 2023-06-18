@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearPlotInterface
@@ -35,6 +36,14 @@ class LinearGradientLinePlot(
         decoration: LinearDecoration
     ) {
 
+        // Padding Offset that would be negated from the bar height to make it align with the chart
+        var paddingOffset = 12f
+
+        // If the data are in form of emoji's then the padding offset will change
+        if (linearData is LinearEmojiData) {
+            paddingOffset = -(linearData.dimension.toFloat() / 2f)
+        }
+
         // Drawing the Lines and the linear Gradient in this Iteration
         linearData.yAxisReadings.forEachIndexed { i, coordinateSet ->
 
@@ -44,7 +53,7 @@ class LinearGradientLinePlot(
             // Moving to the (0,0) Origin Of the Graph
             path.moveTo(
                 linearData.xAxisReadings.first().xCoordinate,
-                linearData.yMarkerList.last().yCoordinate - 12f
+                linearData.yMarkerList.last().yCoordinate - paddingOffset
             )
 
             // Defining the Brush
@@ -68,7 +77,7 @@ class LinearGradientLinePlot(
             // Adding the (Max , 0) point to finish the gradient in a proper sequence
             path.lineTo(
                 linearData.xAxisReadings.last().xCoordinate,
-                linearData.yMarkerList.last().yCoordinate - 12f
+                linearData.yMarkerList.last().yCoordinate - paddingOffset
             )
 
             // Drawing the Lines of the graph

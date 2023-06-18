@@ -2,14 +2,14 @@ package com.dev.anirban.chartlibrary.linear.interfaces
 
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new
  * Implementation for the handling of data and calculations in the graph
  *
- * Implementations for this interface are :- [LinearData]
+ * Implementations for this interface are :- [LinearStringData]
  */
 interface LinearDataInterface {
 

@@ -22,7 +22,7 @@ import com.dev.anirban.chartlibrary.circular.data.CircularDonutListData
 import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
-import com.dev.anirban.chartlibrary.linear.data.LinearData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
@@ -77,7 +77,7 @@ fun WaterMonthStats() {
         CustomCard(title = "Monthly Progress") {
 
             LinearChart.LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(6f, 5f, 4f, 6.2f, 7.4f, 7f, 5.9f)
                     ),
@@ -111,7 +111,7 @@ fun WaterMonthStats() {
         CustomCard(title = "Beverages") {
             Column {
                 LinearChart.LineChart(
-                    linearData = LinearData(
+                    linearData = LinearStringData(
                         yAxisReadings = listOf(
                             LinearPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
                             LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)

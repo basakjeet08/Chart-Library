@@ -21,8 +21,8 @@ import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
-import com.dev.anirban.chartlibrary.linear.data.LinearData
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
+import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.util.LinearPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
@@ -218,7 +218,7 @@ fun BreathingDayStats() {
         // Heart Rate Line Chart
         CustomCard(title = "Heart Rate") {
             LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
                     ),
@@ -232,7 +232,7 @@ fun BreathingDayStats() {
         // Blood Pressure Double Line Chart
         CustomCard(title = "Blood Pressure") {
             LineChart(
-                linearData = LinearData(
+                linearData = LinearStringData(
                     yAxisReadings = listOf(
                         LinearPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
                         LinearPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)

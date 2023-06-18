@@ -16,7 +16,7 @@ import com.dev.anirban.chartlibrary.linear.interfaces.LinearMarginInterface
  * This is one of the implementations of the [LinearMarginInterface] and it provides with a implementation
  * of how we should draw the Margin
  */
-class LinearMargin : LinearMarginInterface {
+class LinearStringMargin : LinearMarginInterface {
 
     /**
      * This is the function which contains the actual margin implementation
