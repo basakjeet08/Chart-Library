@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
-import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.RingChartMultiple
+import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.MultipleRingChart
 import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
@@ -95,7 +95,7 @@ fun BreathingYearlyStats() {
 
         // Heart Health shown by a Double Ring Chart
         CustomCard(title = "Heart Health") {
-            RingChartMultiple(
+            MultipleRingChart(
                 circularData = listOf(
                     CircularTargetDataBuilder(
                         target = 120f,

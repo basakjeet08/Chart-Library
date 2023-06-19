@@ -157,7 +157,7 @@ open class CircularDonutChartRow(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun DonutChartTarget(
+        fun TargetDonutChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularTargetTextCenter(),
             circularData: CircularTargetDataBuilder,

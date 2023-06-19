@@ -66,7 +66,7 @@ fun WaterDayStats() {
         ) {
 
             Column {
-                CircularDonutChartRow.DonutChartTarget(
+                CircularDonutChartRow.TargetDonutChart(
                     circularData = CircularTargetDataBuilder(
                         target = 4000f,
                         achieved = 5000f,

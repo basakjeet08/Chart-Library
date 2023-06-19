@@ -395,7 +395,7 @@ fun LibraryUIExample() {
             title = "Target Donut Chart"
         ) {
 
-            CircularDonutChartRow.DonutChartTarget(
+            CircularDonutChartRow.TargetDonutChart(
                 circularData = CircularTargetDataBuilder(
                     target = 4340f,
                     achieved = 2823f,
@@ -414,7 +414,7 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Single Ring Chart"
         ) {
-            CircularRingChart.RingChartSingle(
+            CircularRingChart.SingleRingChart(
                 circularData = CircularTargetDataBuilder(
                     target = 500f,
                     achieved = 489f,
@@ -434,7 +434,7 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Single Ring Chart"
         ) {
-            CircularRingChart.RingChartSingle(
+            CircularRingChart.SingleRingChart(
                 circularData = CircularTargetDataBuilder(
                     target = 500f,
                     achieved = 329f,
@@ -501,7 +501,7 @@ fun LibraryUIExample() {
         CustomCard(
             title = "Double Ring Chart"
         ) {
-            CircularRingChart.RingChartMultiple(
+            CircularRingChart.MultipleRingChart(
                 circularData = listOf(
                     CircularTargetDataBuilder(
                         target = 100f,

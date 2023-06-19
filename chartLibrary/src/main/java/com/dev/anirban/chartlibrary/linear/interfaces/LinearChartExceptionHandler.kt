@@ -13,6 +13,8 @@ import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
  * properly and all the data needed for the Linear Decoration are provided properly
  * @property validateColorConventionInput This function validates the [LinearColorConventionInterface]
  * is implemented properly
+ * @property validateTypeMismatch This function validates if the margin and the data passed are
+ * supported or not so it can give a meaningful result to the developer
  */
 interface LinearChartExceptionHandler {
 
@@ -21,4 +23,6 @@ interface LinearChartExceptionHandler {
     fun validateDecorationInput()
 
     fun validateColorConventionInput()
+
+    fun validateTypeMismatch()
 }

@@ -107,7 +107,7 @@ class CircularRingChart(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun RingChartSingle(
+        fun SingleRingChart(
             modifier: Modifier = Modifier,
             circularCenter: CircularCenterInterface = CircularRingTextCenter("", "", ""),
             circularData: CircularTargetDataBuilder,
@@ -134,7 +134,7 @@ class CircularRingChart(
          * @param circularColorConvention This is the color Convention implementation of the chart
          */
         @Composable
-        fun RingChartMultiple(
+        fun MultipleRingChart(
             modifier: List<Modifier> = listOf(Modifier, Modifier),
             circularCenter: List<CircularCenterInterface> = listOf(
                 CircularRingTextCenter("", "", ""),

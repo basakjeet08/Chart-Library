@@ -18,6 +18,7 @@ import com.dev.anirban.chartlibrary.linear.colorconvention.LinearDefaultColorCon
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.decoration.LinearDecoration
+import com.dev.anirban.chartlibrary.linear.exceptions.LinearChartTypeMismatch
 import com.dev.anirban.chartlibrary.linear.exceptions.LinearColorConventionMismatch
 import com.dev.anirban.chartlibrary.linear.exceptions.LinearDataMismatch
 import com.dev.anirban.chartlibrary.linear.exceptions.LinearDecorationMismatch
@@ -108,6 +109,24 @@ open class LinearChart(
         //Checking if the given textList has more texts than the given yAxisReadings size
         if (colorConvention.textList.size > linearData.yAxisReadings.size)
             throw LinearColorConventionMismatch("Texts for Color Lists are More than provided yAxis Coordinate Sets")
+    }
+
+    /**
+     * This function validates if the margin and the data passed are supported or not so it can give
+     * a meaningful result to the developer
+     */
+    override fun validateTypeMismatch() {
+        if (linearData is LinearEmojiData && margin !is LinearEmojiMargin)
+            throw LinearChartTypeMismatch(
+                "Need to pass a Margin of Type LinearEmojiMargin for a " +
+                        "data of type LinearEmojiData"
+            )
+
+        if (margin is LinearEmojiMargin && linearData !is LinearEmojiData)
+            throw LinearChartTypeMismatch(
+                "Need to pass a Data of Type LinearEmojiData for a " +
+                        "margin of type LinearEmojiMargin"
+            )
     }
 
     /**

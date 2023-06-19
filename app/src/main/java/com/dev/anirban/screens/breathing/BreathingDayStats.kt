@@ -14,9 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.dev.anirban.chartlibrary.R
 import com.dev.anirban.chartlibrary.circular.center.CircularRingTextCenter
-import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow.Companion.DonutChartTarget
-import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.RingChartMultiple
-import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.RingChartSingle
+import com.dev.anirban.chartlibrary.circular.charts.CircularDonutChartRow.Companion.TargetDonutChart
+import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.MultipleRingChart
+import com.dev.anirban.chartlibrary.circular.charts.CircularRingChart.Companion.SingleRingChart
 import com.dev.anirban.chartlibrary.circular.data.CircularTargetDataBuilder
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
@@ -62,7 +62,7 @@ fun BreathingDayStats() {
 
         // Daily Progress Donut Chart
         CustomCard(title = "Daily Progress") {
-            DonutChartTarget(
+            TargetDonutChart(
                 circularData = CircularTargetDataBuilder(
                     target = 40f,
                     achieved = 28f,
@@ -84,7 +84,7 @@ fun BreathingDayStats() {
 
         // Air Purity Ring Chart
         CustomCard(title = "Air Purity") {
-            RingChartSingle(
+            SingleRingChart(
                 circularData = CircularTargetDataBuilder(
                     target = 500f,
                     achieved = 193f,
@@ -102,7 +102,7 @@ fun BreathingDayStats() {
 
         // Heart Health Double Ring Chart
         CustomCard(title = "Heart Health") {
-            RingChartMultiple(
+            MultipleRingChart(
                 circularData = listOf(
                     CircularTargetDataBuilder(
                         target = 120f,
