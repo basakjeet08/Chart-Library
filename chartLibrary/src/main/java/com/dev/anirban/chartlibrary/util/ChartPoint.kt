@@ -1,4 +1,4 @@
-package com.dev.anirban.chartlibrary.linear.util
+package com.dev.anirban.chartlibrary.util
 
 import androidx.compose.ui.geometry.Offset
 
@@ -6,7 +6,7 @@ import androidx.compose.ui.geometry.Offset
  * This class is made to indicate each and every point in the graph along with their coordinates for
  * placement
  */
-class LinearPoint<T>(
+class ChartPoint<T>(
     val value: T
 ) {
 
@@ -45,12 +45,12 @@ class LinearPoint<T>(
          * This is made to make the creation of Points List easy and less boilerplate code would be
          * written
          */
-        fun <T> pointDataBuilder(vararg points: T): List<LinearPoint<T>> {
+        fun <T> pointDataBuilder(vararg points: T): List<ChartPoint<T>> {
 
-            val pointsList = mutableListOf<LinearPoint<T>>()
+            val pointsList = mutableListOf<ChartPoint<T>>()
 
             points.forEach {
-                pointsList.add(LinearPoint(it))
+                pointsList.add(ChartPoint(it))
             }
             return pointsList
         }

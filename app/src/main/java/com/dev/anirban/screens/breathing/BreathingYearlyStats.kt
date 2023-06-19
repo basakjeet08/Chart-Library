@@ -21,7 +21,7 @@ import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.data.LinearStringData
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
@@ -60,9 +60,9 @@ fun BreathingYearlyStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(20f, 15f, 10f, 21f, 26f, 25f, 19f)
+                        ChartPoint.pointDataBuilder(20f, 15f, 10f, 21f, 26f, 25f, 19f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "2016", "2017", "2018", "2019", "2020", "2021", "2022"
                     )
                 )
@@ -158,14 +158,14 @@ fun BreathingYearlyStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             4f, 3f, 0f, 2f, 3f, 4f, 2f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         "Hazardous",
                         "Very Unhealthy",
                         "Unhealthy",
@@ -183,14 +183,14 @@ fun BreathingYearlyStats() {
             LinearChart.EmojiLineChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             6f, 4f, 2f, 0f, 3f, 5f, 6f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         ContextCompat.getDrawable(
                             LocalContext.current,
                             R.drawable.emoji_furious
@@ -229,9 +229,9 @@ fun BreathingYearlyStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
+                        ChartPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "2016", "2017", "2018", "2019", "2020", "2021", "2022"
                     )
                 )
@@ -243,10 +243,10 @@ fun BreathingYearlyStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
-                        LinearPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)
+                        ChartPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
+                        ChartPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "2016", "2017", "2018", "2019", "2020", "2021", "2022"
                     )
                 ),

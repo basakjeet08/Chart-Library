@@ -5,7 +5,7 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 
 /**
  * This is one of the implementation for storing and calculating the data in the chart. It
@@ -16,9 +16,9 @@ import com.dev.anirban.chartlibrary.linear.util.LinearPoint
  * @param yMarkerList This is the list of marker which are present in the Y - Axis
  */
 class LinearEmojiData(
-    override val yAxisReadings: List<List<LinearPoint<Float>>>,
-    override val xAxisReadings: List<LinearPoint<String>>,
-    override var yMarkerList: MutableList<LinearPoint<*>> = mutableListOf(),
+    override val yAxisReadings: List<List<ChartPoint<Float>>>,
+    override val xAxisReadings: List<ChartPoint<String>>,
+    override var yMarkerList: MutableList<ChartPoint<*>> = mutableListOf(),
     val dimension: Int = 50
 ) : LinearDataInterface {
 

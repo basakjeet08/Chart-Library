@@ -23,7 +23,7 @@ import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearStringData
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
 import com.dev.anirban.screens.components.WaterWeeklyProgressBody
@@ -86,9 +86,9 @@ fun WaterWeekStats() {
             LinearChart.BarChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(5f, 10f, 6f, 4f, 8f, 10f, 6f)
+                        ChartPoint.pointDataBuilder(5f, 10f, 6f, 4f, 8f, 10f, 6f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
                     )
                 )
@@ -120,10 +120,10 @@ fun WaterWeekStats() {
                 LinearChart.LineChart(
                     linearData = LinearStringData(
                         yAxisReadings = listOf(
-                            LinearPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
-                            LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
+                            ChartPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
+                            ChartPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
                         ),
-                        xAxisReadings = LinearPoint.pointDataBuilder(
+                        xAxisReadings = ChartPoint.pointDataBuilder(
                             "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
                         )
                     ),

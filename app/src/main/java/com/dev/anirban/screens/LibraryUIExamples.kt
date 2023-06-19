@@ -46,7 +46,7 @@ import com.dev.anirban.chartlibrary.linear.data.LinearStringData
 import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearGradientLinePlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
@@ -86,9 +86,9 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
+                        ChartPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
@@ -107,10 +107,10 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
-                        LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
+                        ChartPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                        ChartPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
@@ -129,11 +129,11 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
-                        LinearPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
-                        LinearPoint.pointDataBuilder(1f, 8f, 4f, 3f, 5.9f, 2.9f, 4.7f)
+                        ChartPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f),
+                        ChartPoint.pointDataBuilder(3f, 6f, 8f, 2f, 3.5f, 3f, 4f),
+                        ChartPoint.pointDataBuilder(1f, 8f, 4f, 3f, 5.9f, 2.9f, 4.7f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 )
@@ -147,14 +147,14 @@ fun LibraryUIExample() {
             LinearChart.LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             4f, 3f, 0f, 2f, 3f, 4f, 2f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         "Hazardous",
                         "Very Unhealthy",
                         "Unhealthy",
@@ -172,14 +172,14 @@ fun LibraryUIExample() {
             LinearChart.EmojiLineChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             6f, 4f, 2f, 0f, 3f, 5f, 6f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         getDrawable(
                             LocalContext.current,
                             R.drawable.emoji_furious
@@ -209,12 +209,12 @@ fun LibraryUIExample() {
             LinearChart.GradientChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(4f, 0f, 1.7f, 1.9f, 2f, 4f)
+                        ChartPoint.pointDataBuilder(4f, 0f, 1.7f, 1.9f, 2f, 4f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         "Awake",
                         "Deep Sleep",
                         "Sleep",
@@ -244,14 +244,14 @@ fun LibraryUIExample() {
             LinearChart.CustomLinearChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             6f, 4f, 2f, 0f, 3f, 5f, 6f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         getDrawable(
                             LocalContext.current,
                             R.drawable.emoji_furious
@@ -292,9 +292,9 @@ fun LibraryUIExample() {
             LinearChart.BarChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
+                        ChartPoint.pointDataBuilder(6f, 5f, 4f, 6f, 7.5f, 7f, 6f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     )
                 ),
@@ -313,14 +313,14 @@ fun LibraryUIExample() {
             LinearChart.EmojiBarChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             6f, 4f, 2f, 0f, 3f, 5f, 6f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "Jan", "Mar", "May", "Jul", "Sep", "Nov", "Dec"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         getDrawable(
                             LocalContext.current,
                             R.drawable.emoji_furious

@@ -23,7 +23,7 @@ import com.dev.anirban.chartlibrary.linear.LinearChart.Companion.LineChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearEmojiData
 import com.dev.anirban.chartlibrary.linear.data.LinearStringData
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.DetailsCard
 import com.dev.anirban.screens.components.MoodCard
@@ -174,14 +174,14 @@ fun BreathingDayStats() {
             LinearChart.EmojiLineChart(
                 linearData = LinearEmojiData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(
+                        ChartPoint.pointDataBuilder(
                             6f, 4f, 2f, 0f, 3f, 5f, 6f
                         )
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     ),
-                    yMarkerList = LinearPoint.pointDataBuilder(
+                    yMarkerList = ChartPoint.pointDataBuilder(
                         ContextCompat.getDrawable(
                             LocalContext.current,
                             R.drawable.emoji_furious
@@ -220,9 +220,9 @@ fun BreathingDayStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
+                        ChartPoint.pointDataBuilder(78f, 68f, 59f, 78f, 88f, 83f, 78f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     )
                 )
@@ -234,10 +234,10 @@ fun BreathingDayStats() {
             LineChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
-                        LinearPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)
+                        ChartPoint.pointDataBuilder(40f, 80f, 85f, 76f, 86f, 94f, 108f),
+                        ChartPoint.pointDataBuilder(80f, 84f, 70f, 42f, 100f, 100f, 112f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     )
                 ),

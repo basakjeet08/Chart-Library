@@ -7,7 +7,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.linear.interfaces.LinearDataInterface
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 
 /**
  * This is one of the implementation for storing and calculating the data in the chart. It
@@ -21,9 +21,9 @@ import com.dev.anirban.chartlibrary.linear.util.LinearPoint
  * @param numOfYMarkers This Is useless when a yMarkerList is passed to the Class constructor
  */
 class LinearStringData(
-    override val yAxisReadings: List<List<LinearPoint<Float>>>,
-    override val xAxisReadings: List<LinearPoint<String>>,
-    override var yMarkerList: MutableList<LinearPoint<*>> = mutableListOf(),
+    override val yAxisReadings: List<List<ChartPoint<Float>>>,
+    override val xAxisReadings: List<ChartPoint<String>>,
+    override var yMarkerList: MutableList<ChartPoint<*>> = mutableListOf(),
     override var numOfYMarkers: Int = 5
 ) : LinearDataInterface {
 
@@ -94,7 +94,7 @@ class LinearStringData(
 
                 // This is the value of the current Y Axis Marker
                 val currentYMarker = yUpperReading - (index) * yDividend
-                yMarkerList.add(index, LinearPoint(currentYMarker))
+                yMarkerList.add(index, ChartPoint(currentYMarker))
             }
         }
     }

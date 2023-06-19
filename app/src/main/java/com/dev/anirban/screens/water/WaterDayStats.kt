@@ -24,7 +24,7 @@ import com.dev.anirban.chartlibrary.circular.decoration.CircularDecoration
 import com.dev.anirban.chartlibrary.linear.LinearChart
 import com.dev.anirban.chartlibrary.linear.colorconvention.LinearGridColorConvention
 import com.dev.anirban.chartlibrary.linear.data.LinearStringData
-import com.dev.anirban.chartlibrary.linear.util.LinearPoint
+import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.ChangeInPlanCard
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.screens.components.NoteCard
@@ -157,9 +157,9 @@ fun WaterDayStats() {
             LinearChart.BarChart(
                 linearData = LinearStringData(
                     yAxisReadings = listOf(
-                        LinearPoint.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
+                        ChartPoint.pointDataBuilder(5f, 10f, 6f, 4.2f, 8f, 10f, 6f)
                     ),
-                    xAxisReadings = LinearPoint.pointDataBuilder(
+                    xAxisReadings = ChartPoint.pointDataBuilder(
                         "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                     )
                 )
@@ -198,10 +198,10 @@ fun WaterDayStats() {
                 LinearChart.LineChart(
                     linearData = LinearStringData(
                         yAxisReadings = listOf(
-                            LinearPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
-                            LinearPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
+                            ChartPoint.pointDataBuilder(3f, 2.5f, 2.8f, 3.5f, 5.7f, 2.6f, 3.4f),
+                            ChartPoint.pointDataBuilder(3.6f, 3f, 2.4f, 6f, 4.5f, 2.9f, 3.8f)
                         ),
-                        xAxisReadings = LinearPoint.pointDataBuilder(
+                        xAxisReadings = ChartPoint.pointDataBuilder(
                             "6-7", "8-9", "10-11", "12-1", "2-3", "4-5", "6-7"
                         )
                     ),
