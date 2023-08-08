@@ -46,13 +46,17 @@ class ChartPoint<T>(
          * written
          */
         fun <T> pointDataBuilder(vararg points: T): List<ChartPoint<T>> {
+            return points.map { ChartPoint(it) }
+        }
 
-            val pointsList = mutableListOf<ChartPoint<T>>()
-
-            points.forEach {
-                pointsList.add(ChartPoint(it))
-            }
-            return pointsList
+        /**
+         * This function makes a List of Points Objects
+         *
+         * This is made to make the creation of Points List easy and less boilerplate code would be
+         * written
+         */
+        fun <T> pointDataBuilder(points: List<T>): List<ChartPoint<T>> {
+            return points.map { ChartPoint(it) }
         }
     }
 }
