@@ -3,11 +3,17 @@ package com.dev.anirban.chartlibrary.other.bmi.interfaces
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.dev.anirban.chartlibrary.util.ChartPoint
+import com.dev.anirban.chartlibrary.other.bmi.data.BmiData
 
 
 /**
  * This is the Data Interface which has to be implemented by the class which makes a new
  * Implementation for the handling of data and calculations in the graph
+ *
+ *  This class is implemented in [BmiData] and you can see this class too for the basic
+ *  implementation of the class
+ *
+ * @see [BmiData]
  */
 interface BmiDataInterface {
 
@@ -15,6 +21,11 @@ interface BmiDataInterface {
      * This is the reading which needs to be marked in the chart
      */
     val readingValue: ChartPoint<Float>
+
+    /**
+     * This variable contains the list of X Axis Markers below the graph
+     */
+    val xAxisPointers: MutableList<ChartPoint<*>>
 
     /**
      * This is the number of X Axis Markers we want to show in the UI
