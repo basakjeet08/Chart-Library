@@ -66,8 +66,8 @@ class BmiData(
 
 
         // Setting the coordinates of the reading value given through the constructor
-        readingValue.setXCoordinate(xScale * readingValue.value)
-        readingValue.setYCoordinate(110f)
+        readingValue.setXCoordinate(xScale * ((readingValue.value / 5f) - 3f))
+        readingValue.setYCoordinate(40f)
 
 
         // Setting the X - Axis pointers coordinates
