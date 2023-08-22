@@ -10,14 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import com.dev.anirban.chartlibrary.other.bmi.BmiChart
-import com.dev.anirban.chartlibrary.other.bmi.body.BmiBody
-import com.dev.anirban.chartlibrary.other.bmi.data.BmiData
-import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
-import com.dev.anirban.chartlibrary.other.bmi.margins.BmiMargin
-import com.dev.anirban.chartlibrary.other.bmi.plots.BmiPlot
-import com.dev.anirban.chartlibrary.util.ChartPoint
+import com.dev.anirban.screens.LibraryUIExample
 import com.dev.anirban.screens.components.TopBarUI
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
@@ -48,31 +41,7 @@ class MainActivity : ComponentActivity() {
                                 .padding(it)
                                 .fillMaxSize(),
                         ) {
-
-//                            BMI()
-
-                            BmiChart(
-                                marginImpl = BmiMargin(),
-                                decoration = BmiDecorations(
-                                    textColor = MaterialTheme.colorScheme.onBackground,
-                                    plotPrimaryColor = Color.Red,
-                                    barGradientColors = listOf(
-                                        Color.Blue,
-                                        Color.Cyan,
-                                        Color.Red,
-                                        Color.LightGray
-                                    ),
-                                    weightCardColor = Color.Blue,
-                                    idealWeightCardColor = Color.Green
-                                ),
-                                bmiData = BmiData(
-                                    readingValue = ChartPoint(27f),
-                                    idealWeight = ChartPoint(75f),
-                                    weight = ChartPoint(20f)
-                                ),
-                                bmiPlot = BmiPlot(),
-                                bmiBody = BmiBody()
-                            ).Build(modifier = Modifier)
+                            LibraryUIExample()
                         }
                     }
                 }

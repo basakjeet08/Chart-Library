@@ -64,7 +64,7 @@ class BmiChart(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp),
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -72,7 +72,7 @@ class BmiChart(
             Box(
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(140.dp)
+                    .height(58.dp)
                     .drawBehind {
 
                         // Calling all the necessary functions
@@ -83,7 +83,10 @@ class BmiChart(
             )
 
             bmiBody.apply {
-                DrawBody()
+                DrawBody(
+                    decorations = decoration,
+                    bmiData = bmiData
+                )
             }
         }
     }
