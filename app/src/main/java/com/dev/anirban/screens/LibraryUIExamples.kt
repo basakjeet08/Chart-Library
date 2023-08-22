@@ -47,11 +47,7 @@ import com.dev.anirban.chartlibrary.linear.plots.LinearBarPlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearGradientLinePlot
 import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.other.bmi.BmiChart
-import com.dev.anirban.chartlibrary.other.bmi.body.BmiBody
 import com.dev.anirban.chartlibrary.other.bmi.data.BmiData
-import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
-import com.dev.anirban.chartlibrary.other.bmi.margins.BmiMargin
-import com.dev.anirban.chartlibrary.other.bmi.plots.BmiPlot
 import com.dev.anirban.chartlibrary.util.ChartPoint
 import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
@@ -585,31 +581,16 @@ fun LibraryUIExample() {
             }
         }
 
-        // BMI Chart
+
+        // BMI Chart Wrapper
         CustomCard(title = "BMI Chart") {
-            BmiChart(
-                marginImpl = BmiMargin(),
-                decoration = BmiDecorations(
-                    textColor = MaterialTheme.colorScheme.onSurface,
-                    plotPrimaryColor = Color.Red,
-                    barGradientColors = listOf(
-                        Color.Blue,
-                        Color.Cyan,
-                        Color.Red,
-                        Color.LightGray
-                    ),
-                    weightCardColor = Color(0xFFC7EBFC),
-                    idealWeightCardColor = Color(0xFFD8F5E0)
-                ),
+            BmiChart.BMIChart(
                 bmiData = BmiData(
                     readingValue = ChartPoint(27f),
                     idealWeight = ChartPoint(68f),
                     weight = ChartPoint(75f)
-                ),
-                bmiPlot = BmiPlot(),
-                bmiBody = BmiBody()
-            ).Build(modifier = Modifier)
+                )
+            )
         }
-
     }
 }

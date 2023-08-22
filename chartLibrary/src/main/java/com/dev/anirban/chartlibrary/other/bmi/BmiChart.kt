@@ -12,12 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
+import com.dev.anirban.chartlibrary.other.bmi.body.BmiBody
 import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiBodyInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiChartInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiDataInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiMarginInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiPlotInterface
+import com.dev.anirban.chartlibrary.other.bmi.margins.BmiMargin
+import com.dev.anirban.chartlibrary.other.bmi.plots.BmiPlot
 
 class BmiChart(
     override val marginImpl: BmiMarginInterface,
@@ -89,5 +92,40 @@ class BmiChart(
                 )
             }
         }
+    }
+
+
+    /**
+     * Builder Composable Functions which makes the objects of [BmiChart] and these are
+     * actually called by the users to make charts
+     */
+    companion object {
+
+
+        /**
+         * This function creates an object of the [BmiChart] which draws a basic Bmi chart
+         *
+         * @param modifier This is to be passed from the Parent Class for the modifications
+         * @param margin This is the implementation for drawing the Margins
+         * @param decoration This is the implementation for drawing the Decorations
+         * @param bmiData This is the implementation for keeping the data and calculations
+         * @param bmiPlot This is the implementation for how shall the plotting be drawn on the graph
+         * @param bmiBody This is the body of the BMI Chart
+         */
+        @Composable
+        fun BMIChart(
+            modifier: Modifier = Modifier,
+            margin: BmiMarginInterface = BmiMargin(),
+            decoration: BmiDecorations = BmiDecorations.bmiDecorationColors(),
+            bmiData: BmiDataInterface,
+            bmiPlot: BmiPlotInterface = BmiPlot(),
+            bmiBody: BmiBodyInterface = BmiBody()
+        ) = BmiChart(
+            marginImpl = margin,
+            decoration = decoration,
+            bmiData = bmiData,
+            bmiPlot = bmiPlot,
+            bmiBody = bmiBody
+        ).Build(modifier = modifier)
     }
 }
