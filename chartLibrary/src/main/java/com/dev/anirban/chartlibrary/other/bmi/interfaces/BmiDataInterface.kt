@@ -25,7 +25,7 @@ interface BmiDataInterface {
     /**
      * This variable contains the list of X Axis Markers below the graph
      */
-    val xAxisPointers: MutableList<ChartPoint<*>>
+    val xAxisPointers: MutableList<ChartPoint<Int>>
 
     /**
      * This is the number of X Axis Markers we want to show in the UI
@@ -35,12 +35,12 @@ interface BmiDataInterface {
     /**
      * This is the ideal weight which is given according to the BMI calculations
      */
-    val idealWeight: ChartPoint<String>
+    val idealWeight: String
 
     /**
      * This is the weight possessed and not the ideal weight that should be there
      */
-    val weight: ChartPoint<String>
+    val weight: String
 
 
     /**

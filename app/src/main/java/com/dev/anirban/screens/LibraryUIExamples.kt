@@ -586,9 +586,9 @@ fun LibraryUIExample() {
         CustomCard {
             BmiChart.BMIChart(
                 bmiData = BmiData(
-                    readingValue = ChartPoint(27f),
-                    idealWeight = ChartPoint("68 Kg"),
-                    weight = ChartPoint("75 Kg"),
+                    readingValue = ChartPoint(38.7f),
+                    idealWeight = "92 Kg",
+                    weight = "102 Kg",
                     bmiUnit = "Kg/m^2"
                 )
             )

@@ -63,7 +63,7 @@ class BmiBody : BmiBodyInterface {
             ) {
                 DrawCardItem(
                     title = "Weight",
-                    value = bmiData.weight.value,
+                    value = bmiData.weight,
                     cardColor = decorations.weightCardColor
                 )
             }
@@ -75,7 +75,7 @@ class BmiBody : BmiBodyInterface {
             ) {
                 DrawCardItem(
                     title = "Ideal Weight",
-                    value = bmiData.idealWeight.value,
+                    value = bmiData.idealWeight,
                     cardColor = decorations.idealWeightCardColor
                 )
             }

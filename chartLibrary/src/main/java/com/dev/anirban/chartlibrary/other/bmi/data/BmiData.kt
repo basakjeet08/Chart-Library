@@ -19,10 +19,10 @@ import com.dev.anirban.chartlibrary.util.ChartPoint
  */
 class BmiData(
     override val readingValue: ChartPoint<Float>,
-    override val xAxisPointers: MutableList<ChartPoint<*>> = mutableListOf(),
+    override val xAxisPointers: MutableList<ChartPoint<Int>> = mutableListOf(),
     override val numOfXMarker: Int = 5,
-    override val idealWeight: ChartPoint<String>,
-    override val weight: ChartPoint<String>,
+    override val idealWeight: String,
+    override val weight: String,
     override val bmiUnit: String
 ) : BmiDataInterface {
 
@@ -68,7 +68,7 @@ class BmiData(
 
 
         // Setting the coordinates of the reading value given through the constructor
-        readingValue.setXCoordinate(xScale * ((readingValue.value / 5f) - 3f))
+        readingValue.setXCoordinate(xScale * ((readingValue.value - xAxisPointers[0].value) / 5f))
         readingValue.setYCoordinate(30f)
 
 
