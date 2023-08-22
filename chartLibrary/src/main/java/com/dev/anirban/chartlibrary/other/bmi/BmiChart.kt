@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
+import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiBodyInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiChartInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiDataInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiMarginInterface
@@ -22,7 +23,8 @@ class BmiChart(
     override val marginImpl: BmiMarginInterface,
     override val decoration: BmiDecorations,
     override val bmiData: BmiDataInterface,
-    override val bmiPlot: BmiPlotInterface
+    override val bmiPlot: BmiPlotInterface,
+    override val bmiBody: BmiBodyInterface
 ) : BmiChartInterface {
 
 
@@ -79,6 +81,10 @@ class BmiChart(
                         plotChart()
                     }
             )
+
+            bmiBody.apply {
+                DrawBody()
+            }
         }
     }
 }

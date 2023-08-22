@@ -12,6 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.dev.anirban.chartlibrary.other.bmi.BmiChart
+import com.dev.anirban.chartlibrary.other.bmi.body.BmiBody
 import com.dev.anirban.chartlibrary.other.bmi.data.BmiData
 import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
 import com.dev.anirban.chartlibrary.other.bmi.margins.BmiMargin
@@ -69,7 +70,8 @@ class MainActivity : ComponentActivity() {
                                     idealWeight = ChartPoint(75f),
                                     weight = ChartPoint(20f)
                                 ),
-                                bmiPlot = BmiPlot()
+                                bmiPlot = BmiPlot(),
+                                bmiBody = BmiBody()
                             ).Build(modifier = Modifier)
                         }
                     }

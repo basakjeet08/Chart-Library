@@ -50,6 +50,15 @@ interface BmiChartInterface {
 
 
     /**
+     * This is the implementation of the [BmiBodyInterface].The Body of the BMI Chart would be drawn
+     * according to this implementation.
+     *
+     * @see [BmiBodyInterface]
+     */
+    val bmiBody: BmiBodyInterface
+
+
+    /**
      * This function draws the margin according to the implementation provided to it
      */
     fun DrawScope.drawMargin()
