@@ -15,13 +15,15 @@ import com.dev.anirban.chartlibrary.util.ChartPoint
  * @param numOfXMarker These are the num of markers in X-axis
  * @param idealWeight This is the ideal weight for the Chart
  * @param weight This is the weight possessed by the user
+ * @param bmiUnit This contains the Bmi Calculation Unit
  */
 class BmiData(
     override val readingValue: ChartPoint<Float>,
     override val xAxisPointers: MutableList<ChartPoint<*>> = mutableListOf(),
     override val numOfXMarker: Int = 5,
-    override val idealWeight: ChartPoint<*>,
-    override val weight: ChartPoint<*>
+    override val idealWeight: ChartPoint<String>,
+    override val weight: ChartPoint<String>,
+    override val bmiUnit: String
 ) : BmiDataInterface {
 
 

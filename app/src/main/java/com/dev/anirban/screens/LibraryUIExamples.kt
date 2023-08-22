@@ -583,12 +583,13 @@ fun LibraryUIExample() {
 
 
         // BMI Chart Wrapper
-        CustomCard(title = "BMI Chart") {
+        CustomCard {
             BmiChart.BMIChart(
                 bmiData = BmiData(
                     readingValue = ChartPoint(27f),
-                    idealWeight = ChartPoint(68f),
-                    weight = ChartPoint(75f)
+                    idealWeight = ChartPoint("68 Kg"),
+                    weight = ChartPoint("75 Kg"),
+                    bmiUnit = "Kg/m^2"
                 )
             )
         }

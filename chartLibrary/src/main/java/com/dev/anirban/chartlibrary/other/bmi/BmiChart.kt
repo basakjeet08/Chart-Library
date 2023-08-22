@@ -3,15 +3,21 @@ package com.dev.anirban.chartlibrary.other.bmi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.dev.anirban.chartlibrary.other.bmi.body.BmiBody
 import com.dev.anirban.chartlibrary.other.bmi.decorations.BmiDecorations
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiBodyInterface
@@ -21,6 +27,7 @@ import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiMarginInterface
 import com.dev.anirban.chartlibrary.other.bmi.interfaces.BmiPlotInterface
 import com.dev.anirban.chartlibrary.other.bmi.margins.BmiMargin
 import com.dev.anirban.chartlibrary.other.bmi.plots.BmiPlot
+import java.text.DecimalFormat
 
 class BmiChart(
     override val marginImpl: BmiMarginInterface,
@@ -71,6 +78,39 @@ class BmiChart(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+
+                Text(
+                    text = "BMI Chart",
+
+                    // font Properties
+                    fontSize = 16.sp,
+                    lineHeight = 25.2.sp,
+                    fontWeight = FontWeight.W500,
+                    color = decoration.textColor,
+                )
+
+                Text(
+                    text = "${DecimalFormat("#.##").format(bmiData.readingValue.value)} ${bmiData.bmiUnit}",
+
+
+                    // Font Properties
+                    fontSize = 16.sp,
+                    lineHeight = 25.2.sp,
+                    fontWeight = FontWeight.W500,
+                    color = decoration.textColor,
+                    textAlign = TextAlign.Right,
+                )
+
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             Box(
                 modifier = modifier

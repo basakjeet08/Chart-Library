@@ -35,12 +35,19 @@ interface BmiDataInterface {
     /**
      * This is the ideal weight which is given according to the BMI calculations
      */
-    val idealWeight: ChartPoint<*>
+    val idealWeight: ChartPoint<String>
 
     /**
      * This is the weight possessed and not the ideal weight that should be there
      */
-    val weight: ChartPoint<*>
+    val weight: ChartPoint<String>
+
+
+    /**
+     * This variable contains the unit of the BMI calculation
+     */
+    val bmiUnit: String
+
 
     /**
      * This function does the Calculations of the data and prepare their point
