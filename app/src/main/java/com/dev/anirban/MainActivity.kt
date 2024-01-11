@@ -11,7 +11,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.dev.anirban.screens.LibraryUIExample
-import com.dev.anirban.screens.components.TopBarUI
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,13 +26,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     // Scaffold
-                    Scaffold(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        topBar = {
-                            TopBarUI()
-                        }
-                    ) {
+                    Scaffold(modifier = Modifier.fillMaxSize()) {
 
                         // Main App UI in the Body of the Scaffold
                         Surface(

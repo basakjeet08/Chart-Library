@@ -49,7 +49,6 @@ import com.dev.anirban.chartlibrary.linear.plots.LinearLinePlot
 import com.dev.anirban.chartlibrary.other.bmi.BmiChart
 import com.dev.anirban.chartlibrary.other.bmi.data.BmiData
 import com.dev.anirban.chartlibrary.util.ChartPoint
-import com.dev.anirban.screens.components.CustomCard
 import com.dev.anirban.ui.theme.ChartLibraryTheme
 
 // Preview Composable Function
